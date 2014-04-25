@@ -29,7 +29,7 @@ class Mysql { // estaba puesto en minúsculas todo
 	}
 	
 	public function consultaDisco($idDisco){
-		$consulta ="select * from articulo where id_articulo = '$idDisco' AND cantidad > 0";
+		$consulta ="select * from autor_articulo where id_articulo = '$idDisco' AND cantidad > 0 natural join autor";
 		$this->conectar();
 		$resultado=mysqli_query($this->conexion,$consulta);
 		$this->cerrar();
