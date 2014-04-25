@@ -44,7 +44,7 @@
 	
 	<br/> 
 	<div class="divCesta">
-		<script>
+		<script>		
 			var mostrarCesta = function(){
 				$('#zona_central').load('./vista/vercesta.php');
 			};
