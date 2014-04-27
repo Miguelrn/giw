@@ -3,8 +3,8 @@
 <html lang="es">
 	<head>
 		<meta charset="UTF-8">
-		<meta name="description" content="Tienda de música">
-		<meta name="keywords" content="Music, CDs">
+		<meta name="description" content="Smart Music - The best songs and artist are in our web.">
+		<meta name="keywords" content="smart, music, store, music, CDs, songs, artists">
 		<meta name="author" content="GRUPO 07 - GIW
 									 ANTONIO NUÑEZ GUERRERO 
 									 DANIEL ALEJANDRO NOWENDSZTERN
@@ -34,7 +34,7 @@
 				<?php include_once 'vista/categorias.php'; ?>				
 			</div>
 			<div id="zona_central" class="cuerpo contenido">
-				<?php include_once 'vista/directorio'; ?>
+				<?php include_once 'vista/directorio.php'; ?>
 				<?php include_once 'vista/contenido.php'; ?>						
 			</div>
 			<div class="cuerpo cesta">
