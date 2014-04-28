@@ -34,4 +34,5 @@
 		<button onclick="accion(8)">Estadísticas</button>
 	</div>
 	
+	
 </div>
