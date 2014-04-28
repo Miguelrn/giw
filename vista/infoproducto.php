@@ -46,7 +46,7 @@
 
 			print("</br>");
 
-			print("<h3 class=\"fuenteDescripcion\">Nombre: $row[nombre]</h3>");
+			print("<h3 class=\"fuenteDescripcion\">Nombre: $row[nombre_disco] - $row[nombre_autor] </h3>");
 
 			print("<h3 class=\"fuenteDescripcion\">Año: $row[anno] </h3>");
 
