@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	include_once '../controlador/opbasededatos.php';
+	require_once '../controlador/opbasededatos.php';
     
     $correo = $_GET['correo'];        
     $pass = $_GET['pass'];

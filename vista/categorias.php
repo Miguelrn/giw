@@ -1,8 +1,3 @@
-<?php
-   // phpinfo();
-   // http://www.zonadecompras.com/
-?>
-
 <ul class="categorias">
 	<script>
 		var cargaCatalogo = function(num){
@@ -38,3 +33,5 @@
 		<a href="#folclorica" onclick="cargaCatalogo(9)">Folclórica</a>
 	</li>
 </ul>
+
+<?php include_once 'tops_discos/top_rebajas.php' ?>

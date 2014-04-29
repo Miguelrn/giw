@@ -1,5 +1,5 @@
 <?php
-    include_once '../controlador/opbasededatos.php';
+    require_once '../controlador/opbasededatos.php';
 	session_start();
     
     $correo = $_SESSION['correo'];

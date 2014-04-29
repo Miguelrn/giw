@@ -1,5 +1,5 @@
 <?php
-	include '../controlador/opbasededatos.php';
+	require_once '../controlador/opbasededatos.php';
 	//include 'categorias.php';
 	//include 'variables.php';
 	//include_once 'controlador/opbasededatos.php';
