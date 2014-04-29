@@ -33,5 +33,3 @@
 		<a href="#folclorica" onclick="cargaCatalogo(9)">Folclórica</a>
 	</li>
 </ul>
-
-<?php include_once 'tops_discos/top_rebajas.php' ?>
