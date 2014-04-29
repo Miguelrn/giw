@@ -70,8 +70,8 @@
 					$('#zona_central').load('vista/infoproducto.php?idProd='+idProducto+'&idCat='+idCategoria);					
 				};
 			</script>
-				
-			<td><a href="#" onclick="llevarAProducto(<?php echo $row['id_articulo'] ?>, <?php echo $categoriaCatalogo ?>)">
+			<!-- <?php echo $row['id_articulo'] . ',\'' . $categoriaCatalogo?> -->	
+			<td><a href="#" onclick="llevarAProducto(<?php echo $row['id_articulo'] . ',' . $row['id_categoria']?>)">
 				<img src="vista/images/caratulas/<?php echo $row['foto'] ?>" width="100px" height="100px"></img></br>
 		
 	<p class="fuenteSubtitulo">
