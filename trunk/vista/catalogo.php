@@ -66,12 +66,12 @@
 			}
 	?>
 			<script>
-				var llevarAProducto = function(idProducto){
-					$('#zona_central').load('vista/infoproducto.php?idProd='+idProducto);					
+				var llevarAProducto = function(idProducto,idCategoria){
+					$('#zona_central').load('vista/infoproducto.php?idProd='+idProducto+'&idCat='+idCategoria);					
 				};
 			</script>
 				
-			<td><a href="#" onclick="llevarAProducto(<?php echo $row['id_articulo'] ?>)">
+			<td><a href="#" onclick="llevarAProducto(<?php echo $row['id_articulo'] ?>, <?php echo $categoriaCatalogo ?>)">
 				<img src="vista/images/caratulas/<?php echo $row['foto'] ?>" width="100px" height="100px"></img></br>
 		
 	<p class="fuenteSubtitulo">
