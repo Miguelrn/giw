@@ -2,8 +2,8 @@
 	require_once './controlador/opbasededatos.php';
 ?>
 <script>
-	var llevarAProducto = function(idProducto){
-		$('#zona_central').load('vista/infoproducto.php?idProd='+idProducto);					
+	var llevarAProducto = function(idProducto, idCategoria){
+		$('#zona_central').load('vista/infoproducto.php?idProd='+idProducto+'&idCat='+idCategoria);					
 	};
 </script>
 <div id="sliderFrame">
@@ -15,7 +15,7 @@
 		
 		while ($row = mysqli_fetch_array($resultado, MYSQLI_ASSOC)){
 		?>
-		<a href="#" onclick="llevarAProducto(<?php echo $row['id_articulo'] ?>)"> <img src="vista/images/caratulas/<?php echo $row['foto'] ?>" width="360" height="360"
+		<a href="#" onclick="llevarAProducto(<?php echo $row['id_articulo'] . ',' . $row['id_categoria']?>)"> <img src="vista/images/caratulas/<?php echo $row['foto'] ?>" width="360" height="360"
 			alt="<?php echo $row['nombre'] ?>" /> </a>		
 		<?php 
 		}
@@ -36,8 +36,8 @@
 			
 			while ($row = mysqli_fetch_array($resultado, MYSQLI_ASSOC)){
 			?>
-			<td>	
-				<a href="#" onclick="llevarAProducto(<?php echo $row['id_articulo'] ?>)">
+			<td>
+				<a href="#" onclick="llevarAProducto(<?php echo $row['id_articulo'] . ',' . $row['id_categoria']?>)">
 					<img src="vista/images/caratulas/<?php echo $row['foto'] ?>" width="100px" height="100px"></img>
 					<p class="fuenteSubtitulo"><?php echo $row['nombre'] ?></br><?php echo $row['precio'] . '€' ?></p>
 				</a>
@@ -60,7 +60,7 @@
 			while ($row = mysqli_fetch_array($resultado, MYSQLI_ASSOC)){
 			?>
 			<td>	
-				<a href="#" onclick="llevarAProducto(<?php echo $row['id_articulo'] ?>)">
+				<a href="#" onclick="llevarAProducto(<?php echo $row['id_articulo'] . ',' . $row['id_categoria']?>)">
 					<img src="vista/images/caratulas/<?php echo $row['foto'] ?>" width="100px" height="100px"></img>
 					<p class="fuenteSubtitulo"><?php echo $row['nombre'] ?></br><?php echo $row['precio'] . '€' ?></p>
 				</a>

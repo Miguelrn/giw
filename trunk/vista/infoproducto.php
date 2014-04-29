@@ -87,14 +87,14 @@
 	
 	<!-- Muestra 5 discos similares, de la misma categoria del visitado -->
 	<script>
-		var llevarAProducto = function(idProducto){
-			$('#zona_central').load('vista/infoproducto.php?idProd='+idProducto);					
+		var llevarAProducto = function(idProducto, idCategoria){
+			$('#zona_central').load('vista/infoproducto.php?idProd='+idProducto+'&idCat='+idCategoria);					
 		};
 	</script>
 	<table class="contenido" id="tablaDestacados">
 	<tr>
 		<td colspan="3">
-			<p class="fuenteTitulo">Destacados</p>
+			<p class="fuenteTitulo">Discos Similares</p>
 		</td>
 	</tr>	
 	<tr>
@@ -104,28 +104,19 @@
 			while ($row = mysqli_fetch_array($resultado, MYSQLI_ASSOC)){
 			?>
 			<td>	
-				<a href="#" onclick="llevarAProducto(<?php echo $row['id_articulo'] ?>)">
+				<a href="#" onclick="llevarAProducto(<?php echo $row['id_articulo'] . ',' . $row['id_categoria']?>)">
 					<img src="vista/images/caratulas/<?php echo $row['foto'] ?>" width="100px" height="100px"></img>
 					<p class="fuenteSubtitulo"><?php echo $row['nombre'] ?></br><?php echo $row['precio'] . '€' ?></p>
 				</a>
 			</td>				
 			<?php 
 			}
-			mysqli_free_result($row);
+			mysqli_free_result($resultado);
 		?>	
 	</tr>
+	</table>
 
 </div>
 
 
-
-<!--
-
-
-
-/-----------------------------------/
-
-
-
--->
 
