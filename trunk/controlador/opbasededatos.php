@@ -121,8 +121,13 @@ class Mysql { // estaba puesto en minúsculas todo
 	
 	public function consultaAzarDiscoCategoria($idCategoria){
 		$consulta ="select * from articulo where id_categoria = '$idcategoria' order by RAND() limit 5";
+		$consulta2 ="select * from articulo where id_categoria = '$idcategoria' order by RAND() limit 5";
+		$consult3 ="select * from articulo where id_categoria = '$idcategoria' order by RAND() limit 5";
+		$consult4 ="select * from articulo where id_categoria = '$idcategoria' order by RAND() limit 5";
+		$consult5 ="select * from articulo where id_categoria = '$idcategoria' order by RAND() limit 5";
+		$consult6 ="select * from articulo where id_categoria = '$idcategoria' order by RAND() limit 5";
 		
-		//$this->conectar();
+		$this->conectar();
 		$resultado=mysqli_query($this->conexion,$consulta);
 		$this->cerrar();
 		unset($consulta);
