@@ -362,8 +362,21 @@ class Mysql { // estaba puesto en minúsculas todo
 		return $resultado;
 	}
 	
+	public function conseguirTopValorados(){
+		$consulta = "select articulo.nombre, articulo.id_articulo
+					from articulo, valoracion_articulo
+					where articulo.id_articulo = valoracion_articulo.id_articulo
+					order by valoracion_articulo.nota desc
+					limit 0, 3";
+		$this->conectar();
+		$resultado = mysqli_query($this->conexion,$consulta);
+		$this->cerrar();
+		unset($consulta);
+		return $resultado;			
+	}
+	
 	public function conseguirTopRebajas(){
-		$consulta = "select * from articulo order by descuento asc limit 0, 3";
+		$consulta = "select * from articulo order by descuento desc limit 0, 3";
 		$this->conectar();
 		$resultado = mysqli_query($this->conexion,$consulta);
 		$this->cerrar();

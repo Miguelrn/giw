@@ -31,7 +31,9 @@
 		</div>
 		<div>			
 			<div class="cuerpo categorias">
-				<?php include_once 'vista/categorias.php'; ?>				
+				<?php include_once 'vista/categorias.php'; ?>	
+				<?php include_once 'vista/tops_discos/top_valorados.php' ?>
+				<?php include_once 'vista/tops_discos/top_rebajas.php' ?>		
 			</div>
 			<div id="zona_central" class="cuerpo contenido">
 				<?php include_once 'vista/directorio.php'; ?>

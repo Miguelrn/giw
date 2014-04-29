@@ -2,19 +2,18 @@
 	require_once './controlador/opbasededatos.php';
 	
 	$BDD = new Mysql();
-	$resultado = $BDD -> conseguirTopRebajas();
+	$resultado = $BDD -> conseguirTopValorados();
 ?>
 <script>
 	var cargaDiscoRebajado = function(id) {
 		$('#zona_central').load('vista/catalogo.php?infoproducto=' + id);
 	}
 </script>
-</br>
-<div id="topRebajas">
+<div id="topValorados">
 	<ul class="categorias">
 	<li class="fuenteTitulo" align="center">
-		TOP REBAJAS
-	</li>
+		TOP VALORADOS
+	</li>	
 	</ul>
 	<ol>
 	<?php 
