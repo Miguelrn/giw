@@ -119,6 +119,16 @@ class Mysql { // estaba puesto en minúsculas todo
 		return $resultado;
 	}
 	
+	public function consultaAzarDiscoCategoria($idCategoria){
+		$consulta ="select * from articulo where id_categoria = '$idcategoria' order by RAND() limit 5";
+		$this->conectar();
+		$resultado=mysqli_query($this->conexion,$consulta);
+		$this->cerrar();
+		unset($consulta);
+		return $resultado;
+	}
+
+	
 	/*
 	 * Actualizar la cantidad del producto una vez tramitada la compra
 	 * */

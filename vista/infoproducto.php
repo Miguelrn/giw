@@ -9,6 +9,7 @@
 	
 
 	$idDisco = $_GET['idProd'];//variable que vendra de catalogo...
+	$idCategoria = $_GET['idCat'];
 
 	$BDD = new Mysql();
 
@@ -83,6 +84,36 @@
 		<?php } ?>
 
 	</div>
+	
+	<!-- Muestra 5 discos similares, de la misma categoria del visitado -->
+	<script>
+		var llevarAProducto = function(idProducto){
+			$('#zona_central').load('vista/infoproducto.php?idProd='+idProducto);					
+		};
+	</script>
+	<table class="contenido" id="tablaDestacados">
+	<tr>
+		<td colspan="3">
+			<p class="fuenteTitulo">Destacados</p>
+		</td>
+	</tr>	
+	<tr>
+		<?php 
+			$resultado = $BDD->consultaAzarDiscoCategoria($idCategoria);
+			
+			while ($row = mysqli_fetch_array($resultado, MYSQLI_ASSOC)){
+			?>
+			<td>	
+				<a href="#" onclick="llevarAProducto(<?php echo $row['id_articulo'] ?>)">
+					<img src="vista/images/caratulas/<?php echo $row['foto'] ?>" width="100px" height="100px"></img>
+					<p class="fuenteSubtitulo"><?php echo $row['nombre'] ?></br><?php echo $row['precio'] . '€' ?></p>
+				</a>
+			</td>				
+			<?php 
+			}
+			mysqli_free_result($row);
+		?>	
+	</tr>
 
 </div>
 
