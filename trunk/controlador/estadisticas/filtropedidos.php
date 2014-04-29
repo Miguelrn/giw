@@ -1,5 +1,5 @@
 <?php    
-	include_once '../opbasededatos.php';
+	require_once '../opbasededatos.php';
 
     $inicio = $_GET['inicio'];
 	$final = $_GET['final'];

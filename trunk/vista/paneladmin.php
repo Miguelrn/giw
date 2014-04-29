@@ -1,5 +1,5 @@
 <?php
-	include_once '../controlador/opbasededatos.php';
+	require_once '../controlador/opbasededatos.php';
 	$idAccion = $_GET['idAccion'];
 	
 	if($idAccion == 0){//añadir disco
@@ -194,7 +194,7 @@
 <?php
 	}else if($idAccion == 8){//mostrar estadisticas
 	
-		include 'estadisticas.php';
+		require_once 'estadisticas.php';
 	}
 ?>
 		

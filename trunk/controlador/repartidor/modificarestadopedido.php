@@ -1,5 +1,5 @@
 <?php 
-	include '../opbasededatos.php';
+	require_once '../opbasededatos.php';
 	if (session_id() == "") {
 		@session_start();
 	}

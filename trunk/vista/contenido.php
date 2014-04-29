@@ -1,5 +1,5 @@
 <?php    
-	include './controlador/opbasededatos.php';
+	require_once './controlador/opbasededatos.php';
 ?>
 <script>
 	var llevarAProducto = function(idProducto){

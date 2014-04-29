@@ -1,5 +1,5 @@
 <?php
-	include '../../controlador/opbasededatos.php';
+	require_once '../../controlador/opbasededatos.php';
 	
 	$email = $_POST['email'];
 	$BDD = new Mysql();

@@ -1,6 +1,6 @@
 <?php
 	session_start();
-    include_once '../controlador/opbasededatos.php';
+    require_once '../controlador/opbasededatos.php';
     
     $nombre = $_POST['nombre'];
     $apellidos = $_POST['apellidos'];

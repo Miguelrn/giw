@@ -1,6 +1,6 @@
 <?php
 
-	include '../controlador/opbasededatos.php';
+	require_once '../controlador/opbasededatos.php';
 
 	ini_set("display_errores", "stdout");
 

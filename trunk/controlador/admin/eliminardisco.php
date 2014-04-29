@@ -1,5 +1,5 @@
 <?php
-	include '../../controlador/opbasededatos.php';
+	require_once '../../controlador/opbasededatos.php';
 	$idDisco = $_POST['idDisco'];
 	$BDD = new Mysql();
 	$row = $BDD->eliminarDisco($idDisco);
