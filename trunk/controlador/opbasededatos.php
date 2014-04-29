@@ -121,7 +121,8 @@ class Mysql { // estaba puesto en minúsculas todo
 	
 	public function consultaAzarDiscoCategoria($idCategoria){
 		$consulta ="select * from articulo where id_categoria = '$idcategoria' order by RAND() limit 5";
-		$this->conectar();
+		
+		//$this->conectar();
 		$resultado=mysqli_query($this->conexion,$consulta);
 		$this->cerrar();
 		unset($consulta);
@@ -361,6 +362,15 @@ class Mysql { // estaba puesto en minúsculas todo
 		unset($consulta);
 		return $resultado;
 	}
+	
+	public function conseguirTopRebajas(){
+		$consulta = "select * from articulo";
+		$this->conectar();
+		$resultado = mysqli_query($this->conexion,$consulta);
+		$this->cerrar();
+		unset($consulta);
+		return $resultado;			
+	}	
    
     public function cerrar () {
         @mysql_close($this->conexion);
