@@ -1,11 +1,28 @@
 <?php
-
+	include '../controlador/opbasededatos.php';	
+	
+	$BDD = new Mysql();
+	$resultado = $BDD->conseguirTopRebajas();
 
 ?>
+<script>
+	var cargaDiscoRebajado = function(id){
+		$('#zona_central').load('vista/catalogo.php?infoproducto='+id);
+	}
+</script>
 <div id="topRebajas">
 	<div class="fuenteTitulo">
 		TOP REBAJAS
-		<!-- <a href="vercesta.php"><img id="carrito" src="vista/images/carrito.png" width="45px"; align="center";></a> -->
 	</div>
+	<?php 
+		while ($row = mysqli_fetch_array($resultado, MYSQLI_ASSOC)){
+	?>
+	<li class="fuenteSubtitulo">
+		<a href="#<?php $row['nombreDisco'] ?>" 
+			onclick="cargaCatalogo(<?php $row['idDisco'] ?>)"><?php $row['nombreDisco'] ?></a>
+	</li>
+	<?php 
+		}
+	?>
 	
 </div>
