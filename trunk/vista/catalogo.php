@@ -22,7 +22,7 @@
 
 	<?php
 	$BDD = new Mysql();
-	$resultado = $BDD->consultaArticulosCategoria($categoriaCatalogo);
+	$resultado = $BDD->consultaArticulosCategoriaPorNombre($categoriaCatalogo);
 	//$num_results = $result->num_rows;
 	$numCelda = 0;
 	?>		
