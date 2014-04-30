@@ -65,12 +65,6 @@
 
 		<?php 
 
-			/*if (session_id() == ""){
-
-				@session_start();
-
-			}*/
-
 			if ( (isset($_SESSION['logueado']) && $_SESSION['logueado'] == true && $_SESSION['tipoUsuario'] == 0) || 
 
 				   (!isset($_SESSION['logueado']))){		
@@ -87,6 +81,7 @@
 
 	</div>
 </div>
+<?php if((isset($_SESSION['logueado']) && ($_SESSION['logueado'] == 1))){//solo podran opinar usuarios logueados ?>
 <div class="fuenteSubtitulo">	
 	<!-- pide al usuario que valore el disco, y de una opinion sobre el disco si no la habia dado previamente-->
 	<div>
@@ -94,7 +89,7 @@
 			$correo = $_SESSION['correo'];
 			$row = $BDD->opinionSobreDisco($correo, $idDisco);
 			
-			if($row['opinion'] == '' || $row['nota'] == ''){//si alguna de las dos cosas esta vacia le va pedir su opnipion y la nota
+			if($row['opinion'] == '' && $row['nota'] == ''){//si alguna de las dos cosas esta vacia le va pedir su opinion y la nota
 				?> 
 				
 				<form id="consulta" name="consulta" action="./controlador/modificaopinion.php" method="post" accept-charset="utf-8">	
@@ -142,7 +137,7 @@
 		
 	</div>
 		
-	
+<?php }//fin de comentarios para usuarios logueados ?>	
 	
 	<!-- Muestra 5 discos similares, de la misma categoria del visitado -->
 	<script>
