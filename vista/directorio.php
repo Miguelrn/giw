@@ -6,7 +6,7 @@
 				echo $_SESSION['dir'];				
 			} else {								
 				$_SESSION['dir'] = "Inicio";
-				echo "Inicio";
+				echo "<a>Inicio<a>";
 			}
 		?>
 	</p>
