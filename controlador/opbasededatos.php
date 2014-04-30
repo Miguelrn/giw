@@ -383,6 +383,15 @@ class Mysql { // estaba puesto en minúsculas todo
 		unset($consulta);
 		return $resultado;			
 	}	
+	
+	public function conseguirDiscoPorFechas($ini, $fin){
+		$consulta = "select * from articulo where anno > '$ini' && anno < '$fin' ";
+		$this->conectar();
+		$resultado = mysqli_query($this->conexion,$consulta);
+		$this->cerrar();
+		unset($consulta);
+		return $resultado;	
+	}
    
     public function cerrar () {
         @mysql_close($this->conexion);
