@@ -50,6 +50,20 @@ class Mysql { // estaba puesto en minúsculas todo
 		unset($consulta);
 		return $resultado;
 	}
+	
+	//dada una categoria devuelve todos los elementos de ella 
+	public function consultaArticulosCategoriaPorNombre($nombre_categoria){
+		$consulta ="select * 
+					from articulo as art, categoria as cat 
+					where art.id_categoria = cat.id_categoria and 
+						  cat.nombre_categoria LIKE '$nombre_categoria'";
+		$this->conectar();
+		$resultado=mysqli_query($this->conexion,$consulta);
+		$this->cerrar();
+		unset($consulta);
+		return $resultado;
+	}
+	
 
 	public function insertarPedido($correo, $precio){
 		$date = date("Y-m-d");

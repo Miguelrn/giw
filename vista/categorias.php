@@ -1,35 +1,35 @@
 <ul class="categorias">
 	<script>
-		var cargaCatalogo = function(num){
-			$('#zona_central').load('vista/catalogo.php?categoria='+num);
+		var cargaCatalogo = function(nombre){
+			$('#zona_central').load('vista/catalogo.php?categoria='+encodeURIComponent(nombre));
 		};		
 	</script>	
 	<li class="fuenteTitulo">CATEGORÍAS</li>
 	<li class="fuenteSubtitulo">
-		<a href="#rockandroll" onclick="cargaCatalogo('Rock%20and%20Roll')">Rock & Roll</a>
+		<a href="#rockandroll" onclick="cargaCatalogo('Rock & Roll')">Rock N' Roll</a>
 	</li>
 	<li class="fuenteSubtitulo">
 		<a href="#pop" onclick="cargaCatalogo('Pop')">Pop</a>
 	</li>
 	<li class="fuenteSubtitulo">
-		<a href="#electronica" onclick="cargaCatalogo(Electrónica)">Electrónica</a>
+		<a href="#electronica" onclick="cargaCatalogo('Electronica')">Electrónica</a>
 	</li>
 	<li class="fuenteSubtitulo">
-		<a href="#clasica" onclick="cargaCatalogo(Clásica)">Clásica</a>
+		<a href="#clasica" onclick="cargaCatalogo('Clasica')">Clásica</a>
 	</li>
 	<li class="fuenteSubtitulo">
-		<a href="#jazz" onclick="cargaCatalogo(Jazz)">Jazz</a>
+		<a href="#jazz" onclick="cargaCatalogo('Jazz')">Jazz</a>
 	</li>
 	<li class="fuenteSubtitulo">
-		<a href="#rap" onclick="cargaCatalogo(Rap)">Rap</a>
+		<a href="#rap" onclick="cargaCatalogo('Rap')">Rap</a>
 	</li>
 	<li class="fuenteSubtitulo">
-		<a href="#blues" onclick="cargaCatalogo(Blues)">Blues</a>
+		<a href="#blues" onclick="cargaCatalogo('Blues')">Blues</a>
 	</li>
 	<li class="fuenteSubtitulo">
-		<a href="#randb" onclick="cargaCatalogo(R&B)">R&B</a>
+		<a href="#randb" onclick="cargaCatalogo('R&B')">R&B</a>
 	</li>
 	<li class="fuenteSubtitulo">
-		<a href="#folclorica" onclick="cargaCatalogo(Folclórica)">Folclórica</a>
+		<a href="#folclorica" onclick="cargaCatalogo('Folclorica')">Folclórica</a>
 	</li>
 </ul>
