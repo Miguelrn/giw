@@ -9,7 +9,6 @@
 	
 			} else {								
 				$_SESSION['dir'] = "Inicio";
-				echo "<a>Inicio<a>";
 			}
 		?>
 	</p>

@@ -14,37 +14,7 @@
 		<td colspan="5">
 		<h1 class="fuenteTitulo">
 		<?php
-		switch($categoriaCatalogo) {
-			case 1:
-				print("Rock 'N' Roll");
-				break;
-			case 2 :
-				print("Pop");
-				break;
-			case 3 :
-				print("Electrónica");
-				break;
-			case 4 :
-				print("Clásica");
-				break;
-			case 5 :
-				print("Jazz");
-				break;
-			case 6 :
-				print("Rap");
-				break;
-			case 7 :
-				print("Blues");
-				break;
-			case 8 :
-				print("R&B");
-				break;
-			case 9 :
-				print("Folclórica");
-				break;
-			default :
-				break;
-		}
+		 print($categoriaCatalogo);
 		?>
 		</h1>
 		</td>
@@ -55,12 +25,7 @@
 	$resultado = $BDD->consultaArticulosCategoria($categoriaCatalogo);
 	//$num_results = $result->num_rows;
 	$numCelda = 0;
-	?>	
-	<script>
-		var llevarAProducto = function(idProducto,idCategoria){
-			$('#zona_central').load('vista/infoproducto.php?idProd='+idProducto+'&idCat='+idCategoria);					
-		};
-	</script>	
+	?>		
 	<?php	
 		//la primera
 		//header("Content-Type: image/jpeg");
@@ -70,6 +35,11 @@
 				print("<tr>");
 			}
 	?>
+			<script>
+				var llevarAProducto = function(idProducto,idCategoria){
+					$('#zona_central').load('vista/infoproducto.php?idProd='+idProducto+'&idCat='+idCategoria);					
+				};
+			</script>
 			<!-- <?php echo $row['id_articulo'] . ',\'' . $categoriaCatalogo?> -->	
 			<td><a href="#" onclick="llevarAProducto(<?php echo $row['id_articulo'] . ',' . $row['id_categoria']?>)">
 				<img src="vista/images/caratulas/<?php echo $row['foto'] ?>" width="100px" height="100px"></img></br>
