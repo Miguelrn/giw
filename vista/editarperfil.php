@@ -17,6 +17,12 @@
         </div>
         </br>
         <div id="registration_element_form">                 
+            <input type="text" maxlength="30" name="edad" 
+            placeholder="Edad" 
+            value="<?php echo $_SESSION['edad']; ?>" required="">            
+        </div>
+        </br>
+        <div id="registration_element_form">                 
             <input type="email" maxlength="40" name="correo" 
             placeholder="Correo"
             value="<?php echo $_SESSION['correo']; ?>" required="">

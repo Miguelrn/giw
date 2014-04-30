@@ -12,6 +12,10 @@
         </div>
         </br>
         <div id="registration_element_form">                 
+            <input type="text" maxlength="3" name="edad" placeholder="Edad" required="">            
+        </div>
+        </br>
+        <div id="registration_element_form">                 
             <input type="email" maxlength="40" name="correo" placeholder="Correo" required="">            
         </div>
         </br>

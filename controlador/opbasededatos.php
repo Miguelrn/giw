@@ -175,6 +175,18 @@ class Mysql { // estaba puesto en minúsculas todo
 		return $resultado;
 	}
 	
+	public function insertarUsuarioRegistro($correo, $contrasena, $nombre, $apellidos, $edad, $domicilio, $datosBancarios){
+		$consulta = "insert into usuario (correo, contrasena, nombre, apellidos, edad, domicilio, datosBancarios) values 
+		('$correo', '$contrasena', '$nombre', '$apellidos', '$edad', '$domicilio', '$datosBancarios')";
+		$this->conectar();
+		$resultado = mysqli_query($this->conexion,$consulta);
+		/*$r=mysqli_fetch_array($resultado, MYSQLI_ASSOC);*/
+		$this->cerrar();
+		unset($consulta);
+		/*unset($resultado);*/
+		return $resultado;
+	}
+	
 	public function editarUsuario($correo, $nombre, $apellidos, $domicilio, $datosBancarios){
 		$consulta = "update usuario SET nombre='$nombre', apellidos='$apellidos', 
 		domicilio='$domicilio', datosBancarios='$datosBancarios' where correo = '$correo'";		

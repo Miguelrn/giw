@@ -4,6 +4,7 @@
     
     $nombre = $_POST['nombre'];
     $apellidos = $_POST['apellidos'];
+	$edad = $_POST['edad'];
     $correo = $_POST['correo'];        
     $pass = $_POST['pass'];
     $reppass = $_POST['reppass'];
@@ -12,7 +13,7 @@
 	
 	if (strcmp($pass, $reppass) == 0){
 		$BDD = new Mysql();	
-		$row = $BDD->insertarUsuario($correo, $pass, $nombre, $apellidos, $domicilio, $datosBancarios);		
+		$row = $BDD->insertarUsuarioRegistro($correo, $pass, $nombre, $apellidos, $edad, $domicilio, $datosBancarios);		
 		if ($row){					
 			$_SESSION['nombre'] = $nombre;	
 			$_SESSION['correo'] = $correo;	
