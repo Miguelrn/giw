@@ -49,7 +49,7 @@ if ($usuarioLogueado){
 <?php
 } else {
 ?>
-<form name="login" action="./controlador/login.php" method="get" accept-charset="utf-8">
+<form id="login" action="./controlador/login.php" method="get" accept-charset="utf-8">
 	<table>
 		<tbody>
 			<tr>
