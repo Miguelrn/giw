@@ -4,7 +4,7 @@
 			$('#zona_central').load('vista/catalogo.php?categoria='+num);
 		};		
 	</script>	
-	<li class="fuenteTitulo">MÚSICA</li>
+	<li class="fuenteTitulo">CATEGORÍAS</li>
 	<li class="fuenteSubtitulo">
 		<a href="#rockandroll" onclick="cargaCatalogo(1)">Rock 'N' Roll</a>
 	</li>

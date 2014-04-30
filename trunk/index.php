@@ -32,6 +32,7 @@
 		<div>			
 			<div class="cuerpo categorias">
 				<?php include_once 'vista/categorias.php'; ?>	
+				<?php include_once 'vista/cronologico.php'; ?>
 				<?php include_once 'vista/tops_discos/top_valorados.php' ?>
 				<?php include_once 'vista/tops_discos/top_rebajas.php' ?>		
 			</div>
@@ -43,6 +44,6 @@
 				<?php include_once 'vista/cesta.php'; ?>
 				<?php include_once 'vista/pedidos.php'; ?>					
 			</div>		
-		</div>			
+		</div>	
 	</body>
 </html>
