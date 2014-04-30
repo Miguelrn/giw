@@ -8,7 +8,9 @@
 	//error_reporting(E_ALL);
 	$fechaInicio = $_GET['ini'];
 	$fechaFin = $_GET['fin'];
-	$nombre = $_GET['nombre']
+	$nombre = $_GET['nombre'];
+	
+	echo "hola";
 	// no coje la variable que esta en categorias ¿?
 ?>
 <table class="catalogo">
@@ -25,10 +27,14 @@
 
 	<?php
 	$BDD = new Mysql();
-	$resultado = $BDD->consultaArticulosCategoria($categoriaCatalogo);
-	//$num_results = $result->num_rows;
+	$resultado = $BDD->conseguirDiscoPorFechas($fechaInicio, $fechaFin);
 	$numCelda = 0;
-	?>		
+	?>	
+	<script>
+		var llevarAProducto = function(idProducto,idCategoria){
+			$('#zona_central').load('vista/infoproducto.php?idProd='+idProducto+'&idCat='+idCategoria);					
+		};
+	</script>	
 	<?php	
 		//la primera
 		//header("Content-Type: image/jpeg");
@@ -38,11 +44,6 @@
 				print("<tr>");
 			}
 	?>
-			<script>
-				var llevarAProducto = function(idProducto,idCategoria){
-					$('#zona_central').load('vista/infoproducto.php?idProd='+idProducto+'&idCat='+idCategoria);					
-				};
-			</script>
 			<!-- <?php echo $row['id_articulo'] . ',\'' . $categoriaCatalogo?> -->	
 			<td><a href="#" onclick="llevarAProducto(<?php echo $row['id_articulo'] . ',' . $row['id_categoria']?>)">
 				<img src="vista/images/caratulas/<?php echo $row['foto'] ?>" width="100px" height="100px"></img></br>
