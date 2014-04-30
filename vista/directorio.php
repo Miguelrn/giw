@@ -3,7 +3,10 @@
 		<?php 
 			@session_start();					
 			if (isset($_SESSION['dir'])){
-				echo $_SESSION['dir'];				
+				echo $_SESSION['dir'];		
+
+// Inicio -> Pop
+	
 			} else {								
 				$_SESSION['dir'] = "Inicio";
 				echo "<a>Inicio<a>";
