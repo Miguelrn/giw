@@ -2,24 +2,21 @@
 	require_once '../controlador/opbasededatos.php';
 	//include 'categorias.php';
 	//include 'variables.php';
-	//include_once 'controlador/opbasededatos.php';
+	//include_once 'controlador/opbasededatos.php';	
 	ini_set("display_errores", "stdout");
 	error_reporting(E_ALL | E_STRICT);
 	//error_reporting(E_ALL);
 	$fechaInicio = $_GET['ini'];
 	$fechaFin = $_GET['fin'];
 	$nombre = $_GET['nombre'];
-	
-	echo "hola";
 	// no coje la variable que esta en categorias ¿?
 ?>
 <table class="catalogo">
 	<tr>
 		<td colspan="5">
 		<h1 class="fuenteTitulo">
-		<?php
-				
-			printf();
+		<?php				
+			printf(urldecode($nombre));
 		?>
 		</h1>
 		</td>
