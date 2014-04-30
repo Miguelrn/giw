@@ -420,6 +420,27 @@ class Mysql { // estaba puesto en minúsculas todo
 	}
 	
 
+   	public function opinionSobreDisco($correoUser, $idDisco){
+   		$consulta = "select * from valoracion_articulo where correo ='$correoUser' and id_articulo='$idDisco'";
+		$this->conectar();
+		$resultado = mysqli_query($this->conexion,$consulta);
+		$r=mysqli_fetch_array($resultado, MYSQLI_ASSOC);
+		$this->cerrar();
+		unset($consulta);			
+		unset($resultado);
+   		return $r;
+   	}
+	
+	public function aniadeOpinionUser($correo, $opinion, $nota, $idArticulo){
+		$consulta = "insert into valoracion_articulo (correo, id_articulo, nota, opinion) values 
+		('$correo', '$idArticulo', '$nota', '$opinion')";
+		$this->conectar();
+		$resultado = mysqli_query($this->conexion,$consulta);
+		$this->cerrar();
+		unset($consulta);
+		return $resultado;
+	}
+   
     public function cerrar () {
         @mysql_close($this->conexion);
     }
