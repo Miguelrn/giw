@@ -38,18 +38,17 @@
 .cabecera {	
 	position: relative;
     float: left; 
-    width: 100%;	
+    width: 200%;	
     height: 60px;
 }
 
-.cabecera#usuario {
-	position: relative;
+#usuario {
     float: left; 
     width: 300px;
     margin: 0px auto;	
 }
 
-.cabecera#logo {
+#logo {
 	position: relative;
     float: left; 
     width: 200px;	
@@ -62,17 +61,33 @@
 	/*background-color:#cccccc;*/
 }
 
-.cabecera#logo:hover {
+div#info {
+	margin-top: 2%;
+}
+
+#logo:hover {
 	cursor: pointer;	
 }
 
-.cabecera#menu {
+#bus-avanzada {
 	position: relative;
     float: left; 
-    width: 460px;
+    width: 40%;
     margin: 0px auto;		
 }
 
+select#category {
+	display: block;
+	float: left;
+	width: 20%;
+	height: 150%;
+	margin-top: 3px;
+	margin-right: 3%;
+}
+
+input#keywords {
+	float: left;
+}
 /**********************************************************************
  * CUERPO { categorias + contenido + cesta }
  **********************************************************************/
@@ -273,7 +288,6 @@ div.contenidoTab {
 	opacity: 1;
 }
 /***************************************************************************/
-
 
 
 
