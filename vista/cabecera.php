@@ -31,12 +31,15 @@
 					location.reload();
 				};
 				var nosotros = function() {
+					$('#zona_central_dir').load('vista/directorio.php?dirabs='+encodeURIComponent("Sobre nosotros"));		
 					$('#zona_central').load('./vista/menu/sobrenosotros.php');
 				};
 				var pago = function() {
+					$('#zona_central_dir').load('vista/directorio.php?dirabs='+encodeURIComponent("Formas de pago"));	
 					$('#zona_central').load('./vista/menu/formasdepago.php');
 				};
 				var legal = function() {
+					$('#zona_central_dir').load('vista/directorio.php?dirabs='+encodeURIComponent("Nota legal"));	
 					$('#zona_central').load('./vista/menu/notalegal.php');
 				};
 			</script>
