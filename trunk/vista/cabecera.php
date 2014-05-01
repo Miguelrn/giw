@@ -14,47 +14,37 @@
 			$('#zona_central').load('./vista/busquedaavanzada.php');
 		}
 	</script>
-	<<<<<<< .mine
 	<form action="javascript:void(0);"  accept-charset="utf-8">
 		<!--<select name="SCat" id="tipoBusqueda" class="realSelect">
 		<option value="0">Todos los productos</option><option value="1">Valoración</option><option value="2">Tipo de música</option><option value="3">Precio</option>
 		</select>-->
 		<input type="text" id="keywords" name="keywords" size="40" maxlength="30" placeholder="Buscador">
 		<button onclick="mostrarResultados()">
-			<form action="javascript:void(0);" onsubmit="mostrarResultados()" accept-charset="utf-8">
-				<select name="SCat" id="category" class="realSelect">
-					<option value="0">Todo</option><option value="0">Valoración</option><option value="2">Categoría</option><option value="3">Precio</option>
-				</select>
-				<input type="text" id="keywords" name="keywords" list="busAvanzada" size="30" maxlength="30" placeholder="Buscador">
-				<button>
-					Buscar
-				</button>
-				<button onclick="mostrarBusuqedaAvanzada()">
-					Busqueda Avanzada
-				</button>
-				<div>
-					<script>
-						var inicio = function() {
-							location.reload();
-						};
-						var nosotros = function() {
-							$('#zona_central_dir').load('vista/directorio.php?dirabs=' + encodeURIComponent("Sobre nosotros"));
-							$('#zona_central').load('./vista/menu/sobrenosotros.php');
-						};
-						var pago = function() {
-							$('#zona_central_dir').load('vista/directorio.php?dirabs=' + encodeURIComponent("Formas de pago"));
-							$('#zona_central').load('./vista/menu/formasdepago.php');
-						};
-						var legal = function() {
-							$('#zona_central_dir').load('vista/directorio.php?dirabs=' + encodeURIComponent("Nota legal"));
-							$('#zona_central').load('./vista/menu/notalegal.php');
-						};
-					</script>
-				</div>
-			</form>
-			<div id="info">
-				<a class="fuenteTitulo" href="#" onclick="inicio()">Inicio</a> | <a class="fuenteTitulo" href="#" onclick="nosotros()">Sobre nosotros</a> | <a class="fuenteTitulo" href="#" onclick="pago()">Formas de pago</a> | <a class="fuenteTitulo" href="#" onclick="legal()">Nota Legal</a>
-			</div>
+			Buscar
+		</button>
+		<button onclick="mostrarBusuqedaAvanzada()">
+			Busqueda Avanzada
+		</button>
+		<div>
+			<script>
+				var inicio = function() {
+					location.reload();
+				};
+				var nosotros = function() {
+					$('#zona_central').load('./vista/menu/sobrenosotros.php');
+				};
+				var pago = function() {
+					$('#zona_central').load('./vista/menu/formasdepago.php');
+				};
+				var legal = function() {
+					$('#zona_central').load('./vista/menu/notalegal.php');
+				};
+			</script>
+		</div>
+	</form>
+	<div id="info">
+		<a class="fuenteTitulo" href="#" onclick="inicio()">Inicio</a> | <a class="fuenteTitulo" href="#" onclick="nosotros()">Sobre nosotros</a> | <a class="fuenteTitulo" href="#" onclick="pago()">Formas de pago</a> | <a class="fuenteTitulo" href="#" onclick="legal()">Nota Legal</a>
+	</div>
 </div>
 <div class="cabecera" id="usuario">
 	<?php
