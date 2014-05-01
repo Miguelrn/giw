@@ -29,10 +29,11 @@
 	<div class="divCesta">
 		<script>
 			var mostrarPedidos = function(){
+				$('#zona_central_dir').load('vista/directorio.php?dir='+encodeURIComponent("Mis Pedidos -> Ver pedidos"));						
 				$('#zona_central').load('./vista/verpedidos.php');
 			};
 		</script>
-		<button onclick="mostrarPedidos()">Ver Pedidos</button>
+		<button onclick="mostrarPedidos()">Ver pedidos</button>
 	</div>
 </div>
 <?php } ?>
