@@ -7,8 +7,8 @@
 		e = document.getElementById('comboBoxNota');
 		var valPrecio = e.options[e.selectedIndex].value;
 		
-		/*$('#zona_central').load('./controlador/procesarBusquedaAvanzada.php?categoria='+categoria+'&artista='+artista+'&valNota='+valNota
-								+'&valPrecio='+valPrecio);*/
+		$('#zona_central').load('./controlador/procesarBusquedaAvanzada.php?categoria='+categoria+'&artista='+artista+'&valNota='+valNota
+								+'&valPrecio='+valPrecio);
 	}
 </script>
 <p align="center" class="fuenteTitulo">Busqueda avanzada</p>
