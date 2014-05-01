@@ -15,8 +15,12 @@
 
 	$BDD = new Mysql();
 
-	$resultado = $BDD->consultaDisco($idDisco);
-
+	if($BDD->discoconopiniones($idDisco)){//el disco tiene opiniones sobre el
+		$resultado = $BDD->consultaDiscoyOpiniones($idDisco);
+	}
+	else {
+		$resultado = $BDD->consultaDisco($idDisco);
+	}
 	$row = mysqli_fetch_array($resultado, MYSQLI_ASSOC);
 
 ?>	
@@ -55,7 +59,7 @@
 
 			//print("<h3 class=\"fuenteDescripcion\">Puntuación: $row[valoracion] </h3>");number_format($row['valoracion'],2,".",",");
 			print("<h3 class=\"fuenteDescripcion\">Puntuación:");
-			if($row['valoracion'] != ""){
+			if(isset($row['valoracion'])){
 				echo number_format($row['valoracion'],2,".",",");
 			}
 			else{
@@ -72,17 +76,14 @@
 		</br>
 
 		<?php 
-
 			if ( (isset($_SESSION['logueado']) && $_SESSION['logueado'] == true && $_SESSION['tipoUsuario'] == 0) || 
 
 				   (!isset($_SESSION['logueado']))){		
 
 		?>
 
-		<button onclick="anadirAlCarro(<?php echo $idDisco . ',\'' . $row['nombre'] . '\',' . $row['precio'] ?>)">
-
+		<button onclick="anadirAlCarro(<?php echo $idDisco . ',\'' . $row['nombre_disco'] . '\',' . $row['precio'] ?>)">
 			Añadir al carro
-
 		</button>
 
 		<?php } ?>
