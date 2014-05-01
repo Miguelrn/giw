@@ -34,7 +34,10 @@
 		<button onclick="accion(8)">Estadísticas</button>
 	</div>
 	<div>
-		<button onclick="accion(9)">Añadir descuento</button>
+		<button onclick="accion(9)">Añadir Descuento</button>
+	</div>
+	<div>
+		<button onclick="accion(10)">Modificar Edad</button>
 	</div>
 	
 	

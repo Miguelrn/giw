@@ -208,7 +208,20 @@
 				</fieldset>		
 			</form>
 		</div>
-	<?php }
+	<?php }else if($idAccion == 10){
+	?>
+		<div>
+			<form style="text-align: center" name="register" action="controlador/admin/modificaredad.php" method="POST" accept-charset="utf-8">
+				<fieldset>
+					<legend>Modificar Edad</legend>
+					<input type="text" maxlength="20" name="correo" placeholder="Correo" required=""></br>
+					<input type="number" maxlength="20" name="edad" placeholder="Edad" required=""></br>
+					<input class="button button_large type" name="enviar" type="submit" value="Modificar edad">
+				</fieldset>		
+			</form>
+		</div>
+	
+	<?php }	
 
 ?>
 		
