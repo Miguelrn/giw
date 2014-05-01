@@ -6,6 +6,7 @@
 ?>
 <script>
 	var cargaDiscoRebajado = function(idProducto, idCategoria) {
+		$('#zona_central_dir').load('vista/directorio.php?dir='+encodeURIComponent("Top rebajas"));			
 		$('#zona_central').load('vista/infoproducto.php?idProd='+idProducto+'&idCat='+idCategoria);
 	}
 </script>
