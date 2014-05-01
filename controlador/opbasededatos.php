@@ -391,8 +391,45 @@ class Mysql { // estaba puesto en minúsculas todo
 		return mysqli_affected_rows($this->conexion) > 0;
 	}
 	
-	public function buscador($keywords){
+	public function busquedaNormal($keywords){
 		$consulta ="select * from articulo where nombre like '%$keywords%'";
+		$this->conectar();
+		$resultado=mysqli_query($this->conexion,$consulta);
+		$this->cerrar();
+		unset($consulta);
+		return $resultado;
+	}
+	
+	public function busquedaPorValoracion($keywords){
+		$consulta ="select * from articulo natural join valoracion_articulo where nota >= $keywords";
+		$this->conectar();
+		$resultado=mysqli_query($this->conexion,$consulta);
+		$this->cerrar();
+		unset($consulta);
+		return $resultado;
+	}
+	
+	public function busquedaPorPrecioMinimo($keywords){
+		$consulta ="SELECT * FROM articulo WHERE precio >= $keywords";
+		$this->conectar();
+		$resultado=mysqli_query($this->conexion,$consulta);
+		$this->cerrar();
+		unset($consulta);
+		return $resultado;
+	}
+	
+	public function busquedaPorPrecioMaximo($keywords){
+		$consulta ="select * from articulo where precio <= $keywords";
+		$this->conectar();
+		$resultado=mysqli_query($this->conexion,$consulta);
+		$this->cerrar();
+		unset($consulta);
+		return $resultado;
+		
+	}
+	
+	public function busquedaPorTipoDeMusica($keywords){
+		$consulta = "select * from articulo natural join categoria where nombre_categoria like '%$keywords%'";
 		$this->conectar();
 		$resultado=mysqli_query($this->conexion,$consulta);
 		$this->cerrar();

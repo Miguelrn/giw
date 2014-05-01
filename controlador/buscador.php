@@ -6,10 +6,27 @@ error_reporting(E_ALL | E_STRICT);
 
     //Recogemos las claves enviadas
     $keywords = $_GET['keywords'];
+	//$tipoBusqueda = $_GET['tipoBusqueda'];
 
     //Conectamos con la base de datos en la que vamos a buscar
     $BDD = new Mysql();
-	$resultadoBusqueda = $BDD->buscador($keywords);
+	$resultadoBusqueda = $BDD->busquedaNormal($keywords);
+	//Busqueda por nombre de artículo
+	/*if($tipoBusqueda == 0){
+		$resultadoBusqueda = $BDD->busquedaNormal($keywords);
+	
+	//Por valoracion	
+	}else if ($tipoBusqueda == 1){
+		$resultadoBusqueda = $BDD->busquedaPorValoracion($keywords);
+	
+	//Por tipo de música	
+	}else if($tipoBusqueda == 2){
+		$resultadoBusqueda = $BDD->busquedaPorTipoDeMusica($keywords);
+	
+	//Por precio mínimo	
+	}else {
+		$resultadoBusqueda = $BDD->busquedaPorPrecioMaximo($keywords);
+	}*/
     $count_results = mysqli_num_rows($resultadoBusqueda);
 
     //Si hay resultados
