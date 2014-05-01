@@ -54,7 +54,7 @@
 	</tr>
 	<tr>
 		<?php 
-			$BDD = new Mysql();
+			$BDD = new Mysql();			
 			$resultado = $BDD->consultaAzarDiscosInicio();
 			
 			while ($row = mysqli_fetch_array($resultado, MYSQLI_ASSOC)){
