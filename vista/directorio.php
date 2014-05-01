@@ -1,14 +1,10 @@
-<div style="margin-left: 20px;" id="directorio">
-	<p class="fuenteSubtitulo">
+<div style="margin-left: 20px;">	
+	<p class="fuenteSubtitulo" id="direccion">
+		<a href="#inicio" onclick="window.refresh();">Inicio</a>
 		<?php 
 			@session_start();					
-			if (isset($_SESSION['dir'])){
-				echo $_SESSION['dir'];		
-
-// Inicio -> Pop
-	
-			} else {								
-				$_SESSION['dir'] = "Inicio";
+			if (isset($_GET['dir'])){
+				echo " -> " . $_GET['dir'];	
 			}
 		?>
 	</p>

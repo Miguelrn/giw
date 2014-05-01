@@ -1,8 +1,8 @@
 <ul class="categorias">
 	<script>
 		var cargaCatalogoCronologico = function(num, num2, nomb){
+			$('#zona_central_dir').load('vista/directorio.php?dir='+encodeURIComponent(" Epocas -> " + nomb));			
 			$('#zona_central').load('vista/catalogocronologico.php?ini='+num+'&fin='+num2+'&nombre='+encodeURIComponent(nomb));
-			//console.log('vista/catalogocronologico.php?ini='+num+'&fin='+num2+'&nombre='+encodeURIComponent(nomb));
 		};			
 	</script>	
 	<li class="fuenteTitulo">POR ÉPOCAS</li>

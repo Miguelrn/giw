@@ -36,9 +36,13 @@
 				<?php include_once 'vista/tops_discos/top_valorados.php' ?>
 				<?php include_once 'vista/tops_discos/top_rebajas.php' ?>		
 			</div>
-			<div id="zona_central" class="cuerpo contenido">
-				<?php include_once 'vista/directorio.php'; ?>
-				<?php include_once 'vista/contenido.php'; ?>						
+			<div class="cuerpo contenido">
+				<div id="zona_central_dir">
+					<?php include_once 'vista/directorio.php'; ?>						
+				</div>	
+				<div id="zona_central" >
+					<?php include_once 'vista/contenido.php'; ?>							
+				</div>				
 			</div>
 			<div class="cuerpo cesta">
 				<?php include_once 'vista/cesta.php'; ?>
