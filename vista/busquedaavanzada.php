@@ -11,14 +11,15 @@
 								+'&valPrecio='+valPrecio);*/
 	}
 </script>
-<form onsubmit="procesarBusquedaAvanzada()" method="get" accept-charset="utf-8">
+<p align="center" class="fuenteTitulo">Busqueda avanzada</p>
+<form align="center" onsubmit="procesarBusquedaAvanzada()" method="get" accept-charset="utf-8">
 	<input type="text" id="categoria" placeholder="Tipo de música"/>
 	<br />
 	<br />
 	<input type="text" id="artista" placeholder="Artista"/>
 	<br />
 	<br />
-	<label>Precio:</label>
+	<label class="fuenteSubtitulo">Precio:</label>
 	<br />
 	<select  id="comboBoxPrecio">
 		<option value="0">Ninguno</option>
@@ -28,7 +29,7 @@
 	</select>
 	<br />
 	<br />
-	<label>Valoración mínima:</label>
+	<label class="fuenteSubtitulo">Valoración mínima:</label>
 	<br />
 	<select  id="comboBoxNota">
 		<option value="0">Ninguno</option>
