@@ -6,11 +6,13 @@
 			var resultado = num.value;
 			/*var e = document.getElementById("tipoBusqueda");
 			 var strUser = e.options[e.selectedIndex].value;*/
+			$('#zona_central_dir').load('vista/directorio.php?dirabs='+encodeURIComponent("Busqueda"));	
 			$('#zona_central').load('./controlador/buscador.php?keywords=' + resultado);
 			//$('#zona_central').load('./controlador/buscador.php?keywords='+resultado+'&tipoBusqueda='+strUser);
 		}
 
-		function mostrarBusuqedaAvanzada() {
+		function mostrarBusquedaAvanzada() {
+			$('#zona_central_dir').load('vista/directorio.php?dirabs='+encodeURIComponent("Busqueda avanzada"));				
 			$('#zona_central').load('./vista/busquedaavanzada.php');
 		}
 	</script>
@@ -22,7 +24,7 @@
 		<button onclick="mostrarResultados()">
 			Buscar
 		</button>
-		<button onclick="mostrarBusuqedaAvanzada()">
+		<button onclick="mostrarBusquedaAvanzada()">
 			Busqueda Avanzada
 		</button>
 		<div>
