@@ -520,6 +520,14 @@ class Mysql { // estaba puesto en minúsculas todo
 		return mysqli_affected_rows($this->conexion) > 0;
 	}
 	
+	public function modificarEdad($correo, $edad){
+		$consulta = "update usuario SET Edad='$edad' where correo = '$correo'";	
+		$this->conectar();
+		$resultado = mysqli_query($this->conexion,$consulta);
+		$this->cerrar();
+		unset($consulta);
+		return mysqli_affected_rows($this->conexion) > 0;
+	}
    
     public function cerrar () {
         @mysql_close($this->conexion);
