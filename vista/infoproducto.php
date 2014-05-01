@@ -11,7 +11,11 @@
 	
 
 	$idDisco = $_GET['idProd'];//variable que vendra de catalogo...
-	$idCategoria = $_GET['idCat'];
+	if (isset($_GET['idCat'])){		
+		$idCategoria = $_GET['idCat'];
+	} else {
+		$idCategoria = false;
+	}
 
 	$BDD = new Mysql();
 
@@ -159,28 +163,33 @@
 	</tr>	
 	<tr>
 		<?php 
-			$resultado = $BDD->consultaAzarDiscoCategoria($idCategoria);
-			
-			while ($row = mysqli_fetch_array($resultado, MYSQLI_ASSOC)){
-			?>
-			<td>	
-				<a href="#" onclick="llevarAProducto(<?php echo $row['id_articulo'] . ',' . $row['id_categoria']?>)">
-					<img src="vista/images/caratulas/<?php echo $row['foto'] ?>" width="100px" height="100px"></img>
-					<p class="fuenteSubtitulo"><?php echo $row['nombre'] ?></br><?php echo $row['precio'] . '€' ?></p>
-				</a>
-			</td>				
-			<?php 
+			if ($idCategoria){
+				$resultado = $BDD->consultaAzarDiscoCategoria($idCategoria);
+				
+				while ($row = mysqli_fetch_array($resultado, MYSQLI_ASSOC)){
+				?>
+				<td>	
+					<a href="#" onclick="llevarAProducto(<?php echo $row['id_articulo'] . ',' . $row['id_categoria']?>)">
+						<img src="vista/images/caratulas/<?php echo $row['foto'] ?>" width="100px" height="100px"></img>
+						<p class="fuenteSubtitulo"><?php echo $row['nombre'] ?></br><?php echo $row['precio'] . '€' ?></p>
+					</a>
+				</td>				
+				<?php 
+				}
+				mysqli_free_result($resultado);
 			}
-			mysqli_free_result($resultado);
 		?>	
 	</tr>
 	</table>
 
 
 	<!-- Comentarios de todos usuarios, no se muestran los comentarios del usuario actual -->
-	Otros usuarios opinaron:
 	<?php 
 		$resultado = $BDD->buscaOpiniones($idDisco);//devuelve todas las opiniones del disco idDisco
+		
+		if ($resultado){
+			echo "<p class=\"fuenteSubtitulo\">Otros usuarios opinaron:</p>";
+		}
 		
 		//$correo = $_SESSION['correo'];
 		while ($row = mysqli_fetch_array($resultado, MYSQLI_ASSOC)){
