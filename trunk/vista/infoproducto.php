@@ -130,7 +130,7 @@
 			else{//tiene opinion muestro su opinion, opcionalmente se podria dar la opcion de cambiar su nota...
 				?><fieldset>
 					<legend>Nota: <?php echo $row['nota']; ?></legend>
-					<textarea rows="4" cols="70"><?php echo $row['opinion']; ?></textarea>
+					<textarea rows="4" cols="70" readonly><?php echo $row['opinion']; ?></textarea>
 
 				</fieldset>
 				<?php
@@ -187,7 +187,7 @@
 			if(!isset($_SESSION['correo']) || ($row['correo'] != $_SESSION['correo'])){?>
 			<fieldset>
 				<legend>Nota: <?php echo $row['nota']; ?></legend>
-				<textarea rows="4" cols="70"><?php echo $row['opinion']; ?></textarea>
+				<textarea rows="4" cols="70" readonly><?php echo $row['opinion']; ?></textarea>
 			</fieldset>	
 		<?php 
 			}//cierra if
