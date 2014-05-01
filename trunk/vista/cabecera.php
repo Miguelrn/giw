@@ -10,9 +10,9 @@
 	</script>
 	<form action="javascript:void(0);" onsubmit="mostrarResultados()" accept-charset="utf-8">
 		<select name="SCat" id="category" class="realSelect">
-			<option value="0">Todos los productos</option><option value="0">Valoración</option><option value="2">Tipo de música</option><option value="3">Precio</option>
+			<option value="0">Todo</option><option value="0">Valoración</option><option value="2">Categoría</option><option value="3">Precio</option>
 		</select>
-		<input type="text" id="keywords" name="keywords" list="busAvanzada" size="40" maxlength="30" placeholder="Buscador">
+		<input type="text" id="keywords" name="keywords" list="busAvanzada" size="30" maxlength="30" placeholder="Buscador">
 		<button>
 			Buscar
 		</button>
