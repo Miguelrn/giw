@@ -21,7 +21,7 @@
 	<br />
 	<label class="fuenteSubtitulo">Precio:</label>
 	<br />
-	<select  id="comboBoxPrecio">
+	<select id="comboBoxPrecio">
 		<option value="0">Ninguno</option>
 		<option value="1">Entre 0 y 10</option>
 		<option value="2">Entre 10 y 20</option>
