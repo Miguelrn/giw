@@ -29,11 +29,12 @@ class Mysql { // estaba puesto en minúsculas todo
 	}
 	
 	public function consultaDisco($idDisco){
-		$consulta ="SELECT articulo.id_articulo, articulo.nombre AS nombre_disco, cantidad, id_categoria, anno, avg(valoracion_articulo.nota) as valoracion, 
-					foto, precio, autor.id_autor, autor.nombre AS nombre_autor
+		$consulta ="SELECT articulo.id_articulo, articulo.nombre AS nombre_disco, cantidad, id_categoria, anno, avg(valoracion_articulo.nota) as valoracion, foto, precio, autor.id_autor, autor.nombre AS nombre_autor
 					FROM articulo, autor_articulo, autor, valoracion_articulo
-					WHERE autor_articulo.id_autor = autor.id_autor AND autor_articulo.id_articulo = articulo.id_articulo 
-						  AND articulo.id_articulo = '$idDisco' AND articulo.cantidad > 0 AND valoracion_articulo.id_articulo = articulo.id_articulo";
+					WHERE (autor_articulo.id_autor = autor.id_autor AND autor_articulo.id_articulo = articulo.id_articulo AND
+				         articulo.id_articulo = '$idDisco' AND articulo.cantidad > 0 AND valoracion_articulo.id_articulo = articulo.id_articulo) OR 
+				         (autor_articulo.id_autor = autor.id_autor AND autor_articulo.id_articulo = articulo.id_articulo AND			        
+				          articulo.id_articulo = '$idDisco' AND articulo.cantidad > 0)";
 		$this->conectar();
 		$resultado=mysqli_query($this->conexion,$consulta);
 		$this->cerrar();
