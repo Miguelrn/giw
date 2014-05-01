@@ -76,6 +76,16 @@
 			print("<h3 class=\"fuenteDescripcion\">Cantidad disponible: $row[cantidad] </h3>");
 
 			print("<h3 class=\"fuenteDescripcion\">Precio: $row[precio]€</h3>");
+			
+			//descuento
+			if($row['descuento'] != '0'){
+				printf("<h3 class=\"fuenteDescripcion\">Precio con descuento: ");
+				$preciofinal = $row['precio'] - ($row['precio']*($row['descuento']*0.01));
+				printf("$preciofinal € </h3>");
+			}
+			else{
+				$preciofinal = '0';
+			}
 
 		?>
 
@@ -84,15 +94,22 @@
 		<?php 
 			if ( (isset($_SESSION['logueado']) && $_SESSION['logueado'] == true && $_SESSION['tipoUsuario'] == 0) || 
 
-				   (!isset($_SESSION['logueado']))){		
+				   (!isset($_SESSION['logueado']))){
+				   	
+							
+				if($preciofinal != '0'){//el producto tiene un descuento y por tanto el precio es menor
+			?>
+					<button onclick="anadirAlCarro(<?php echo $idDisco . ',\'' . $row['nombre_disco'] . '\',' . $preciofinal ?>)">
+						Añadir al carro
+					</button>
+					
+				<?php }else{	 ?>
+					
+					<button onclick="anadirAlCarro(<?php echo $idDisco . ',\'' . $row['nombre_disco'] . '\',' . $row['precio'] ?>)">
+						Añadir al carro
+					</button>
 
-		?>
-
-		<button onclick="anadirAlCarro(<?php echo $idDisco . ',\'' . $row['nombre_disco'] . '\',' . $row['precio'] ?>)">
-			Añadir al carro
-		</button>
-
-		<?php } ?>
+		<?php }} ?>
 
 	</div>
 </div>

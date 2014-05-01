@@ -195,6 +195,20 @@
 	}else if($idAccion == 8){//mostrar estadisticas
 	
 		require_once 'estadisticas.php';
-	}
+		
+	}else if($idAccion == 9){//Añadir descuento
+	?>
+		<div>
+			<form style="text-align: center" name="register" action="controlador/admin/aniadirdescuento.php" method="POST" accept-charset="utf-8">
+				<fieldset>
+					<legend>Añadir Descuento</legend>
+					<input type="number" maxlength="20" name="idDisco" placeholder="Id Disco" required=""></br>
+					<input type="number" maxlength="20" name="descuento" placeholder="Descuento %" required=""></br>
+					<input class="button button_large type" name="enviar" type="submit" value="Aplicar descuento">
+				</fieldset>		
+			</form>
+		</div>
+	<?php }
+
 ?>
 		
