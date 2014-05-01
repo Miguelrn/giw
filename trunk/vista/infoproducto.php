@@ -60,6 +60,8 @@
 			print("<h3 class=\"fuenteDescripcion\">Nombre: $row[nombre_disco] - $row[nombre_autor] </h3>");
 
 			print("<h3 class=\"fuenteDescripcion\">Año: $row[anno] </h3>");
+			
+			print("<h3 class=\"fuenteDescripcion\">Categoría: $row[nombre_categoria] </h3>");
 
 			//print("<h3 class=\"fuenteDescripcion\">Puntuación: $row[valoracion] </h3>");number_format($row['valoracion'],2,".",",");
 			print("<h3 class=\"fuenteDescripcion\">Puntuación:");
