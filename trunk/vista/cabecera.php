@@ -18,7 +18,7 @@
 		<!--<select name="SCat" id="tipoBusqueda" class="realSelect">
 		<option value="0">Todos los productos</option><option value="1">Valoración</option><option value="2">Tipo de música</option><option value="3">Precio</option>
 		</select>-->
-		<input type="text" id="keywords" name="keywords" size="40" maxlength="30" placeholder="Buscador">
+		<input type="text" id="keywords" name="keywords" size="30" maxlength="30" placeholder="Buscador">
 		<button onclick="mostrarResultados()">
 			Buscar
 		</button>
