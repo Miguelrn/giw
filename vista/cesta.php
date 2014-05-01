@@ -46,15 +46,17 @@
 	<div class="divCesta">
 		<script>		
 			var mostrarCesta = function(){
+				$('#zona_central_dir').load('vista/directorio.php?dir='+encodeURIComponent("Mi Cesta -> Ver cesta"));		
 				$('#zona_central').load('./vista/vercesta.php');
 			};
 		</script>
-		<button onclick="mostrarCesta()">Ver Cesta</button>
+		<button onclick="mostrarCesta()">Ver cesta</button>
 	</div>
 	
 	<div class="divCesta">
 		<script>
-			var tramitarCompra = function(){
+			var tramitarCompra = function(){				
+				$('#zona_central_dir').load('vista/directorio.php?dir='+encodeURIComponent("Mi Cesta -> Tramitar compra"));		
 				$('#zona_central').load('./vista/tramite.php');
 			};
 		</script>

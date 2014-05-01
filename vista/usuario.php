@@ -16,6 +16,7 @@ if (isset($_SESSION['logueado'])){
 
 <script>
 	var cargaEditarPerfil = function(){
+		$('#zona_central_dir').load('vista/directorio.php?dirabs='+encodeURIComponent("Editar perfil"));		
 		$("#zona_central").load("vista/editarperfil.php");
 	}
 </script>
@@ -73,7 +74,7 @@ if ($usuarioLogueado){
 				<td>
 				<script>
 					var registro = function() {
-						console.log('log');
+						$('#zona_central_dir').load('vista/directorio.php?dirabs='+encodeURIComponent("Registro"));	
 						$('#zona_central').load('./vista/registro.php');
 					}
 				</script><a class="fuenteSubtitulo" href="#" onclick="registro()">Registrarme</a>
