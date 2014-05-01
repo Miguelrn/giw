@@ -53,7 +53,15 @@
 
 			print("<h3 class=\"fuenteDescripcion\">Año: $row[anno] </h3>");
 
-			print("<h3 class=\"fuenteDescripcion\">Puntuación: $row[valoracion] </h3>");
+			//print("<h3 class=\"fuenteDescripcion\">Puntuación: $row[valoracion] </h3>");number_format($row['valoracion'],2,".",",");
+			print("<h3 class=\"fuenteDescripcion\">Puntuación:");
+			if($row['valoracion'] != ""){
+				echo number_format($row['valoracion'],2,".",",");
+			}
+			else{
+				echo " -";
+			}	
+			echo "</h3>";
 
 			print("<h3 class=\"fuenteDescripcion\">Cantidad disponible: $row[cantidad] </h3>");
 
@@ -92,9 +100,8 @@
 			if($row['opinion'] == '' && $row['nota'] == ''){//si alguna de las dos cosas esta vacia le va pedir su opinion y la nota
 				?> 
 				
-				<form id="consulta" name="consulta" action="./controlador/modificaopinion.php" method="post" accept-charset="utf-8">	
-					<textarea name="opinion" rows="4" cols="70" placeholder="Escriba su opinion a continuacion" requiered=''>
-					</textarea>
+				<form id="consulta" name="consulta" action="./controlador/modificaopinion.php" method="post" accept-charset="utf-8">
+					<textarea name="opinion" rows="4" cols="70" placeholder="Escriba aqui su opinion" requiered=''></textarea>
 					</br>
 					Nota:
 					<select name="Nota">
@@ -121,13 +128,11 @@
 				<?php
 			}
 			else{//tiene opinion muestro su opinion, opcionalmente se podria dar la opcion de cambiar su nota...
-				?><textarea rows="4" cols="70">
-					<?php echo $row['opinion']; ?>
-				</textarea>
-				</br>
-				Nota: <strong>
-					<?php echo $row['nota']; ?>
-				</strong>
+				?><fieldset>
+					<legend>Nota: <?php echo $row['nota']; ?></legend>
+					<textarea rows="4" cols="70"><?php echo $row['opinion']; ?></textarea>
+
+				</fieldset>
 				<?php
 				
 				
@@ -170,6 +175,25 @@
 	</tr>
 	</table>
 
+
+	<!-- Comentarios de todos usuarios, no se muestran los comentarios del usuario actual -->
+	Otros usuarios opinaron:
+	<?php 
+		$resultado = $BDD->buscaOpiniones($idDisco);//devuelve todas las opiniones del disco idDisco
+		
+		//$correo = $_SESSION['correo'];
+		while ($row = mysqli_fetch_array($resultado, MYSQLI_ASSOC)){
+		
+			if(!isset($_SESSION['correo']) || ($row['correo'] != $_SESSION['correo'])){?>
+			<fieldset>
+				<legend>Nota: <?php echo $row['nota']; ?></legend>
+				<textarea rows="4" cols="70"><?php echo $row['opinion']; ?></textarea>
+			</fieldset>	
+		<?php 
+			}//cierra if
+		}//cierra while
+		mysqli_free_result($resultado);
+		?>
 </div>
 
 
