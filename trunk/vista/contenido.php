@@ -54,9 +54,17 @@
 	</tr>
 	<tr>
 		<?php 
-			$BDD = new Mysql();			
-			$resultado = $BDD->consultaAzarDiscosInicio();
-			
+			if (session_id() == "") {
+				@session_start();
+			}
+			if(isset($_SESSION['logueado']) && $_SESSION['logueado'] && isset($_SESSION['edad'])){ //es un usuario logueado
+				$edad = $_SESSION['edad'];
+				$BDD = new Mysql();			
+				$resultado = $BDD->consultaDiscosPorEdad($edad);
+			} else {				
+				$BDD = new Mysql();
+				$resultado = $BDD->consultaAzarDiscosInicio();
+			}
 			while ($row = mysqli_fetch_array($resultado, MYSQLI_ASSOC)){
 			?>
 			<td>	
@@ -67,7 +75,7 @@
 			</td>				
 			<?php 
 			}
-			mysqli_free_result($resultado);
+			mysqli_free_result($resultado);	
 		?>	
 	</tr>
 </table>

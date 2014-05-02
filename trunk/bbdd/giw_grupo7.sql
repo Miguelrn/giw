@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4.1
+-- version 4.1.12
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-05-2014 a las 16:29:41
--- Versión del servidor: 5.5.32
--- Versión de PHP: 5.4.19
+-- Tiempo de generación: 02-05-2014 a las 09:44:53
+-- Versión del servidor: 5.6.16
+-- Versión de PHP: 5.5.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `giw_grupo7`
 --
-CREATE DATABASE IF NOT EXISTS `giw_grupo7` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `giw_grupo7`;
 
 -- --------------------------------------------------------
 
@@ -420,7 +418,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 --
 
 INSERT INTO `usuario` (`correo`, `contrasena`, `nombre`, `apellidos`, `Edad`, `domicilio`, `datosBancarios`) VALUES
-('a@a.com', '123', 'Juan', 'Jaja', 0, 'mi casa', '45534563453'),
+('a@a.com', '123', 'Juan', 'Jaja', 18, 'mi casa', '45534563453'),
 ('b@b.com', '123', 'belen', 'cuesta', 34, 'calle falsa 123', '245112'),
 ('c@c.com', '123', 'carlos', 'nieto', 29, 'gran via 123', '321321321'),
 ('pepe@pepe.com', 'pepe', 'Pepe', 'Pepe', 0, 'calle desconocida', '5644578439275');

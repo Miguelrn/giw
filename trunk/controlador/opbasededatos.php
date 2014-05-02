@@ -528,6 +528,17 @@ class Mysql { // estaba puesto en minúsculas todo
 		unset($consulta);
 		return mysqli_affected_rows($this->conexion) > 0;
 	}
+	
+	public function consultaDiscosPorEdad($edad){
+		$annoMenosEdad = idate("Y") - $edad - 10; 
+		// suponemos que la musica de la decada anterior le podria gustar
+		$consulta ="select * from articulo where articulo.anno >= $annoMenosEdad order by rand() limit 0,5";
+		$this->conectar();
+		$resultado=mysqli_query($this->conexion,$consulta);
+		$this->cerrar();
+		unset($consulta);
+		return $resultado;
+	}
    
     public function cerrar () {
         @mysql_close($this->conexion);
