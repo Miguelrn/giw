@@ -16,7 +16,7 @@
 	$count_results = mysqli_num_rows($resultadoBusqueda);
 	
 	//Si hay resultados
-	if ($count_results > 0 && $keywords != "") {
+	if ($count_results > 0 /*&& $keywords != ""*/) {
 	
 		if ($count_results > 1) {
 			echo '<h2 class="fuenteTitulo">Se han encontrado ' . $count_results . ' resultados.</h2>';
