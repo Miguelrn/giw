@@ -89,10 +89,14 @@ input#keywords {
 	float: left;
 }
 /**********************************************************************
- * CUERPO { categorias + contenido + cesta }
+ * CUERPO { categorias + contenido + carrito }
  **********************************************************************/
 .cuerpo {
 	margin-top: 20px;	
+}
+
+#form-busqueda-avanzada {
+	margin-left: 3%;
 }
 
 /**********************************************************************
@@ -197,10 +201,18 @@ ul.categorias li:hover > ul {
 
 
 /**********************************************************************
- * CESTA
+ * CARRITO
  **********************************************************************/
 
-.cesta {	
+img#carrito:hover{
+	cursor: pointer;
+}
+
+#carrito{
+	height: 50px;
+}
+
+.carrito {	
 	position:relative;
     float: left; 
 	width:150px;
@@ -208,14 +220,11 @@ ul.categorias li:hover > ul {
 	padding-top: 0px;
 	/*border: 1px solid;*/
 }
-#cesta{
-	height: 50px;
-}
 
 iframe#ultimo{
 	width:145px;
 }
-button.cesta{
+button.carrito{
 	text-align: center;
 	width: 120px;
 }

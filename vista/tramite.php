@@ -20,20 +20,18 @@
 
 <?php
 
-		}
+}
 
-	} else {
+} else {
 
-		 $_SESSION['error'] = "No has iniciado sesión."; 
-
+$_SESSION['error'] = "No has iniciado sesión.";
 ?>
 
 		 <script>location.reload();</script>
 
 <?php
 
-	}			
-
+}
 ?>
 
 <!-- formulario de tramite -->
@@ -109,33 +107,32 @@
 				if (isset($_SESSION['discos'])){
 					$productos = $_SESSION['discos'];//consultar todos los items desde BD? o cookie? desde BD	
 
-					$total = 0;	 ?>						
+					$subTotal = 0;	 ?>						
 
 					<p class="fuenteSubtitulo">
 
 					<?php
 
-					for ($i=0, $len=count($productos); $i<$len; $i++) {
+					for ($i = 0, $len = count($productos); $i < $len; $i++) {
 
-						echo $productos[$i][1]; 
+						echo $productos[$i][1];
 
 						echo "</br>";
 
-						$total = $total + $productos[$i][2];
-
-						
+						$subTotal = $subTotal + $productos[$i][2];
+						$total = $subTotal + $subTotal * 0.21;
 
 					}
-
 					?>	
 
-					<?php		
+					<?php
 
-				} else {
+	} else {
 
-					$total = 0;	
+	$total = 0;
+	$subTotal = 0;
 
-				}
+	}
 			?></p>
 
 		</div>
@@ -150,20 +147,22 @@
 
 		<div>
 
-			<p class="fuenteTitulo">Pago</p>
+			<p class="fuenteTitulo">Datos de facturación</p>
 
 			     <p class="fuenteSubtitulo">
+			     	
+				Subtotal: <?php echo "$subTotal"; ?> <br />
+				Total: <?php echo $total ?>€ </br>
+							
 
-				Total: <?php echo $total ?>€ </br>			
+				<?php
 
-				<?php 
-
-				if (isset($_SESSION['datosBancarios'])){
-					$banco = $_SESSION['datosBancarios']; 
-				} else {
-					$banco = "Desconocido"; 						      
-				}
-			       // echo $banco
+	if (isset($_SESSION['datosBancarios'])) {
+		$banco = $_SESSION['datosBancarios'];
+	} else {
+		$banco = "Desconocido";
+	}
+	// echo $banco
 			?> </p>
 				<div id="registration_element_form">		   
 <p class="fuenteSubtitulo">Datos Bancarios: </p>			
@@ -175,7 +174,7 @@
 
 		<div>
 
-			<button type="submit" value="Confirmacion">Confirmación</button>
+			<button type="submit" value="Confirmacion">Realizar pago</button>
 
 		</div>
 

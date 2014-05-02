@@ -41,5 +41,5 @@
 	</select>
 	<br />
 	<br />
-	<button onclick="procesarBusquedaAvanzada()">Buscar</button>
+	<button type="submit">Buscar</button>
 </form>

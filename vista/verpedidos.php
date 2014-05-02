@@ -48,7 +48,10 @@
 						<?php echo "Fecha: " . $pedido['fecha'] ?>
 					</li>	
 					<li style="list-style:none;" class="fuenteSubtitulo">
-						<?php echo "Precio: " . $pedido['precio'] . "€" ?>
+						<?php echo "Subtotal: " . $pedido['precio'] . "€" ?>
+					</li>
+					<li style="list-style:none;" class="fuenteSubtitulo">
+						<?php $total =  $pedido['precio'] + $pedido['precio'] * 0.21 ; echo "Total: " . $total . "€" ?>
 					</li>	
 					<li style="list-style:none;" class="fuenteSubtitulo">
 						<?php echo "Estado: " . $pedido['estado'] ?>

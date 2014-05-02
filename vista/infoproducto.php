@@ -73,7 +73,12 @@
 			}	
 			echo "</h3>";
 
-			print("<h3 class=\"fuenteDescripcion\">Cantidad disponible: $row[cantidad] </h3>");
+			if($row['cantidad'] > 0 ){
+				print("<h3 class=\"fuenteDescripcion\">En stock</h3>");
+			}else if ($row['cantidad']  == 0 ){
+				print("<h3 class=\"fuenteDescripcion\">Sin stock</h3>");
+			}
+			
 
 			print("<h3 class=\"fuenteDescripcion\">Precio: $row[precio]€</h3>");
 			

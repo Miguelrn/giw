@@ -10,12 +10,14 @@
 		if (isset($_SESSION['discos'])){
 			
 			$numProd = count($_SESSION['discos']);
-			$prod = $_SESSION['discos'][$numProd-1][1];		
-			$total = $_SESSION['precioDiscos'];		
+			$prod = $_SESSION['discos'][$numProd-1][1];
+			$subTotal = $_SESSION['precioDiscos'];	
+			$total = $subTotal + $subTotal * 0.21;	
 			
 		} else {
 			$numProd = 0;
-			$prod = "Ninguno";		
+			$prod = "Ninguno";
+			$subTotal = 0;		
 			$total = 0;
 		}
 	
@@ -23,10 +25,9 @@
 
 <div id="cestaTotal">
 	<div class="fuenteTitulo">
-		MI CESTA
-		<!-- <a href="vercesta.php"><img id="carrito" src="vista/images/carrito.png" width="45px"; align="center";></a> -->
+		MI CARRITO
+		<a id="img-carrito" onclick="mostrarCesta()"><img id="carrito" src="./vista/images/carrito.png"/></a>
 	</div>
-	
 	<br/> 		
 	<div class="fuenteSubtitulo">
 		Último producto: <br/> <?php print "$prod" ?>
@@ -37,9 +38,14 @@
 		Productos: <?php print "$numProd" ?>
 	</div>
 	
+	<br />
+	<div class="fuenteSubtitulo">
+		Subtotal: <?php print "$subTotal" ?> €
+	</div>
+	
 	<br/> 
 	<div class="fuenteSubtitulo">
-		Precio total: <?php print "$total" ?>  €
+		Total: <?php print "$total" ?>  €
 	</div>
 	
 	<br/> 
@@ -50,7 +56,7 @@
 				$('#zona_central').load('./vista/vercesta.php');
 			};
 		</script>
-		<button onclick="mostrarCesta()">Ver cesta</button>
+		<button onclick="mostrarCesta()">Ver carrito</button>
 	</div>
 	
 	<div class="divCesta">
