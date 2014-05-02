@@ -10,24 +10,24 @@
  **********************************************************************/
 .fuenteTitulo {
 	text-decoration: none;
-	font-family: "Eras Demi ITC";
+	font-family: "Futura Md BT", "Eras Demi ITC";
 	font-size: medium;
 }
 
 .fuenteSubtitulo {
 	text-decoration: none;
-	font-family: "Eras Demi ITC";
+	font-family: "Futura Md BT", "Eras Demi ITC";
 	font-size: small;	
 }
 
 .fuenteTexto {
 	text-decoration: none;
-	font-family: serif;
+	font-family: "Clarendon Lt BT", "Times New Roman";
 	font-size: medium;	
 }
 
 .fuenteDescripcion {
-	font-family: "Eras Medium ITC";
+	font-family: "Futura Md BT", "Eras Demi ITC";
 	font-size: 14px;	
 	/*line-height: 0px;*/
 }
