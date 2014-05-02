@@ -6,13 +6,13 @@
 			var resultado = num.value;
 			/*var e = document.getElementById("tipoBusqueda");
 			 var strUser = e.options[e.selectedIndex].value;*/
-			$('#zona_central_dir').load('vista/directorio.php?dirabs='+encodeURIComponent("Busqueda"));	
+			$('#zona_central_dir').load('vista/directorio.php?dirabs=' + encodeURIComponent("Busqueda"));
 			$('#zona_central').load('./controlador/buscador.php?keywords=' + resultado);
 			//$('#zona_central').load('./controlador/buscador.php?keywords='+resultado+'&tipoBusqueda='+strUser);
 		}
 
 		function mostrarBusquedaAvanzada() {
-			$('#zona_central_dir').load('vista/directorio.php?dirabs='+encodeURIComponent("Busqueda avanzada"));				
+			$('#zona_central_dir').load('vista/directorio.php?dirabs=' + encodeURIComponent("Busqueda avanzada"));
 			$('#zona_central').load('./vista/busquedaavanzada.php');
 		}
 	</script>
@@ -33,22 +33,22 @@
 					location.reload();
 				};
 				var nosotros = function() {
-					$('#zona_central_dir').load('vista/directorio.php?dirabs='+encodeURIComponent("Sobre nosotros"));		
+					$('#zona_central_dir').load('vista/directorio.php?dirabs=' + encodeURIComponent("Sobre nosotros"));
 					$('#zona_central').load('./vista/menu/sobrenosotros.php');
 				};
 				var pago = function() {
-					$('#zona_central_dir').load('vista/directorio.php?dirabs='+encodeURIComponent("Formas de pago"));	
+					$('#zona_central_dir').load('vista/directorio.php?dirabs=' + encodeURIComponent("Formas de pago"));
 					$('#zona_central').load('./vista/menu/formasdepago.php');
 				};
 				var legal = function() {
-					$('#zona_central_dir').load('vista/directorio.php?dirabs='+encodeURIComponent("Nota legal"));	
-					$('#zona_central').load('./vista/menu/notalegal.php');
+					$('#zona_central_dir').load('vista/directorio.php?dirabs=' + encodeURIComponent("Aviso legal"));
+					$('#zona_central').load('./vista/menu/avisolegal.php');
 				};
 			</script>
 		</div>
 	</form>
 	<div id="info">
-		<a class="fuenteTitulo" href="#" onclick="inicio()">Inicio</a> | <a class="fuenteTitulo" href="#" onclick="nosotros()">Sobre nosotros</a> | <a class="fuenteTitulo" href="#" onclick="pago()">Formas de pago</a> | <a class="fuenteTitulo" href="#" onclick="legal()">Nota Legal</a>
+		<a class="fuenteTitulo" href="#" onclick="inicio()">Inicio</a> | <a class="fuenteTitulo" href="#" onclick="nosotros()">Sobre nosotros</a> | <a class="fuenteTitulo" href="#" onclick="pago()">Formas de pago</a> | <a class="fuenteTitulo" href="#" onclick="legal()">Aviso Legal</a>
 	</div>
 </div>
 <div class="cabecera" id="usuario">

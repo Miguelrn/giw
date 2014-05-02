@@ -13,7 +13,7 @@
 		<a href="#pop" onclick="cargaCatalogo('Pop')">Pop</a>
 	</li>
 	<li class="fuenteSubtitulo">
-		<a href="#electronica" onclick="cargaCatalogo('Electronica')">Electrónica</a>
+		<a href="#electronica" onclick="cargaCatalogo('Electronica')">Electrónica/Dance</a>
 	</li>
 	<li class="fuenteSubtitulo">
 		<a href="#clasica" onclick="cargaCatalogo('Clasica')">Clásica</a>
