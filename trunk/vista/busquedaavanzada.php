@@ -1,7 +1,10 @@
 <script>
-	function procesarBusquedaAvanzada() {
+	var procesarBusquedaAvanzada = function() {
 		var e = document.getElementById('artista');
 		var artista = e.value == "" ? "ninguno" : e.value ;
+		
+		e = document.getElementById('disco');
+		var disco = e.value == "" ? "ninguno" : e.value ;
 		
 		e = document.getElementById('comboBoxPrecio');
 		var valNota = e.options[e.selectedIndex].value;
@@ -13,14 +16,24 @@
 		var valPrecio = e.options[e.selectedIndex].value;
 		
 		console.log('./controlador/procesarBusquedaAvanzada.php?categoria='+categoria+
-		'&artista='+artista+'&valNota='+valNota+'&valPrecio='+valPrecio);
+		'&artista='+artista+'&disco='+disco+'&valNota='+valNota+'&valPrecio='+valPrecio);
 		
 		$('#zona_central').load('./controlador/procesarBusquedaAvanzada.php?categoria='+categoria+
-		'&artista='+artista+'&valNota='+valNota+'&valPrecio='+valPrecio);
+		'&artista='+artista+'&disco='+disco+'&valNota='+valNota+'&valPrecio='+valPrecio);
+		
+		
 	}
 </script>
+
 <p align="center" class="fuenteTitulo">Busqueda avanzada</p>
+
 <form align="center" onsubmit="procesarBusquedaAvanzada()" method="get" accept-charset="utf-8">
+	<input type="text" id="disco" placeholder="Nombre de disco"/>
+	<br />
+	<br />
+	<input type="text" id="artista" placeholder="Artista"/>
+	<br />
+	<br />
 	<label class="fuenteSubtitulo">Categoria: </label>
 	<br />
 	<select id="comboBoxCategoria">
@@ -37,13 +50,10 @@
 	</select>
 	<br />
 	<br />
-	<input type="text" id="artista" placeholder="Artista"/>
-	<br />
-	<br />
 	<label class="fuenteSubtitulo">Precio:</label>
 	<br />
 	<select id="comboBoxPrecio">
-		<option value="0">Ninguno</option>
+		<option value="ninguno">Ninguno</option>
 		<option value="1">Entre 0 y 10</option>
 		<option value="2">Entre 10 y 20</option>
 		<option value="3">Entre 20 y 30</option>
@@ -53,7 +63,7 @@
 	<label class="fuenteSubtitulo">Valoración mínima:</label>
 	<br />
 	<select  id="comboBoxNota">
-		<option value="0">Ninguno</option>
+		<option value="ninguno">Ninguno</option>
 		<option value="1">1</option><option value="2">2</option>
 		<option value="3">3</option><option value="4">4</option>
 		<option value="5">5</option><option value="6">6</option>
