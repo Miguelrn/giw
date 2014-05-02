@@ -1,19 +1,40 @@
 <script>
 	function procesarBusquedaAvanzada() {
-		var categoria = document.getElementById('categoria');
-		var artista = document.getElementById('artista');
-		var e = document.getElementById('comboBoxPrecio');
+		var e = document.getElementById('artista');
+		var artista = e.value == "" ? "ninguno" : e.value ;
+		
+		e = document.getElementById('comboBoxPrecio');
 		var valNota = e.options[e.selectedIndex].value;
+		
+		e = document.getElementById('comboBoxCategoria');
+		var categoria = e.options[e.selectedIndex].value;
+		
 		e = document.getElementById('comboBoxNota');
 		var valPrecio = e.options[e.selectedIndex].value;
 		
-		$('#zona_central').load('./controlador/procesarBusquedaAvanzada.php?categoria='+categoria+'&artista='+artista+'&valNota='+valNota
-								+'&valPrecio='+valPrecio);
+		console.log('./controlador/procesarBusquedaAvanzada.php?categoria='+categoria+
+		'&artista='+artista+'&valNota='+valNota+'&valPrecio='+valPrecio);
+		
+		$('#zona_central').load('./controlador/procesarBusquedaAvanzada.php?categoria='+categoria+
+		'&artista='+artista+'&valNota='+valNota+'&valPrecio='+valPrecio);
 	}
 </script>
 <p align="center" class="fuenteTitulo">Busqueda avanzada</p>
 <form align="center" onsubmit="procesarBusquedaAvanzada()" method="get" accept-charset="utf-8">
-	<input type="text" id="categoria" placeholder="Tipo de música"/>
+	<label class="fuenteSubtitulo">Categoria: </label>
+	<br />
+	<select id="comboBoxCategoria">
+			<option value="ninguno">Ninguno</option>
+			<option value="rockandroll">Rock and Roll</option>
+			<option value="pop">Pop</option>
+			<option value="electronica">Electronica</option>
+			<option value="clasica">Clasica</option>
+			<option value="jazz">Jazz</option>
+			<option value="rap">Rap</option>
+			<option value="blues">Blues</option>
+			<option value="randb">R and B</option>
+			<option value="folclorica">Folclorica</option>
+	</select>
 	<br />
 	<br />
 	<input type="text" id="artista" placeholder="Artista"/>
