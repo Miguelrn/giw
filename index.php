@@ -6,7 +6,7 @@
 		<meta name="description" content="Smart Music - The best songs and artist are in our web.">
 		<meta name="keywords" content="smart, music, store, music, CDs, songs, artists">
 		<meta name="author" content="GRUPO 07 - GIW
-									 ANTONIO NUÃ‘EZ GUERRERO 
+									 ANTONIO NUÑEZ GUERRERO 
 									 DANIEL ALEJANDRO NOWENDSZTERN
 									 JOSE MIGUEL RODRIGUEZ NAVARRO">
 		<link href="vista/css/index.css" rel="stylesheet" type="text/css"  />
