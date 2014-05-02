@@ -440,6 +440,66 @@ class Mysql { // estaba puesto en minúsculas todo
 		return $resultado;
 	}
 	
+	/**
+	 * Realiza la consulta en base a los argumentos de la función y devulve un conjunto de registros con un campo para
+	 * el articulo.id_articulo, articulo.nombre. Además si $valNota es distinto de ninguno entonces genera otros dos campos
+	 * mas para la suma de las notas (sum_nota) y para el número de valoraciones de los usuarios (num_val) para poder calcular
+	 * la media fuera de esta función y no mostrar los artículos cuya nota media calculada sea estrictamente inferior a $valNota. 
+	 */
+	public function busquedaAvanzada($categoria, $disco, $artista, $valPrecio, $valNota){
+		$ninguno = "ninguno";
+		
+		//Si no todos los campos del formulario son ninguno
+		if(!($disco == $ninguno && $categoria == $ninguno && $valPrecio == $ninguno && $valNota == $ninguno)){
+			//Primera parte de la consulta
+			$consulta = "select articulo.id_articulo, articulo.nombre";
+			if($valNota != $ninguno) $consulta = $consulta . ", sum(nota) as sum_nota, count(*) as num_val";
+			$consulta = $consulta . " from articulo";
+			if($categoria != $ninguno) $consulta = $consulta . " natural join categoria";
+			
+			if($valNota != $ninguno) $consulta = $consulta . " natural join valoracion_articulo";
+			
+			if($artista != $ninguno) $consulta = $consulta . " natural join autor_articulo join autor";
+			
+			//Parte del where
+			$consulta = $consulta . " where";
+			if($artista != $ninguno) $consulta = $consulta . " autor_articulo.id_autor = autor.id_autor and autor.nombre like '%$artista%'";
+			
+			if($disco != $ninguno && $artista != $ninguno) $consulta = $consulta . " and articulo.nombre like '%$disco%'";
+			else if($disco != $ninguno && $artista == $ninguno) $consulta = $consulta . " articulo.nombre like '%$disco%'";
+			
+			if($categoria != $ninguno && $artista != $ninguno) $consulta .= " and nombre_categoria like '%$categoria%'";
+			else if($categoria != $ninguno && $disco == $ninguno && $artista == $ninguno) $consulta .= " nombre_categoria like '%$categoria%'";
+			
+			if($valPrecio != $ninguno) {
+				if($categoria != $ninguno || $disco != $ninguno || $artista != $ninguno){
+					$consulta = $consulta . " and";
+				}
+				
+				//Entre 0 y 10
+				if($valPrecio == "1") $consulta = $consulta . " precio >= 0 and precio <= 10";
+				//Entre 10 y 20
+				else if($valPrecio == "2") $consulta = $consulta . " precio >= 10 and precio <= 20";
+				//Entre 20 y 30
+				else if($valPrecio == "3") $consulta = $consulta . " precio >=20 and precio <= 30";
+			}
+			//Parte del group by
+			if($valNota != $ninguno) $consulta = $consulta . " group by articulo.nombre";
+			
+			//print("<p>$consulta</p>");
+			
+		}
+		
+		
+		
+		$this->conectar();
+		$resultado=mysqli_query($this->conexion,$consulta);
+		$this->cerrar();
+		unset($consulta);
+		return $resultado;	
+
+	}
+	
 	public function conseguirTopValorados(){
 		$consulta = "select articulo.nombre, articulo.id_articulo, articulo.id_categoria
 					from articulo, valoracion_articulo

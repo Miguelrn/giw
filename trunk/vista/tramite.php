@@ -127,12 +127,12 @@ $_SESSION['error'] = "No has iniciado sesión.";
 
 					<?php
 
-	} else {
+					} else {
 
-	$total = 0;
-	$subTotal = 0;
+					$total = 0;
+					$subTotal = 0;
 
-	}
+					}
 			?></p>
 
 		</div>
@@ -157,12 +157,12 @@ $_SESSION['error'] = "No has iniciado sesión.";
 
 				<?php
 
-	if (isset($_SESSION['datosBancarios'])) {
-		$banco = $_SESSION['datosBancarios'];
-	} else {
-		$banco = "Desconocido";
-	}
-	// echo $banco
+				if (isset($_SESSION['datosBancarios'])) {
+					$banco = $_SESSION['datosBancarios'];
+				} else {
+					$banco = "Desconocido";
+				}
+				// echo $banco
 			?> </p>
 				<div id="registration_element_form">		   
 <p class="fuenteSubtitulo">Datos Bancarios: </p>			
@@ -173,13 +173,8 @@ $_SESSION['error'] = "No has iniciado sesión.";
 		</div>
 
 		<div>
-
 			<button type="submit" value="Confirmacion">Realizar pago</button>
-
 		</div>
-
-	
-
 	</form>
 
 	
