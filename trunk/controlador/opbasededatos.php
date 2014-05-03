@@ -462,7 +462,9 @@ class Mysql { // estaba puesto en minúsculas todo
 			if($artista != $ninguno) $consulta = $consulta . " natural join autor_articulo join autor";
 			
 			//Parte del where
-			$consulta = $consulta . " where";
+			if($disco != $ninguno || $categoria != $ninguno || $artista != $ninguno || $valPrecio != $ninguno){
+				$consulta = $consulta . " where";
+			}
 			if($artista != $ninguno) $consulta = $consulta . " autor_articulo.id_autor = autor.id_autor and autor.nombre like '%$artista%'";
 			
 			if($disco != $ninguno && $artista != $ninguno) $consulta = $consulta . " and articulo.nombre like '%$disco%'";
@@ -487,7 +489,7 @@ class Mysql { // estaba puesto en minúsculas todo
 			//Parte del group by
 			if($valNota != $ninguno) $consulta = $consulta . " group by articulo.nombre";
 			
-			print("<p>$consulta</p>");
+			//print("<p>$consulta</p>");
 			
 			$this->conectar();
 			$resultado=mysqli_query($this->conexion,$consulta);
