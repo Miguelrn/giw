@@ -450,7 +450,7 @@ class Mysql { // estaba puesto en minúsculas todo
 		$ninguno = "ninguno";
 		
 		//Si no todos los campos del formulario son ninguno
-		if(!($disco == $ninguno && $categoria == $ninguno && $valPrecio == $ninguno && $valNota == $ninguno)){
+		if(!($disco == $ninguno && $categoria == $ninguno && $artista == $ninguno && $valPrecio == $ninguno && $valNota == $ninguno)){
 			//Primera parte de la consulta
 			$consulta = "select articulo.id_articulo, articulo.nombre";
 			if($valNota != $ninguno) $consulta = $consulta . ", sum(nota) as sum_nota, count(*) as num_val";
@@ -483,20 +483,23 @@ class Mysql { // estaba puesto en minúsculas todo
 				//Entre 20 y 30
 				else if($valPrecio == "3") $consulta = $consulta . " precio >=20 and precio <= 30";
 			}
+			
 			//Parte del group by
 			if($valNota != $ninguno) $consulta = $consulta . " group by articulo.nombre";
 			
-			//print("<p>$consulta</p>");
+			print("<p>$consulta</p>");
 			
+			$this->conectar();
+			$resultado=mysqli_query($this->conexion,$consulta);
+			$this->cerrar();
+			unset($consulta);
+			return $resultado;
+			
+		}else {
+			return null;
 		}
+
 		
-		
-		
-		$this->conectar();
-		$resultado=mysqli_query($this->conexion,$consulta);
-		$this->cerrar();
-		unset($consulta);
-		return $resultado;	
 
 	}
 	

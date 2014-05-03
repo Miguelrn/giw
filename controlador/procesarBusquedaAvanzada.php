@@ -13,7 +13,11 @@
     $BDD = new Mysql();
 	$resultadoBusqueda = $BDD->busquedaAvanzada($categoria, $disco, $artista, $valPrecio, $valNota);
 	
-	$count_results = mysqli_num_rows($resultadoBusqueda);
+	if($resultadoBusqueda != null){
+		$count_results = mysqli_num_rows($resultadoBusqueda);
+	}else {
+		$count_results = 0;
+	}
 	
 	//Si hay resultados
 	if ($count_results > 0 /*&& $keywords != ""*/) {
