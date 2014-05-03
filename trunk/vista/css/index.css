@@ -194,7 +194,7 @@ ul.categorias li:hover > ul {
 
 .contenido#tablaDestacados {
 	position: relative;
-	float: none;
+	float: left;
 	width: inherit;
 	margin: 0px auto;		
 }
