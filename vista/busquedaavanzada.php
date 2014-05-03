@@ -7,13 +7,13 @@
 		var disco = e.value == "" ? "ninguno" : e.value ;
 		
 		e = document.getElementById('comboBoxPrecio');
-		var valNota = e.options[e.selectedIndex].value;
+		var valPrecio = e.options[e.selectedIndex].value;
 		
 		e = document.getElementById('comboBoxCategoria');
 		var categoria = e.options[e.selectedIndex].value;
 		
 		e = document.getElementById('comboBoxNota');
-		var valPrecio = e.options[e.selectedIndex].value;
+		var valNota = e.options[e.selectedIndex].value;
 		
 		console.log('./controlador/procesarBusquedaAvanzada.php?categoria='+categoria+
 		'&artista='+artista+'&disco='+disco+'&valNota='+valNota+'&valPrecio='+valPrecio);
