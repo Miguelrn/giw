@@ -3,8 +3,10 @@
 <html lang="es">
 	<head>
 		<meta charset="UTF-8">
-		<meta name="description" content="Smart Music - The best songs and artist are in our web.">
-		<meta name="keywords" content="smart, music, store, music, CDs, songs, artists">
+		<meta name="description" content="Smart Music - The best songs and artists are in our web.">
+		<meta name="keywords" content="smart, music, store, music, CDs, songs, artists,
+			rockandroll, pop, electronica, clasica, jazz, rap, blues, randb, folclorica,
+			1970, 1980, 1990, 2000, 2010">
 		<meta name="author" content="GRUPO 07 - GIW
 									 ANTONIO NU�EZ GUERRERO 
 									 DANIEL ALEJANDRO NOWENDSZTERN

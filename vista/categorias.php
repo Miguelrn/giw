@@ -7,13 +7,13 @@
 	</script>	
 	<li class="fuenteTitulo">CATEGORÍAS</li>
 	<li class="fuenteSubtitulo">
-		<a href="#rockandroll" onclick="cargaCatalogo('Rock & Roll')">Rock N' Roll</a>
+		<a href="#rockandroll" onclick="cargaCatalogo('Rock')">Rock</a>
 	</li>
 	<li class="fuenteSubtitulo">
 		<a href="#pop" onclick="cargaCatalogo('Pop')">Pop</a>
 	</li>
 	<li class="fuenteSubtitulo">
-		<a href="#electronica" onclick="cargaCatalogo('Electronica')">Electrónica/Dance</a>
+		<a href="#electronica" onclick="cargaCatalogo('Electronica/Dance')">Electrónica/Dance</a>
 	</li>
 	<li class="fuenteSubtitulo">
 		<a href="#clasica" onclick="cargaCatalogo('Clasica')">Clásica</a>
@@ -28,7 +28,7 @@
 		<a href="#blues" onclick="cargaCatalogo('Blues')">Blues</a>
 	</li>
 	<li class="fuenteSubtitulo">
-		<a href="#randb" onclick="cargaCatalogo('R&B')">R&B</a>
+		<a href="#randb" onclick="cargaCatalogo('<?php echo "R&B" ?>')">R&B</a>
 	</li>
 	<li class="fuenteSubtitulo">
 		<a href="#folclorica" onclick="cargaCatalogo('Folclorica')">Folclórica</a>

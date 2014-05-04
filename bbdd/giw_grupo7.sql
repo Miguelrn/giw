@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-05-2014 a las 09:44:53
+-- Tiempo de generación: 04-05-2014 a las 09:10:44
 -- Versión del servidor: 5.6.16
 -- Versión de PHP: 5.5.11
 
@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `articulo` (
 INSERT INTO `articulo` (`id_articulo`, `nombre`, `cantidad`, `descripcion`, `id_categoria`, `anno`, `foto`, `precio`, `descuento`) VALUES
 (1, '24 Shots', 40, NULL, '6', 2003, '50_Cent-24_Shots-Frontal.jpg', '13.00', 0),
 (2, 'ABBA', 50, NULL, '2', 1975, 'Abba-Abba-Frontal.jpg', '11.00', 0),
-(3, 'Black Ice', 49, NULL, '1', 2008, 'Ac_Dc-Black_Ice-Frontal.jpg', '19.00', 0),
+(3, 'Black Ice', 49, NULL, '1', 2008, 'Ac_Dc-Black_Ice-Frontal.jpg', '19.00', 20),
 (4, 'Aerosmith', 48, NULL, '1', 1973, 'Aerosmith-Aerosmith-Frontal.jpg', '15.00', 0),
 (5, 'Alanis', 50, NULL, '2', 1991, 'Alanis_Morissette-Alanis-Frontal.jpg', '9.00', 0),
 (6, 'Con el alma al aire', 50, NULL, '2', 2000, 'Alejandro_Sanz-El_Alma_Al_Aire-Frontal.jpg', '14.00', 0),
@@ -91,7 +91,7 @@ INSERT INTO `articulo` (`id_articulo`, `nombre`, `cantidad`, `descripcion`, `id_
 (25, 'Blue Wild Angel', 50, NULL, '1', 2002, 'Jimi_Hendrix-Blue_Wild_Angel-Frontal.jpg', '13.00', 0),
 (26, 'A Dios Le Pido', 50, NULL, '1', 2002, 'juanes-a_dios_le_pido-Frontal.jpg', '12.00', 0),
 (27, '1100 Bel Air Plac', 50, NULL, '2', 1984, 'julio_iglesias-1100_bel_air_place-Frontal.jpg', '16.00', 0),
-(28, 'Be Here Now', 50, NULL, '1', 1997, 'Oasis-Be_Here_Now-Frontal.jpg', '13.00', 0),
+(28, 'Be Here Now', 50, NULL, '1', 1997, 'Oasis-Be_Here_Now-Frontal.jpg', '13.00', 25),
 (29, 'Antropop', 43, NULL, '3', 1991, 'Obk-Antropop-Frontal.jpg', '10.00', 0),
 (30, 'Ixnay On The Hombr', 50, NULL, '1', 1997, 'Offspring-Ixnay_On_The_Hombre-Frontal.jpg', '16.00', 0),
 (31, 'A Lo Cubano', 49, NULL, '6', 1999, 'Orishas-A_Lo_Cubano-Frontal.jpg', '13.00', 0),
@@ -325,7 +325,7 @@ INSERT INTO `autor_articulo` (`id_autor`, `id_articulo`) VALUES
 
 CREATE TABLE IF NOT EXISTS `categoria` (
   `id_categoria` int(12) NOT NULL AUTO_INCREMENT,
-  `nombre_categoria` varchar(12) NOT NULL,
+  `nombre_categoria` varchar(20) NOT NULL,
   PRIMARY KEY (`id_categoria`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
@@ -334,9 +334,9 @@ CREATE TABLE IF NOT EXISTS `categoria` (
 --
 
 INSERT INTO `categoria` (`id_categoria`, `nombre_categoria`) VALUES
-(1, 'Rock & Roll'),
+(1, 'Rock'),
 (2, 'Pop'),
-(3, 'Electronica'),
+(3, 'Electronica/Dance'),
 (4, 'Clasica'),
 (5, 'Jazz'),
 (6, 'Rap'),
@@ -407,7 +407,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `contrasena` varchar(12) NOT NULL,
   `nombre` varchar(20) NOT NULL,
   `apellidos` varchar(30) NOT NULL,
-  `Edad` int(11) NOT NULL,
+  `edad` int(4) NOT NULL,
   `domicilio` varchar(100) NOT NULL,
   `datosBancarios` varchar(100) NOT NULL,
   PRIMARY KEY (`correo`)
@@ -417,7 +417,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`correo`, `contrasena`, `nombre`, `apellidos`, `Edad`, `domicilio`, `datosBancarios`) VALUES
+INSERT INTO `usuario` (`correo`, `contrasena`, `nombre`, `apellidos`, `edad`, `domicilio`, `datosBancarios`) VALUES
 ('a@a.com', '123', 'Juan', 'Jaja', 18, 'mi casa', '45534563453'),
 ('b@b.com', '123', 'belen', 'cuesta', 34, 'calle falsa 123', '245112'),
 ('c@c.com', '123', 'carlos', 'nieto', 29, 'gran via 123', '321321321'),

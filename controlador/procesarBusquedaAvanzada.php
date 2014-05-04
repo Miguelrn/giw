@@ -3,7 +3,7 @@
 	ini_set("display_errores", "stdout");
 	error_reporting(E_ALL | E_STRICT);
 	
-	$categoria = $_GET['categoria'];
+	$categoria = urldecode($_GET['categoria']);
 	$artista = $_GET['artista'];
 	$disco = $_GET['disco'];
 	$valPrecio = $_GET['valPrecio'];

@@ -17,7 +17,10 @@
 <div id="cestaTotal">
 	</br>
 	<div class="fuenteTitulo">
-		MIS PEDIDOS
+		<a id="img-pedido" onclick="mostrarPedidos()">
+			MIS PEDIDOS
+			<img width="36px" height="36px" id="pedidos" src="./vista/images/pedido.png"/>
+		</a>
 	</div>
 	
 	</br>

@@ -33,7 +33,7 @@ class Mysql { // estaba puesto en minúsculas todo
 					foto, precio, autor.id_autor, autor.nombre AS nombre_autor, descuento
 					FROM articulo, autor_articulo, autor, categoria
 					WHERE autor_articulo.id_autor = autor.id_autor AND autor_articulo.id_articulo = articulo.id_articulo AND
-				         articulo.id_articulo = '$idDisco' AND articulo.cantidad > 0";
+				         articulo.id_articulo = '$idDisco' AND articulo.cantidad > 0 AND articulo.id_categoria = categoria.id_categoria";
 		$this->conectar();
 		$resultado=mysqli_query($this->conexion,$consulta);
 		$this->cerrar();
@@ -71,7 +71,7 @@ class Mysql { // estaba puesto en minúsculas todo
 		$consulta ="select * 
 					from articulo as art, categoria as cat 
 					where art.id_categoria = cat.id_categoria and 
-						  cat.nombre_categoria LIKE '$nombre_categoria'";
+						  cat.nombre_categoria LIKE '" . $nombre_categoria . "'";
 		$this->conectar();
 		$resultado=mysqli_query($this->conexion,$consulta);
 		$this->cerrar();
