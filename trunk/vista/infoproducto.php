@@ -41,15 +41,15 @@
 
 </script>
 
-<div class="fuentesSubtitulo">
+<div style="position:relative; float: left; width: 600px;" class="fuentesSubtitulo">
+	
+	<div style="position:relative; float: left; width=50%; margin-left: 20px;" class="infoProducto" id="caratula">		
 
-	<div class="infoProducto" id="caratula">		
-
-		<img src=<?php print ("vista/images/caratulas/$row[foto]") ?> width="300px" height="300px"></img>		
+		<img src=<?php print ("vista/images/caratulas/$row[foto]") ?> width="320px" height="320px"></img>		
 
 	</div>
 
-	<div class="infoProducto" id="informacionDisco">
+	<div style="position:relative; float: left; width=50%; margin-left: 10px;" class="infoProducto" id="informacionDisco">
 
 		<!-- informacion -->
 
@@ -84,12 +84,12 @@
 			
 			//descuento
 			if($row['descuento'] != '0'){
-				print("<h3 class=\"fuenteDescripcion\">Precio con descuento: ");
+				print("<h3 class=\"fuenteDescripcion\">Precio rebajado: ");
 				$preciofinal = $row['precio'] - ($row['precio']*($row['descuento']*0.01));
 				print("$preciofinal € </h3>");
 			}
 			else{
-				$preciofinal = $row['precio'];
+				$preciofinal = $row['precio']; // no hay descuento
 			}
 
 		?>
@@ -100,26 +100,20 @@
 			if ( (isset($_SESSION['logueado']) && $_SESSION['logueado'] == true && $_SESSION['tipoUsuario'] == 0) || 
 
 				   (!isset($_SESSION['logueado']))){
-				   	
-							
-				if($preciofinal != '0'){//el producto tiene un descuento y por tanto el precio es menor
-			?>
+				   					
+		?>
 					<button onclick="anadirAlCarro(<?php echo $idDisco . ',\'' . $row['nombre_disco'] . '\',' . $preciofinal ?>)">
 						Añadir al carro
 					</button>
 					
-				<?php }else{	 ?>
-					
-					<button onclick="anadirAlCarro(<?php echo $idDisco . ',\'' . $row['nombre_disco'] . '\',' . $row['precio'] ?>)">
-						Añadir al carro
-					</button>
-
-		<?php }} ?>
+				<?php 
+		} ?>
 
 	</div>
 </div>
+
 <?php if((isset($_SESSION['logueado']) && ($_SESSION['logueado'] == 1))){//solo podran opinar usuarios logueados ?>
-<div class="fuenteSubtitulo">	
+<div style="position:relative; float: left; width: inherit;" class="fuenteSubtitulo">	
 	<!-- pide al usuario que valore el disco, y de una opinion sobre el disco si no la habia dado previamente-->
 	<div>
 		<?php
@@ -179,35 +173,36 @@
 			$('#zona_central').load('vista/infoproducto.php?idProd='+idProducto+'&idCat='+idCategoria);					
 		};
 	</script>
-	<table class="contenido" id="tablaDestacados">
-	<tr>
-		<td colspan="3">
-			<p class="fuenteTitulo">Discos Similares</p>
-		</td>
-	</tr>	
-	<tr>
-		<?php 
-			if ($idCategoria){
-				$resultado = $BDD->consultaAzarDiscoCategoria($idCategoria);
-				
-				while ($row = mysqli_fetch_array($resultado, MYSQLI_ASSOC)){
-				?>
-				<td>	
-					<a href="#" onclick="llevarAProducto(<?php echo $row['id_articulo'] . ',' . $row['id_categoria']?>)">
-						<img src="vista/images/caratulas/<?php echo $row['foto'] ?>" width="100px" height="100px"></img>
-						<p class="fuenteSubtitulo"><?php echo $row['nombre'] ?></br><?php echo $row['precio'] . '€' ?></p>
-					</a>
-				</td>				
-				<?php 
+	<div style="position:relative; float: left; width: 600px;">
+		<table class="contenido" id="tablaDestacados">
+		<tr>
+			<td colspan="3">
+				<p class="fuenteTitulo">Discos Similares</p>
+			</td>
+		</tr>	
+		<tr>
+			<?php 
+				if ($idCategoria){
+					$resultado = $BDD->consultaAzarDiscoCategoria($idCategoria);
+					
+					while ($row = mysqli_fetch_array($resultado, MYSQLI_ASSOC)){
+					?>
+					<td>	
+						<a href="#" onclick="llevarAProducto(<?php echo $row['id_articulo'] . ',' . $row['id_categoria']?>)">
+							<img src="vista/images/caratulas/<?php echo $row['foto'] ?>" width="100px" height="100px"></img>
+							<p class="fuenteSubtitulo"><?php echo $row['nombre'] ?></br><?php echo $row['precio'] . '€' ?></p>
+						</a>
+					</td>				
+					<?php 
+					}
+					mysqli_free_result($resultado);
 				}
-				mysqli_free_result($resultado);
-			}
-		?>	
-	</tr>
-	</table>
+			?>	
+		</tr>
+		</table>
+	</div>
 
-
-	<!-- Comentarios de todos usuarios, no se muestran los comentarios del usuario actual -->
+	<!-- Comentarios de todos usuarios, no se muestran los comentarios del usuario actual -->	
 	<?php 
 		$resultado = $BDD->buscaOpiniones($idDisco);//devuelve todas las opiniones del disco idDisco
 		
@@ -228,6 +223,7 @@
 		}//cierra while
 		mysqli_free_result($resultado);
 		?>
+	
 </div>
 
 
