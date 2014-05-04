@@ -10,7 +10,7 @@
 		var valPrecio = e.options[e.selectedIndex].value;
 		
 		e = document.getElementById('comboBoxCategoria');
-		var categoria = e.options[e.selectedIndex].value;
+		var categoria = encodeURIComponent(e.options[e.selectedIndex].value);
 		
 		e = document.getElementById('comboBoxNota');
 		var valNota = e.options[e.selectedIndex].value;
@@ -38,14 +38,14 @@
 	<br />
 	<select id="comboBoxCategoria">
 			<option value="ninguno">Ninguno</option>
-			<option value="rockandroll">Rock and Roll</option>
+			<option value="rockandroll">Rock</option>
 			<option value="pop">Pop</option>
-			<option value="electronica">Electronica</option>
+			<option value="electronica">Electronica/Dance</option>
 			<option value="clasica">Clasica</option>
 			<option value="jazz">Jazz</option>
 			<option value="rap">Rap</option>
 			<option value="blues">Blues</option>
-			<option value="randb">R and B</option>
+			<option value="r&b">R&B</option>
 			<option value="folclorica">Folclorica</option>
 	</select>
 	<br />

@@ -5,7 +5,7 @@
 	}
 ?>
 <div id="listaCompra" align="center">
-	<p class="fuenteTitulo" align="center">Mi cesta</p>
+	<p class="fuenteTitulo" align="center">Mi carrito</p>
 	<script>
 		var borraDisco = function(num){		
 			$("#listaCompra").load("./controlador/borradisco.php?num="+num);	
