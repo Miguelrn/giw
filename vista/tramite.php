@@ -151,9 +151,11 @@ $_SESSION['error'] = "No has iniciado sesión.";
 
 			     <p class="fuenteSubtitulo">
 			     	
-				Subtotal: <?php echo "$subTotal"; ?> <br />
-				Total: <?php echo $total ?>€ </br>
-							
+				Subtotal: <?php echo "$subTotal"; ?>€ <br />
+				 </p>
+				 <p class="fuenteTitulo">
+				Total (21% de IVA incluído): <?php echo $total ?>€ </br>
+				 </p>		
 
 				<?php
 
