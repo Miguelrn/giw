@@ -84,12 +84,12 @@
 			
 			//descuento
 			if($row['descuento'] != '0'){
-				printf("<h3 class=\"fuenteDescripcion\">Precio con descuento: ");
+				print("<h3 class=\"fuenteDescripcion\">Precio con descuento: ");
 				$preciofinal = $row['precio'] - ($row['precio']*($row['descuento']*0.01));
-				printf("$preciofinal € </h3>");
+				print("$preciofinal € </h3>");
 			}
 			else{
-				$preciofinal = '0';
+				$preciofinal = $row['precio'];
 			}
 
 		?>
