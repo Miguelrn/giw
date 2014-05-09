@@ -190,12 +190,11 @@ class Mysql { // estaba puesto en minúsculas todo
 		return $resultado;
 	}
 	
-	public function insertarUsuarioRegistro($correo, $contrasena, $nombre, $apellidos, $edad, $domicilio, $datosBancarios){
-		$consulta = "insert into usuario (correo, contrasena, nombre, apellidos, edad, domicilio, datosBancarios) values 
-		('$correo', '$contrasena', '$nombre', '$apellidos', '$edad', '$domicilio', '$datosBancarios')";
+	public function insertarUsuarioRegistro($correo, $contrasena, $nombre, $apellidos, $edad, $domicilio, $datosBancarios, $salt){
+		$consulta = "insert into usuario (correo, contrasena, nombre, apellidos, edad, domicilio, datosBancarios, salt) values 
+		('$correo', '$contrasena', '$nombre', '$apellidos', '$edad', '$domicilio', '$datosBancarios', '$salt')";
 		$this->conectar();
 		$resultado = mysqli_query($this->conexion,$consulta);
-		/*$r=mysqli_fetch_array($resultado, MYSQLI_ASSOC);*/
 		$this->cerrar();
 		unset($consulta);
 		/*unset($resultado);*/
@@ -221,11 +220,23 @@ class Mysql { // estaba puesto en minúsculas todo
 		return mysqli_affected_rows($this->conexion) > 0;
 	}
 	
-	public function conseguirDatosUsuario($correo, $pass){
-		$consulta = "select * from usuario where correo = '$correo' AND contrasena = '$pass'";
+	public function conseguirDatosUsuario($correo, $pass, $salt){
+		//$consulta = "select * from usuario where correo = '$correo' AND contrasena = '$pass'";
+		//$pass = hash('sha512', $pass.$salt); //Hash de la contraseña con salt única.
+		$consulta = "select * from usuario where correo = '$correo'";
 		$this->conectar();
 		$resultado = mysqli_query($this->conexion,$consulta);
 		$r=mysqli_fetch_array($resultado, MYSQLI_ASSOC);
+		unset($consulta);
+		unset($resultado);
+		
+		$salt = $r['salt'];
+		unset($r);
+		$pass = hash('sha512', $pass.$salt); //Hash de la contraseña con salt única.
+		$consulta = "select * from usuario where correo = '$correo' and contrasena = '$pass'";
+		$resultado = mysqli_query($this->conexion,$consulta);
+		$r=mysqli_fetch_array($resultado, MYSQLI_ASSOC);
+		
 		$this->cerrar();
 		unset($consulta);
 		unset($resultado);

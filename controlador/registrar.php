@@ -13,7 +13,11 @@
 	
 	if (strcmp($pass, $reppass) == 0){
 		$BDD = new Mysql();	
-		$row = $BDD->insertarUsuarioRegistro($correo, $pass, $nombre, $apellidos, $edad, $domicilio, $datosBancarios);		
+		//Crea una salt al azar
+		$random_salt = hash('sha512', uniqid(mt_rand(1, mt_getrandmax()), true));
+		//Crea una contraseña en salt
+		$password = hash('sha512', $pass.$random_salt);
+		$row = $BDD->insertarUsuarioRegistro($correo, $password, $nombre, $apellidos, $edad, $domicilio, $datosBancarios, $random_salt);		
 		if ($row){					
 			$_SESSION['nombre'] = $nombre;	
 			$_SESSION['correo'] = $correo;	
