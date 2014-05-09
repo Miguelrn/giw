@@ -5,7 +5,7 @@
     $correo = $_GET['correo'];        
     $pass = $_GET['pass'];
 	
-	$BDD = new Mysql();	
+	$BDD = new Mysql();
 	$row = $BDD->conseguirDatosUsuario($correo, $pass);		
 	if($row){//es un usuario valido normal
 		$_SESSION['tipoUsuario'] = 0;
