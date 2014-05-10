@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.6
+-- version 4.1.12
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-05-2014 a las 18:47:44
+-- Tiempo de generación: 10-05-2014 a las 17:42:14
 -- Versión del servidor: 5.6.16
--- Versión de PHP: 5.5.9
+-- Versión de PHP: 5.5.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -324,8 +324,8 @@ INSERT INTO `autor_articulo` (`id_autor`, `id_articulo`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `categoria` (
-  `id_categoria` int(12) NOT NULL AUTO_INCREMENT,
-  `nombre_categoria` varchar(12) NOT NULL,
+  `id_categoria` int(16) NOT NULL AUTO_INCREMENT,
+  `nombre_categoria` varchar(20) NOT NULL,
   PRIMARY KEY (`id_categoria`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
@@ -334,9 +334,9 @@ CREATE TABLE IF NOT EXISTS `categoria` (
 --
 
 INSERT INTO `categoria` (`id_categoria`, `nombre_categoria`) VALUES
-(1, 'Rock & Roll'),
+(1, 'Rock'),
 (2, 'Pop'),
-(3, 'Electronica'),
+(3, 'Electronica/Dance'),
 (4, 'Clasica'),
 (5, 'Jazz'),
 (6, 'Rap'),
