@@ -14,7 +14,6 @@
 			<input type="text" maxlength="20" name="descripcion" placeholder="Descripción" required=""></br>
 			<input type="text" maxlength="20" name="idCat" placeholder="Id Categoria" required=""></br>
 			<input type="text" maxlength="20" name="anio" placeholder="Año" required=""></br>
-			<input type="text" maxlength="20" name="valoracion" placeholder="Valoracion" required=""></br>
 			<input type="text" maxlength="20" name="ruta" placeholder="Nombre imagen" required=""></br>
 			<input type="text" maxlength="20" name="precio" placeholder="Precio" required=""></br>
 			<input class="button button_large type" name="enviar" type="submit" value="Añadir">
@@ -50,7 +49,6 @@
 			<input type="text" maxlength="20" name="descripcion" placeholder="Descripción" required=""></br>
 			<input type="text" maxlength="20" name="idCat" placeholder="Id Categoria" required=""></br>
 			<input type="text" maxlength="20" name="anio" placeholder="Año" required=""></br>
-			<input type="text" maxlength="20" name="valoracion" placeholder="Valoracion" required=""></br>
 			<input type="text" maxlength="20" name="ruta" placeholder="Nombre imagen" required=""></br>
 			<input type="text" maxlength="20" name="precio" placeholder="Precio" required=""></br>
 			<input class="button button_large type" name="enviar" type="submit" value="Modificar">
@@ -71,7 +69,6 @@
 	    <th>Cantidad</th>
 	    <th>Categoría</th>
 	    <th>Año</th>
-	    <th>Valoración</th>
 	    <th>Precio</th>
 	  </tr>
   <?php	
@@ -85,7 +82,6 @@
 				<th><?php print $row['cantidad']?></th>
 				<th><?php print $row['id_categoria']?></th>
 				<th><?php print $row['anno']?></th>
-				<th><?php print $row['valoracion']?></th>
 				<!--<tr><?php print $row['foto']?></tr>-->
 				<th><?php print $row['precio']?>€</th>
 			</tr>
