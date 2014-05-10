@@ -1,12 +1,14 @@
 <?php
 	require_once '../../controlador/opbasededatos.php';
 	
-	$BDD = new Mysql();
+	if($_SERVER['REQUEST_METHOD'] == 'POST') {
+		$BDD = new Mysql();
 	
-	$idDisco = $_POST['idDisco'];
-	$descuento = $_POST['descuento'];
-	
-	$row = $BDD->aplicaDescuento($idDisco,$descuento);
+		$idDisco = $BDD->limpia_sql(htmlspecialchars(trim(strip_tags($_POST['idDisco']))));
+		$descuento = $BDD->limpia_sql(htmlspecialchars(trim(strip_tags($_POST['descuento']))));
+		
+		$row = $BDD->aplicaDescuento($idDisco,$descuento);
+	}	
 	
 	//puede fallar si el disco no existe o si da numeros negativos ¿?
 	

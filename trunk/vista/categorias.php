@@ -1,6 +1,6 @@
 <ul class="categorias">
 	<script>
-		var cargaCatalogo = function(nombre){		
+		var cargaCatalogo = function(nombre){	
 			$('#zona_central_dir').load('vista/directorio.php?dir='+encodeURIComponent(" Categorias -> " + nombre));
 			$('#zona_central').load('vista/catalogo.php?categoria='+encodeURIComponent(nombre));	
 		};		

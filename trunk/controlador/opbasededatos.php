@@ -71,7 +71,7 @@ class Mysql { // estaba puesto en minúsculas todo
 		$consulta ="select * 
 					from articulo as art, categoria as cat 
 					where art.id_categoria = cat.id_categoria and 
-						  cat.nombre_categoria LIKE '" . $nombre_categoria . "'";
+						  cat.nombre_categoria LIKE '" . $nombre_categoria . "'";			  
 		$this->conectar();
 		$resultado=mysqli_query($this->conexion,$consulta);
 		$this->cerrar();
@@ -267,21 +267,23 @@ class Mysql { // estaba puesto en minúsculas todo
 		return $r;
 	}
 	
-	public function modificarDisco($idDisco, $nombreDisco, $cantidad, $descripcion, $idCategoria, $annio, $valoracion, $ruta, $precio){
+	public function modificarDisco($idDisco, $nombreDisco, $cantidad, $descripcion, $idCategoria, $annio, $ruta, $precio){
 		$consulta = "UPDATE articulo SET nombre='$nombreDisco', cantidad='$cantidad', descripcion='$descripcion', id_categoria='$idCategoria',
-					anno='$annio', valoracion='$valoracion', foto='$ruta', precio='$precio' WHERE id_articulo='$idDisco';";
+					anno='$annio', foto='$ruta', precio='$precio' WHERE id_articulo='$idDisco';";
+		echo $consulta;
 		$this->conectar();
 		$resultado = mysqli_query($this->conexion,$consulta);
-		$r=mysqli_fetch_array($resultado, MYSQLI_ASSOC);
+		//$r=mysqli_fetch_array($resultado, MYSQLI_ASSOC);
 		$this->cerrar();
 		unset($consulta);
-		unset($resultado);
-		return $r;
+		//unset($resultado);
+		return $resultado;
 	}
 	
-	public function insertarDisco($nombreDisco, $cantidad, $descripcion, $idCategoria, $annio, $valoracion, $ruta, $precio){
-		$consulta = "insert into articulo (nombre, cantidad, descripcion, Id_categoria, anno, valoracion, foto, precio) values 
-		('$nombreDisco', '$cantidad', '$descripcion', '$idCategoria', '$annio', '$valoracion', '$ruta', '$precio')";
+	public function insertarDisco($nombreDisco, $cantidad, $descripcion, $idCategoria, $annio, $ruta, $precio){
+		$consulta = "insert into articulo (nombre, cantidad, descripcion, Id_categoria, anno, foto, precio) values 
+		('$nombreDisco', '$cantidad', '$descripcion', '$idCategoria', '$annio', '$ruta', '$precio')";
+		//echo $consulta;
 		$this->conectar();
 		$resultado = mysqli_query($this->conexion,$consulta);
 		/*$r=mysqli_fetch_array($resultado, MYSQLI_ASSOC);*/
@@ -614,6 +616,19 @@ class Mysql { // estaba puesto en minúsculas todo
 		$this->cerrar();
 		unset($consulta);
 		return $resultado;
+	}
+	
+	public function limpia_sql($texto){
+		$textoAux = "";
+		//echo $texto."0";
+		if (get_magic_quotes_gpc()){
+			$texto = stripslashes($texto);//quita /
+		}	
+		if (!is_numeric($texto)){
+			return mysql_real_escape_string($texto);
+		}
+		else	
+			return $texto;
 	}
    
     public function cerrar () {

@@ -1,14 +1,15 @@
 <?php
-	$correo = $_POST['correo'];
-	$edad = $_POST['edad'];
+	if($_SERVER['REQUEST_METHOD'] == 'POST') {
+		require_once '../../controlador/opbasededatos.php';
+		$BDD = new Mysql();
+		$correo = $BDD->limpia_sql(htmlspecialchars(trim(strip_tags($_POST['correo']))));
+		$edad = $BDD->limpia_sql(htmlspecialchars(trim(strip_tags($_POST['edad']))));
+	
+		
 
-	require_once '../../controlador/opbasededatos.php';
-	
-	$BDD = new Mysql();
-	
-	$row = $BDD->modificarEdad($correo, $edad);
-	
-	//edad negativa puede dar fallos...
-	
+		$row = $BDD->modificarEdad($correo, $edad);
+		
+		//edad negativa puede dar fallos...
+	}
 	header('Location: ../../index.php');
 ?>
