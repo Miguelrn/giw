@@ -18,9 +18,10 @@ class MongoDBConector {
     }
 	
 	public function conseguirUsuario($nombre, $password){
-		$busqueda="( \"nombre\" : \"$nombre\", \"password\" : \"$password\")";
+		$busqueda = array( 'nombre' => $nombre, 'password' => $password );
 		$db = $this->conectar();
-        $cursor = $db->usuario->find($busqueda);
+        $collection = $db->usuario;
+        $cursor = $collection->find($busqueda);
 		$this->cerrar();
 		unset($consulta);
 		unset($db);
