@@ -5,21 +5,47 @@ class MongoDBConector {
     private $host="localhost";
     private $user="root";
     private $clave="";
-    private $bd="giw_grupo7";
+    private $bd="GIW_grupo07";
     private $conexion;  
-    private $sql;
  
     public function conectar(){
     	// connect
-        $this->conexion = new MongoClient("mongodb://localhost/");
+        $this->conexion = new MongoClient("mongodb://localhost");
 		// select a database
-		$db = $this->conexion->giw_grupo7;
+		$db = $this->conexion->GIW_grupo07;
 		
-		// http://www.php.net/manual/en/mongo.tutorial.php
+		return $db;
     }
+	
+	public function conseguirUsuario($nombre, $password){
+		$busqueda="( \"nombre\" : \"$nombre\", \"password\" : \"$password\")";
+		$db = $this->conectar();
+        $cursor = $db->usuario->find($busqueda);
+		$this->cerrar();
+		unset($consulta);
+		unset($db);
+		return $cursor;
+	}
+	
+	public function conseguirArticulo($nombre){
+		$busqueda = array( 'nombre' => $nombre );
+		$db = $this->conectar();
+        $collection = $db->articulo;
+        $cursor = $collection->find($busqueda);
+		$this->cerrar();
+		unset($consulta);
+		unset($db);
+		return $cursor;		
+	}
 	   
     public function cerrar () {
-        @mysql_close($this->conexion);
+      	$conexiones = $this->conexion->getConnections();	
+		foreach ( $conexiones as $con ){
+		    // Iterar sobre todas las conexiones, y cuando el tipo es "SECONDARY" cerramos la conexión
+		    if ( $con['connection']['connection_type_desc'] == "SECONDARY" ){
+		        $cerrada = $a->close( $con['hash'] );
+		    }
+		}
     }
 	
 	public function limpia_sql($texto){
@@ -65,7 +91,7 @@ class MongoDBConector {
 		?>
 	 */
 		
-	public function conseguirCategoria($idc){
+	/*public function conseguirCategoria($idc){
 		
 	}
 	
@@ -265,7 +291,7 @@ class MongoDBConector {
 	
 	public function consultaDiscosPorEdad($edad){
 		
-	}
+	}*/
 	
 	
 }
