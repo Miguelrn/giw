@@ -39,6 +39,17 @@ class MongoDBConector {
 		return $cursor;		
 	}
 	
+	public function existeUsuario($correo){
+		$busqueda = array( 'correo' => $correo );
+		$db = $this->conectar();
+        $collection = $db->usuario;
+        $cursor = $collection->findOne($busqueda);
+		$this->cerrar();
+		unset($consulta);
+		unset($db);
+		if ($cursor == null){ return false; }
+		else { return true; }		
+	}	
 	
 	public function insertarUsuario($correo, $contrasena, $nombre,  $apellidos, $edad, $domicilio){
 												
@@ -62,6 +73,8 @@ class MongoDBConector {
 		unset($db);		
 		
 	}
+	
+	
 	   
     public function cerrar () {
       	$conexiones = $this->conexion->getConnections();	
