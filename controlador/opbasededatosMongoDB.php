@@ -38,6 +38,30 @@ class MongoDBConector {
 		unset($db);
 		return $cursor;		
 	}
+	
+	
+	public function insertarUsuario($correo, $contrasena, $nombre,  $apellidos, $edad, $domicilio){
+												
+		$random_salt = hash('sha512', uniqid(mt_rand(1, mt_getrandmax()), true));
+		$password = hash('sha512', $contrasena.$random_salt);
+																	
+		$datos = array( 'correo' => $correo,
+						'contrasena' => $password, 
+						'nombre' => $nombre,
+						'apellidos' => $apellidos, 
+						'edad' => $edad, 
+						'domicilio' => $domicilio, 
+						'pedidos' => array(), 
+						'datosBancarios' => "", 
+						'salt ' => $random_salt );					
+		$db = $this->conectar();
+        $collection = $db->usuario;
+        $cursor = $collection->insert($datos);
+		$this->cerrar();
+		unset($consulta);
+		unset($db);		
+		
+	}
 	   
     public function cerrar () {
       	$conexiones = $this->conexion->getConnections();	

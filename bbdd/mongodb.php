@@ -12,4 +12,6 @@
 	    echo $doc['categoria'];
 	}
 	
+	$mongo->insertarUsuario("test@test.com", "test", "nombreTest",  "apellidoTest", "10", "domicilioTest");
+	
 ?>
