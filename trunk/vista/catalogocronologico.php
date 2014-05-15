@@ -1,8 +1,8 @@
 <?php
-	require_once '../controlador/opbasededatos.php';
+	require_once '../controlador/opbasededatosMongoDB.php';
 	//include 'categorias.php';
 	//include 'variables.php';
-	//include_once 'controlador/opbasededatos.php';	
+	//include_once 'controlador/opbasededatosMongoDB.php';	
 	ini_set("display_errores", "stdout");
 	error_reporting(E_ALL | E_STRICT);
 	//error_reporting(E_ALL);

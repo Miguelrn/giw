@@ -1,5 +1,5 @@
 <?php
-	require_once '../controlador/opbasededatos.php';
+	require_once '../controlador/opbasededatosMongoDB.php';
 	ini_set("display_errores", "stdout");
 	error_reporting(E_ALL | E_STRICT);
 	if($_SERVER['REQUEST_METHOD'] == 'GET') {

@@ -1,5 +1,5 @@
 <?php
-    require_once '../controlador/opbasededatos.php';
+    require_once '../controlador/opbasededatosMongoDB.php';
 	session_start();
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
     	$BDD = new Mysql();

@@ -1,6 +1,6 @@
 <?php
 	//recibe la nota y la opinion
-	require_once '../controlador/opbasededatos.php';
+	require_once '../controlador/opbasededatosMongoDB.php';
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$BDD = new Mysql();
 		$opinion = $BDD->limpia_sql(htmlspecialchars(trim(strip_tags($_POST['opinion']))));
