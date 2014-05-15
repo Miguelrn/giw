@@ -17,33 +17,33 @@ class MongoDBConector {
 		return $db;
     }
 	
-	public function conseguirUsuario($nombre, $password){
-		$busqueda = array( 'nombre' => $nombre, 'password' => $password );
-		$db = $this->conectar();
-        $collection = $db->usuario;
-        $cursor = $collection->find($busqueda);
-		$this->cerrar();
-		unset($consulta);
-		unset($db);
-		return $cursor;
-	}
-	
 	public function conseguirArticulo($nombre){
-		$busqueda = array( 'nombre' => $nombre );
+		$datos = array( 'nombre' => $nombre );
 		$db = $this->conectar();
         $collection = $db->articulo;
-        $cursor = $collection->find($busqueda);
+        $cursor = $collection->find($datos);
 		$this->cerrar();
 		unset($consulta);
 		unset($db);
 		return $cursor;		
 	}
 	
-	public function existeUsuario($correo){
-		$busqueda = array( 'correo' => $correo );
+	public function conseguirUsuario($nombre, $password){
+		$datos = array( 'nombre' => $nombre, 'password' => $password );
 		$db = $this->conectar();
         $collection = $db->usuario;
-        $cursor = $collection->findOne($busqueda);
+        $cursor = $collection->find($datos);
+		$this->cerrar();
+		unset($consulta);
+		unset($db);
+		return $cursor;
+	}
+	
+	public function existeUsuario($correo){
+		$datos = array( 'correo' => $correo );
+		$db = $this->conectar();
+        $collection = $db->usuario;
+        $cursor = $collection->findOne($datos);
 		$this->cerrar();
 		unset($consulta);
 		unset($db);
@@ -74,6 +74,38 @@ class MongoDBConector {
 		
 	}
 	
+	public function modificarUsuario($correo, $contrasena, $nombre, 
+									 $datosBancarios, $apellidos, $edad, $domicilio){
+												
+		$random_salt = hash('sha512', uniqid(mt_rand(1, mt_getrandmax()), true));
+		$password = hash('sha512', $contrasena.$random_salt);
+					
+		$usuarioQueSeModificara = array ( 'correo' => $correo );																			
+		$datos = array( 'correo' => $correo,
+						'contrasena' => $password, 
+						'nombre' => $nombre,
+						'apellidos' => $apellidos, 
+						'edad' => $edad, 
+						'domicilio' => $domicilio, 
+						'datosBancarios' => $datosBancarios, 
+						'salt ' => $random_salt );					
+		$db = $this->conectar();
+        $collection = $db->usuario;
+        $cursor = $collection->update($usuarioQueSeModificara, $datos);
+		$this->cerrar();
+		unset($consulta);
+		unset($db);	
+	}
+	
+	public function eliminarUsuario($correo){
+		$datos = array( 'correo' => $correo );
+		$db = $this->conectar();
+        $collection = $db->usuario;
+        $cursor = $collection->remove($datos);
+		$this->cerrar();
+		unset($consulta);
+		unset($db);			
+	}
 	
 	   
     public function cerrar () {

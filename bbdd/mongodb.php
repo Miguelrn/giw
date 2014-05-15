@@ -13,7 +13,9 @@
 	}
 	
 	
-	//$mongo->insertarUsuario("test@test.com", "test", "nombreTest",  "apellidoTest", "10", "domicilioTest");
-	echo "</br>Existe usuario:" . ($mongo->existeUsuario("test@test.com") ? "Si" : "No");
+	$mongo->insertarUsuario("test@test.com", "test", "nombreTest",  "apellidoTest", "10", "domicilioTest");
+	// echo "</br>Existe usuario:" . ($mongo->existeUsuario("test@test.com") ? "Si" : "No");
+	// $mongo->eliminarUsuario("test@test.com");
+	$mongo->modificarUsuario("test@test.com", "testModificado", "nombreTest", "datosBancariosTest", "apellidoTest", "10", "domicilioTest");
 	
 ?>
