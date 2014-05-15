@@ -1,5 +1,5 @@
 <?php 
-	require_once '../opbasededatos.php';
+	require_once '../opbasededatosMongoDB.php';
 	if (session_id() == "") {
 		@session_start();
 	}

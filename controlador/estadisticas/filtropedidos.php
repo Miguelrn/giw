@@ -1,5 +1,5 @@
 <?php    
-	require_once '../opbasededatos.php';
+	require_once '../opbasededatosMongoDB.php';
 	if($_SERVER['REQUEST_METHOD'] == 'GET') {
 		$BDD = new Mysql();
 	    $inicio = $BDD->limpia_sql(htmlspecialchars(trim(strip_tags($_GET['inicio']))));

@@ -1,5 +1,5 @@
 <?php
-	require_once '../../controlador/opbasededatos.php';
+	require_once '../../controlador/opbasededatosMongoDB.php';
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$BDD = new Mysql();
 		$idDisco = $BDD->limpia_sql(htmlspecialchars(trim(strip_tags($_POST['idDisco']))));

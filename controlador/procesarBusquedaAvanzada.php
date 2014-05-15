@@ -1,5 +1,5 @@
 <?php
-	require_once 'opbasededatos.php';
+	require_once 'opbasededatosMongoDB.php';
 	ini_set("display_errores", "stdout");
 	error_reporting(E_ALL | E_STRICT);
 	

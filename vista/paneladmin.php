@@ -1,5 +1,5 @@
 <?php
-	require_once '../controlador/opbasededatos.php';
+	require_once '../controlador/opbasededatosMongoDB.php';
 	$idAccion = $_GET['idAccion'];
 	
 	if($idAccion == 0){//añadir disco
