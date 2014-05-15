@@ -57,3 +57,28 @@ db.articulo.insert({"nombre" : "Endless Wire", "cantidad" : 50, "descripcion" : 
 db.articulo.insert({"nombre" : "52 Classic Hits", "cantidad" : 49, "descripcion" : "NULL", "categoria" : "Pop", "autor" : "Tom Jones", "anno"  : 2006, "foto" : "Tom_Jones-52_Classic_Hits-Frontal.jpg", "precio" : 12.00, "descuento" : 0})
 db.articulo.insert({"nombre" : "En Libertad", "cantidad" : 50, "descripcion" : "NULL", "categoria" : "Rock", "autor" : "Triana", "anno"  : 1991, "foto" : "Triana-En_Libertad-Frontal.jpg", "precio" : 13.00, "descuento" : 0})
 db.articulo.insert({"nombre" : "I Look To You", "cantidad" : 50, "descripcion" : "NULL", "categoria" : "Pop", "autor" : "W. Houston", "anno"  : 2009, "foto" : "Whitney_Houston-I_Look_To_You-Frontal.jpg", "precio" : 12.00, "descuento" : 0})
+
+db.usuario.insert({correo: "a@a.com", contrasena: "e13c7063032bf64a507d4ed976cdec346b3086bfbd10976821beb853746501f93bfc2aaa6c1bc62189d69171119ddcea6d4cf8ced2ae0b42eb43c8ed5174a90e ",
+ nombre: "Juan", apellidos: "Jaja",Edad: 18, domicilio: "mi casa", datosBancarios: "45534563453", salt: "4268d68626bf62a5ce671b855bc6c7c492d3faf430681ab6faf101ab2784178da0816e5297ba13018cd6fd11c16640648e1424269c62d74fa247762fa444801a",
+ pedidos: [{precio: "15", localizacion_actual:"Almacen de Madrid", estado:"En almacen", fecha:"2014-03-20", id_repartidor: "pepe", ids_articulo: [{"4"}]}, 
+ {precio: "70", localizacion_actual:"Almacenes centrales", estado:"En almacen", fecha:"2014-03-17", id_repartidor: "pepe", ids_articulo: [{"29"},{"29"},{"29"},{"29"},{"29"},{"29"},{"29"}]},
+ {precio: "13", localizacion_actual:"Almacenes centrales", estado:"En almacen", fecha:"2014-03-20", id_repartidor: "pepe", ids_articulo: [{"9"}]},
+ {precio: "13", localizacion_actual:"Almacenes centrales", estado:"En almacen", fecha:"2014-03-18", id_repartidor: "pepe", ids_articulo: [{"31"}]},
+ {precio: "60", localizacion_actual:"China", estado:"En envio", fecha:"2014-01-14", id_repartidor: "pepe", ids_articulo: [{"14"},{"14"},{"14"},{"14"},{"14"}])
+]})
+
+db.usuario.insert({correo: "c@c.com", contrasena: "47d017736b6ec21b4e98b548cf247271596c52f414e8d60bca84697e346fffe84f80d8a962d0cd8387f1bc108a285e41e110ca84ff55bdb16b7bafbd4cfc1ef4",
+ nombre: "toni", apellidos: "guerrero",Edad: 22, domicilio: "hola", datosBancarios: "5487545457", salt: "fc036deb013d0ee3eb2ad33235e218a1c3039e4f7a99737d5f1b89d5c8a2cfb7bf4bbd36ec0965f79ce87763b9d3879b682a5d7840cd8f8ba034ee4467ac8438",
+ pedidos:[{precio: "15", localizacion_actual:"Almacenes centrales", estado:"En almacen", fecha:"2014-05-01", id_repartidor: "pepe", ids_articulo: "46"}
+]})
+ 
+db.usuario.insert({correo: "admin@admin.com", contrasena: "c0a29790351a96be9af2a24b3dd72516e010d1a7c14a41ae5aec8cdffd87acfbf1ebffd58b68e9757e376b7d2979fd836533e752cb8e1243be2d1d0564278fb1 ",
+ nombre: "admin", apellidos: "sin",Edad: 30, domicilio: "calle falsa", datosBancarios: "0", salt "6d5da39c4fdbcea2ae6ac00df61044e6ab2b1fc97928b5170156b3965ae7fe244f4159db2dbe5b95ad4766eaa69c225502227cd9c3428252bc6505e3697ec72b"})
+
+/**
+	a@a.com el pass es 123
+	admin@admin.com es 123
+*/
+
+
+
