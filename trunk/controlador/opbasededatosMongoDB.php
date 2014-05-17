@@ -69,10 +69,36 @@ class MongoDBConector {
         $collection = $db->usuario;
         $cursor = $collection->insert($datos);
 		$this->cerrar();
-		unset($consulta);
-		unset($db);		
+		
+		unset($datos);
+		unset($db);
+		unset($collection);
+		unset($cursor);	
 		
 	}
+	
+	
+	public function insertarArticulo($nombre, $cantidad, $descripcion, $categoria, $autor, $anno, $foto, $precio, $descuento){
+		$datos = array ( 'nombre' => $nombre,
+						 'cantidad' => $cantidad,
+						 'descripcion' => $descripcion,
+						 'categoria' => $categoria,
+						 'autor' => $autor,
+						 'anno' => $anno,
+						 'foto' => $foto,
+						 'precio' => $precio,
+						 'descuento' => $descuento);
+		$db = $this->conectar();
+		$collection = $db->articulo;
+		$cursor = $collection->insert($datos);
+		$this->cerrar();
+		
+		unset($datos);
+		unset($db);
+		unset($collection);
+		unset($cursor);
+	}
+	   
 	
 	public function modificarUsuario($correo, $contrasena, $nombre, 
 									 $datosBancarios, $apellidos, $edad, $domicilio){
@@ -107,7 +133,6 @@ class MongoDBConector {
 		unset($db);			
 	}
 	
-	   
     public function cerrar () {
       	$conexiones = $this->conexion->getConnections();	
 		foreach ( $conexiones as $con ){
