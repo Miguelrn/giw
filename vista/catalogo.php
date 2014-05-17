@@ -4,7 +4,7 @@
 	error_reporting(E_ALL | E_STRICT);
 	if($_SERVER['REQUEST_METHOD'] == 'GET') {
 		//error_reporting(E_ALL);
-		$BDD = new Mysql();
+		$mongo = new MongoDBConector();
 		$categoriaCatalogo = $_GET['categoria'];
 	?>
 	<table class="catalogo">
@@ -20,7 +20,7 @@
 	
 		<?php
 		
-		$resultado = $BDD->consultaArticulosCategoriaPorNombre($categoriaCatalogo);
+		$cursor = $mongo->consultaArticulosPorCategoria($categoriaCatalogo);
 		//$num_results = $result->num_rows;
 		$numCelda = 0;
 		?>		
@@ -28,7 +28,7 @@
 			//la primera
 			//header("Content-Type: image/jpeg");
 			//deberia servir para mostrar una imagen
-			while ($row = mysqli_fetch_array($resultado, MYSQLI_ASSOC)) {//falta darle formato a las tr
+			foreach ($cursor as $row) {//falta darle formato a las tr
 				if ($numCelda % 4 == 0){
 					print("<tr>");
 				}

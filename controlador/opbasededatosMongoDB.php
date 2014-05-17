@@ -31,8 +31,11 @@ class MongoDBConector {
         $collection = $db->articulo;
         $cursor = $collection->find($datos);
 		$this->cerrar();
+		
+		unset($datos);
 		unset($consulta);
 		unset($db);
+		
 		return $cursor;		
 	}
 	
@@ -42,9 +45,26 @@ class MongoDBConector {
         $collection = $db->usuario;
         $cursor = $collection->find($datos);
 		$this->cerrar();
+		
+		unset($datos);
 		unset($consulta);
 		unset($db);
+		
 		return $cursor;
+	}
+	
+	public function consultaArticulosPorCategoria($categoria){
+		$datos = array( 'categoria' => $categoria );
+		$db = $this->conectar();
+        $collection = $db->articulo;
+        $cursor = $collection->find($datos);
+		$this->cerrar();
+		
+		unset($datos);
+		unset($db);
+		unset($collection);
+		
+		return $cursor;	
 	}
 	
 	public function existeUsuario($correo){
@@ -53,6 +73,8 @@ class MongoDBConector {
         $collection = $db->usuario;
         $cursor = $collection->findOne($datos);
 		$this->cerrar();
+		
+		unset($datos);
 		unset($consulta);
 		unset($db);
 		if ($cursor == null){ return false; }
@@ -127,6 +149,8 @@ class MongoDBConector {
         $collection = $db->usuario;
         $cursor = $collection->update($usuarioQueSeModificara, $datos);
 		$this->cerrar();
+		
+		unset($datos);
 		unset($consulta);
 		unset($db);	
 	}
@@ -137,6 +161,8 @@ class MongoDBConector {
         $collection = $db->usuario;
         $cursor = $collection->remove($datos);
 		$this->cerrar();
+		
+		unset($datos);
 		unset($consulta);
 		unset($db);			
 	}
@@ -179,10 +205,6 @@ class MongoDBConector {
 
 	public function consultaArticulosCategoria($id_categoria){
 		
-	}
-	
-	public function consultaArticulosCategoriaPorNombre($nombre_categoria){
-	
 	}
 	
 	public function insertarPedido($correo, $precio){
