@@ -12,7 +12,10 @@
 	    echo $doc['categoria'];
 	}
 	
+//////////ELIMINAR BBDD/////////
+	$mongo->eliminarBDD();
 	
+///////////ATICULOS///////////
 	$mongo->insertarUsuario("test@test.com", "test", "nombreTest",  "apellidoTest", "10", "domicilioTest");
 	// echo "</br>Existe usuario:" . ($mongo->existeUsuario("test@test.com") ? "Si" : "No");
 	// $mongo->eliminarUsuario("test@test.com");

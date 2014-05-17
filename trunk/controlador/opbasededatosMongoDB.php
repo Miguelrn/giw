@@ -17,6 +17,14 @@ class MongoDBConector {
 		return $db;
     }
 	
+	public function eliminarBDD(){
+		$db = $this->conectar();
+		$db->command(array("dropDatabase" => 1));
+		//$db->dropDatabase();
+		
+		unset($db);
+	}
+	
 	public function conseguirArticulo($nombre){
 		$datos = array( 'nombre' => $nombre );
 		$db = $this->conectar();
