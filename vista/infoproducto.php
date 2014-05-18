@@ -16,16 +16,16 @@
 		$idCategoria = false;
 	}
 	
-	$BDD = new MongoDBConector();
+	$mongo = new MongoDBConector();
 	
-	$idDisco = $BDD->limpia_sql($idDisco);
-	$idCategoria = $BDD->limpia_sql($idCategoria);
+	$idDisco = $mongo->limpia_sql($idDisco);
+	$idCategoria = $mongo->limpia_sql($idCategoria);
 
-	/*if($BDD->discoconopiniones($idDisco)){//el disco tiene opiniones sobre el
-		$resultado = $BDD->consultaDiscoyOpiniones($idDisco);
+	/*if($mongo->discoconopiniones($idDisco)){//el disco tiene opiniones sobre el
+		$resultado = $mongo->consultaDiscoyOpiniones($idDisco);
 	}
 	else {*/
-	$resultado = $BDD->consultaDisco($idDisco);
+	$resultado = $mongo->consultaDisco($idDisco);
 	//}
 	//$row = mysqli_fetch_array($resultado, MYSQLI_ASSOC);
 
@@ -121,7 +121,7 @@
 	<div>
 		<?php
 			$correo = $_SESSION['correo'];
-			$row = $BDD->opinionSobreDisco($correo, $idDisco);
+			$row = $mongo->opinionSobreDisco($correo, $idDisco);
 			
 			if($row['opinion'] == '' && $row['nota'] == ''){//si alguna de las dos cosas esta vacia le va pedir su opinion y la nota
 				?> 
@@ -186,7 +186,7 @@
 		<tr>
 			<?php 
 				if ($idCategoria){
-					$resultado = $BDD->consultaAzarDiscoCategoria($idCategoria);
+					$resultado = $mongo->consultaAzarDiscoCategoria($idCategoria);
 					
 					while ($row = mysqli_fetch_array($resultado, MYSQLI_ASSOC)){
 					?>
@@ -207,7 +207,7 @@
 
 	<!-- Comentarios de todos usuarios, no se muestran los comentarios del usuario actual -->	
 	<?php 
-		$resultado = $BDD->buscaOpiniones($idDisco);//devuelve todas las opiniones del disco idDisco
+		$resultado = $mongo->buscaOpiniones($idDisco);//devuelve todas las opiniones del disco idDisco
 		
 		if ($resultado){
 			echo "<p class=\"fuenteSubtitulo\">Otros usuarios opinaron:</p>";

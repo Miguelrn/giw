@@ -23,7 +23,12 @@
 		$cursor = $mongo->consultaArticulosPorCategoria($categoriaCatalogo);
 		//$num_results = $result->num_rows;
 		$numCelda = 0;
-		?>		
+		?>	
+			<script>
+				var llevarAProducto = function(idProducto,idCategoria){
+					$('#zona_central').load('vista/infoproducto.php?idProd='+idProducto+'&idCat='+idCategoria);					
+				};
+			</script>	
 		<?php	
 			//la primera
 			//header("Content-Type: image/jpeg");
@@ -33,14 +38,11 @@
 					print("<tr>");
 				}
 		?>
-				<script>
-					var llevarAProducto = function(idProducto,idCategoria){
-						$('#zona_central').load('vista/infoproducto.php?idProd='+idProducto+'&idCat='+idCategoria);					
-					};
-				</script>
+				
 				<!-- <?php echo $row['id_articulo'] . ',\'' . $categoriaCatalogo?> -->	
-				<td><a href="#" onclick="llevarAProducto(<?php echo $row['_id'] . ',' . $row['categoria']?>)">
-					<img src="vista/images/caratulas/<?php echo $row['foto'] ?>" width="100px" height="100px"></img></br>
+				<td><a href="#" onclick="llevarAProducto(<?php echo "'" . $row['_id'] . "','" . $row['categoria']?>')">
+					<img src="vista/images/caratulas/<?php echo $row['foto'] ?>" 
+					width="100px" height="100px"></img></br>
 			
 		<p class="fuenteSubtitulo">
 		<?php 
