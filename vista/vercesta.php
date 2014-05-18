@@ -15,7 +15,7 @@
 		<ul>
 		<?php	
 			if (isset($_SESSION['discos'])){
-				$productos = $_SESSION['discos'];//consultar todos los items desde BD? o cookie? desde BD			
+				$productos = $_SESSION['discos'];		
 				for ($i=0, $len=count($productos); $i<$len; $i++) {
 		?>		
 					<li style="list-style:none;" class="fuenteSubtitulo">

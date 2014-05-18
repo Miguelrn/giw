@@ -39,7 +39,7 @@
 					};
 				</script>
 				<!-- <?php echo $row['id_articulo'] . ',\'' . $categoriaCatalogo?> -->	
-				<td><a href="#" onclick="llevarAProducto(<?php echo $row['id_articulo'] . ',' . $row['id_categoria']?>)">
+				<td><a href="#" onclick="llevarAProducto(<?php echo $row['_id'] . ',' . $row['categoria']?>)">
 					<img src="vista/images/caratulas/<?php echo $row['foto'] ?>" width="100px" height="100px"></img></br>
 			
 		<p class="fuenteSubtitulo">
