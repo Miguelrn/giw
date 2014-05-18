@@ -39,20 +39,6 @@ class MongoDBConector {
 		return $cursor;		
 	}
 	
-	public function conseguirUsuario($nombre, $password){
-		$datos = array( 'nombre' => $nombre, 'password' => $password );
-		$db = $this->conectar();
-        $collection = $db->usuario;
-        $cursor = $collection->find($datos);
-		$this->cerrar();
-		
-		unset($datos);
-		unset($consulta);
-		unset($db);
-		
-		return $cursor;
-	}
-	
 	public function consultaArticulosPorCategoria($categoria){
 		$datos = array( 'categoria' => $categoria );
 		$db = $this->conectar();
@@ -65,6 +51,107 @@ class MongoDBConector {
 		unset($collection);
 		
 		return $cursor;	
+	}
+	
+	public function conseguirTopValorados(){
+		$db = $this->conectar();
+		$collection = $db->articulo;
+		$cursor = $collection->find();
+		$cursor->sort(array('descuento' => -1));
+		$cursor->limit(3);
+		
+		unset($db);
+		unset($collection);
+		
+		return $cursor;
+	}
+	
+	
+	public function conseguirTopRebajas() {
+		$db = $this->conectar();
+		$collection = $db->articulo;
+		$cursor = $collection->find();
+		$cursor->sort(array('descuento' => -1));
+		$cursor->limit(3);
+		
+		unset($db);
+		unset($collection);
+		
+		return $cursor;
+	}
+	
+	public function __call($method_name, $arguments){
+		//la lista de metodos sobrecargados
+		$accepted_methods = array("insertarArticulo");
+    	if(!in_array($method_name, $accepted_methods)) {
+      		trigger_error("Metodo <strong>$method_name</strong> no existe", E_USER_ERROR);
+    	}
+ 
+    	//metodo sin argumentos
+	    if(count($arguments) == 0) {
+	      $this->$method_name();
+ 
+	      //metodo con 9 argumentos
+	    } elseif(count($arguments) == 9) {
+	      $this->{$method_name.'1'}($arguments[0], $arguments[1], $arguments[2], $arguments[3], $arguments[4], $arguments[5],
+		  $arguments[6], $arguments[7], $arguments[8]);
+ 
+	      //metodo con 10 argumentos
+	    } elseif(count($arguments) == 10) {
+	      $this->{$method_name.'2'}($arguments[0], $arguments[1], $arguments[2], $arguments[3], $arguments[4], $arguments[5],
+		  $arguments[6], $arguments[7], $arguments[8], $arguments[9]);
+ 
+	    } else {
+	      return false;
+		}
+	}
+	
+	public function insertarArticulo1($nombre, $cantidad, $descripcion, $categoria, $autor, $anno, $foto, $precio, $descuento){
+		$datos = array ( 'nombre' => $nombre,
+						 'cantidad' => $cantidad,
+						 'descripcion' => $descripcion,
+						 'categoria' => $categoria,
+						 'autor' => $autor,
+						 'anno' => $anno,
+						 'foto' => $foto,
+						 'precio' => $precio,
+						 'descuento' => $descuento);
+						 
+		$db = $this->conectar();
+		$collection = $db->articulo;
+		$cursor = $collection->insert($datos);
+		$this->cerrar();
+		
+		unset($datos);
+		unset($db);
+		unset($collection);
+		unset($cursor);
+	}
+									 
+	public function insertarArticulo2($nombre, $cantidad, $descripcion, $categoria, $autor, $anno, $foto, $precio, $descuento,
+									 $valoraciones){
+									 	
+		$datos = array ( 'nombre' => $nombre,
+						 'cantidad' => $cantidad,
+						 'descripcion' => $descripcion,
+						 'categoria' => $categoria,
+						 'autor' => $autor,
+						 'anno' => $anno,
+						 'foto' => $foto,
+						 'precio' => $precio,
+						 'descuento' => $descuento,
+						 'valoraciones' => $valoraciones
+						 );
+						 
+		$db = $this->conectar();
+		$collection = $db->articulo;
+		$cursor = $collection->insert($datos);
+		$this->cerrar();
+		
+		unset($datos);
+		unset($db);
+		unset($collection);
+		unset($cursor);
 	}
 	
 	public function existeUsuario($correo){
@@ -80,6 +167,20 @@ class MongoDBConector {
 		if ($cursor == null){ return false; }
 		else { return true; }		
 	}	
+	
+	public function conseguirUsuario($nombre, $password){
+		$datos = array( 'nombre' => $nombre, 'password' => $password );
+		$db = $this->conectar();
+        $collection = $db->usuario;
+        $cursor = $collection->find($datos);
+		$this->cerrar();
+		
+		unset($datos);
+		unset($consulta);
+		unset($db);
+		
+		return $cursor;
+	}
 	
 	public function insertarUsuario($correo, $contrasena, $nombre,  $apellidos, $edad, $domicilio){
 												
@@ -106,29 +207,6 @@ class MongoDBConector {
 		unset($cursor);	
 		
 	}
-	
-	
-	public function insertarArticulo($nombre, $cantidad, $descripcion, $categoria, $autor, $anno, $foto, $precio, $descuento){
-		$datos = array ( 'nombre' => $nombre,
-						 'cantidad' => $cantidad,
-						 'descripcion' => $descripcion,
-						 'categoria' => $categoria,
-						 'autor' => $autor,
-						 'anno' => $anno,
-						 'foto' => $foto,
-						 'precio' => $precio,
-						 'descuento' => $descuento);
-		$db = $this->conectar();
-		$collection = $db->articulo;
-		$cursor = $collection->insert($datos);
-		$this->cerrar();
-		
-		unset($datos);
-		unset($db);
-		unset($collection);
-		unset($cursor);
-	}
-	   
 	
 	public function modificarUsuario($correo, $contrasena, $nombre, 
 									 $datosBancarios, $apellidos, $edad, $domicilio){
@@ -349,13 +427,6 @@ class MongoDBConector {
 		
 	}
 	
-	public function conseguirTopValorados(){
-		
-	}
-	
-	public function conseguirTopRebajas(){
-		
-	}	
 	
 	public function conseguirDiscoPorFechas($ini, $fin){
 		
