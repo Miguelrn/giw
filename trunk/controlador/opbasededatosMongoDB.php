@@ -67,13 +67,49 @@ class MongoDBConector {
 		return $cursor;	
 	}
 	
+	public function conseguirPedidos($correo){
+		$datos = array( '$correo' => $correo );
+		$db = $this->conectar();
+        $collection = $db->usuario;
+        $cursor = $collection->find($datos);
+		$this->cerrar();
+		
+		$pedidos = null;
+		foreach ($cursor as $doc){
+			$pedidos = $doc['pedidos'];
+		}
+		
+		unset($datos);
+		unset($db);
+		unset($collection);
+		
+		return $pedidos;			
+	}
+	
+	public function conseguirNumeroPedidos($correo){
+		$datos = array( '$correo' => $correo );
+		$db = $this->conectar();
+        $collection = $db->usuario;
+        $cursor = $collection->find($datos);
+		$this->cerrar();
+		
+		$count = 0;
+		foreach ($cursor as $doc){
+			$pedidos = $doc['pedidos'];
+			$count = count($pedidos);
+		}
+		
+		unset($datos);
+		unset($db);
+		unset($collection);
+		
+		return $count;	
+		
+	}
+	
+	
 	public function conseguirTopValorados(){
-		$consulta = "select articulo.nombre, articulo.id_articulo, articulo.id_categoria
-					from articulo, valoracion_articulo
-					where articulo.id_articulo = valoracion_articulo.id_articulo
-					order by valoracion_articulo.nota desc
-					limit 0, 3";
-					
+		
 		$db = $this->conectar();
 		$collection = $db->articulo;
 		$cursor = $collection->find();

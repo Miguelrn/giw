@@ -4,8 +4,10 @@
 	}
 	if (isset($_SESSION['correo'])){
 		
-		$BDD = new Mysql();
-		$numPed = $BDD->conseguirNumeroPedidos($_SESSION['correo']);
+		/*$BDD = new Mysql();
+		$numPed = $BDD->conseguirNumeroPedidos($_SESSION['correo']);*/
+		$mongo = new MongoDBConector();
+		$numPed = $mongo->conseguirNumeroPedidos($_SESSION['correo']);
 		
 	} else {
 		$numPed = 0;

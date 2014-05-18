@@ -14,9 +14,14 @@
 	
 	if(  $_SESSION['logueado'] == true ){
 		$correo = $_SESSION['correo'];
-		$BDD = new Mysql();
-		$resultadoPedidos = $BDD->conseguirPedidos($correo);
+		//$BDD = new Mysql();		
+		//$resultadoPedidos = $BDD->conseguirPedidos($correo);
 		//$_SESSION['pedidos'] = array();
+		
+		
+		$mongo = new MongoDBConector();
+		$resultadoPedidos = $mongo->conseguirPedidos($correo);
+		
 	}
 	
 ?>
@@ -27,14 +32,15 @@
 			if($_SESSION['logueado'] == true){
 				$numDisco = 0;
 				$i=0;
-				while ($pedido = mysqli_fetch_array($resultadoPedidos, MYSQLI_ASSOC)){
+				$size = count($resultadoPedidos);
+				while ($i < $size && $pedido = $resultadoPedidos[i]/*mysqli_fetch_array($resultadoPedidos, MYSQLI_ASSOC)*/){
 					$i++;
 					//$size = count($_SESSION['pedidos']);
 					//$_SESSION['pedidos'][$size] = ;
 		?>
 					<p class="fuenteTitulo">Pedido <?php echo $i?></p>
 		<?php
-					$resultadoArticulos = $BDD->conseguirArticulosDePedido($pedido['id_pedido']);
+					$resultadoArticulos = /*$BDD*/$mongo->conseguirArticulosDePedido($pedido['ids_articulo']);
 					while ($row = mysqli_fetch_array($resultadoArticulos, MYSQLI_ASSOC)) {
 						$numDisco++;
 		?>		
@@ -47,17 +53,17 @@
 					<li style="list-style:none;" class="fuenteSubtitulo">
 						<?php echo "Fecha: " . $pedido['fecha'] ?>
 					</li>	
-					<li style="list-style:none;" class="fuenteSubtitulo">
+					<!-- <li style="list-style:none;" class="fuenteSubtitulo">
 						<?php echo "Subtotal: " . $pedido['precio'] . "€" ?>
-					</li>
+					</li> -->
 					<li style="list-style:none;" class="fuenteSubtitulo">
-						<?php $total =  $pedido['precio'] + $pedido['precio'] * 0.21 ; echo "Total: " . $total . "€" ?>
+						<?php $total =  $pedido['precio'] ; echo "Total: " . $total . "€" ?>
 					</li>	
 					<li style="list-style:none;" class="fuenteSubtitulo">
 						<?php echo "Estado: " . $pedido['estado'] ?>
 					</li>
 					<li style="list-style:none;" class="fuenteSubtitulo">
-						<?php echo "Localización: " . $pedido['localizacion_actual'] ?>
+						<?php echo "Localización: " . $pedido['localizacion'] ?>
 					</li>
 					
 		<?php	}
