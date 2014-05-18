@@ -36,7 +36,7 @@
 				<?php include_once 'vista/categorias.php'; ?>	
 				<?php //include_once 'vista/cronologico.php'; ?>
 				<?php //include_once 'vista/tops_discos/top_valorados.php' ?>
-				<?php include_once 'vista/tops_discos/top_rebajas.php' ?>		
+				<?php //include_once 'vista/tops_discos/top_rebajas.php' ?>		
 			</div>
 			<div class="cuerpo contenido">
 				<div id="zona_central_dir">
