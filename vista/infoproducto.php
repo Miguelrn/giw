@@ -18,14 +18,25 @@
 	
 	$mongo = new MongoDBConector();
 	
-	$idDisco = $mongo->limpia_sql($idDisco);
+	/*$idDisco = $mongo->limpia_sql($idDisco);
 	$idCategoria = $mongo->limpia_sql($idCategoria);
-
+	*/
 	/*if($mongo->discoconopiniones($idDisco)){//el disco tiene opiniones sobre el
 		$resultado = $mongo->consultaDiscoyOpiniones($idDisco);
 	}
 	else {*/
-	$resultado = $mongo->consultaDisco($idDisco);
+	$cursor = $mongo->consultaDisco($idDisco);
+	
+	$row = null;
+	foreach ($cursor as $doc)
+		$row = $doc;
+	
+	/*$cursor->getNext();
+	$row = iterator_to_array($cursor, false);*/
+	/*$row = null;
+	foreach ($cursor as $doc){
+		echo $doc['foto'];	
+	}*/
 	//}
 	//$row = mysqli_fetch_array($resultado, MYSQLI_ASSOC);
 
@@ -35,7 +46,7 @@
 
 	var anadirAlCarro = function(id, nombre, precio){
 
-		console.log("id:"+id+"nombre:"+encodeURIComponent(nombre)+"precio:"+precio);
+		// console.log("id:"+id+"nombre:"+encodeURIComponent(nombre)+"precio:"+precio);
 
 		$("#cestaTotal").load('./controlador/anadircarro.php?id='+id+'&nombre='+
 							encodeURIComponent(nombre)+'&precio='+precio);		
@@ -60,21 +71,21 @@
 
 			print("</br>");
 
-			print("<h3 class=\"fuenteDescripcion\">Nombre: $row[nombre_disco] - $row[nombre_autor] </h3>");
+			print("<h3 class=\"fuenteDescripcion\">Nombre: $row[nombre] - $row[autor] </h3>");
 
 			print("<h3 class=\"fuenteDescripcion\">Año: $row[anno] </h3>");
 			
-			print("<h3 class=\"fuenteDescripcion\">Categoría: $row[nombre_categoria] </h3>");
+			print("<h3 class=\"fuenteDescripcion\">Categoría: $row[categoria] </h3>");
 
 			//print("<h3 class=\"fuenteDescripcion\">Puntuación: $row[valoracion] </h3>");number_format($row['valoracion'],2,".",",");
-			print("<h3 class=\"fuenteDescripcion\">Puntuación:");
+			/*print("<h3 class=\"fuenteDescripcion\">Puntuación:");
 			if(isset($row['valoracion'])){
 				echo number_format($row['valoracion'],2,".",",");
 			}
 			else{
 				echo " -";
 			}	
-			echo "</h3>";
+			echo "</h3>";*/
 
 			if($row['cantidad'] > 0 ){
 				print("<h3 class=\"fuenteDescripcion\">En stock</h3>");
@@ -86,14 +97,14 @@
 			print("<h3 class=\"fuenteDescripcion\">Precio: $row[precio]€</h3>");
 			
 			//descuento
-			if($row['descuento'] != '0'){
+			/*if($row['descuento'] != '0'){
 				print("<h3 class=\"fuenteDescripcion\">Precio rebajado: ");
 				$preciofinal = $row['precio'] - ($row['precio']*($row['descuento']*0.01));
 				print("$preciofinal € </h3>");
 			}
 			else{
 				$preciofinal = $row['precio']; // no hay descuento
-			}
+			}*/
 
 		?>
 
@@ -105,7 +116,7 @@
 				   (!isset($_SESSION['logueado']))){
 				   					
 		?>
-					<button onclick="anadirAlCarro(<?php echo $idDisco . ',\'' . $row['nombre_disco'] . '\',' . $preciofinal ?>)">
+					<button onclick="anadirAlCarro(<?php echo $idDisco . ',\'' . $row['nombre'] . '\',' . $preciofinal ?>)">
 						Añadir al carro
 					</button>
 					
@@ -171,7 +182,7 @@
 <?php }//fin de comentarios para usuarios logueados ?>	
 	
 	<!-- Muestra 5 discos similares, de la misma categoria del visitado -->
-	<script>
+	<!-- <script>
 		var llevarAProducto = function(idProducto, idCategoria){
 			$('#zona_central').load('vista/infoproducto.php?idProd='+idProducto+'&idCat='+idCategoria);					
 		};
@@ -203,7 +214,7 @@
 			?>	
 		</tr>
 		</table>
-	</div>
+	</div> -->
 
 	<!-- Comentarios de todos usuarios, no se muestran los comentarios del usuario actual -->	
 	<?php 
