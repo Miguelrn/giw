@@ -1,8 +1,8 @@
 <?php
 	require_once './controlador/opbasededatosMongoDB.php';
 	
-	$BDD = new Mysql();
-	$resultado = $BDD -> conseguirTopRebajas();
+	$mongo = new MongoDBConector();
+	$cursor = $mongo->conseguirTopRebajas();
 ?>
 <script>
 	var cargaDiscoRebajado = function(idProducto, idCategoria) {
@@ -18,7 +18,7 @@
 </ul>
 <ol class="categorias" style="margin-left: 40px">
 <?php 
-	while ($row = mysqli_fetch_array($resultado, MYSQLI_ASSOC)){
+	foreach ($cursor as $row) {
 ?>
 <li class="fuenteSubtitulo">
 	<a href="#<?php echo $row['nombre'] ?>" 
