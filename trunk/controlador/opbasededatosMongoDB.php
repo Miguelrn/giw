@@ -39,6 +39,20 @@ class MongoDBConector {
 		return $cursor;		
 	}
 	
+	public function consultaDisco($idDisco){
+		$datos = array( '_id' => $idDisco );
+		$db = $this->conectar();
+        $collection = $db->articulo;
+        $cursor = $collection->find($datos);
+		$this->cerrar();
+		
+		unset($datos);
+		unset($consulta);
+		unset($db);
+		
+		return $cursor;		
+	}
+	
 	public function consultaArticulosPorCategoria($categoria){
 		$datos = array( 'categoria' => $categoria );
 		$db = $this->conectar();

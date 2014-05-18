@@ -8,7 +8,6 @@
 	if (session_id() == "") {
 		@session_start();
 	}
-	
 
 	$idDisco = $_GET['idProd'];//variable que vendra de catalogo...
 	if (isset($_GET['idCat'])){		
@@ -16,16 +15,19 @@
 	} else {
 		$idCategoria = false;
 	}
+	
+	$BDD = new MongoDBConector();
+	
+	$idDisco = $BDD->limpia_sql($idDisco);
+	$idCategoria = $BDD->limpia_sql($idCategoria);
 
-	$BDD = new Mysql();
-
-	if($BDD->discoconopiniones($idDisco)){//el disco tiene opiniones sobre el
+	/*if($BDD->discoconopiniones($idDisco)){//el disco tiene opiniones sobre el
 		$resultado = $BDD->consultaDiscoyOpiniones($idDisco);
 	}
-	else {
-		$resultado = $BDD->consultaDisco($idDisco);
-	}
-	$row = mysqli_fetch_array($resultado, MYSQLI_ASSOC);
+	else {*/
+	$resultado = $BDD->consultaDisco($idDisco);
+	//}
+	//$row = mysqli_fetch_array($resultado, MYSQLI_ASSOC);
 
 ?>	
 
@@ -35,7 +37,8 @@
 
 		console.log("id:"+id+"nombre:"+encodeURIComponent(nombre)+"precio:"+precio);
 
-		$("#cestaTotal").load('./controlador/anadircarro.php?id='+id+'&nombre='+encodeURIComponent(nombre)+'&precio='+precio);		
+		$("#cestaTotal").load('./controlador/anadircarro.php?id='+id+'&nombre='+
+							encodeURIComponent(nombre)+'&precio='+precio);		
 
 	}
 
