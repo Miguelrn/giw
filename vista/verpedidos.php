@@ -41,7 +41,8 @@
 					<p class="fuenteTitulo">Pedido <?php echo $i?></p>
 		<?php
 					$resultadoArticulos = /*$BDD*/$mongo->conseguirArticulosDePedido($pedido['ids_articulo']);
-					while ($row = mysqli_fetch_array($resultadoArticulos, MYSQLI_ASSOC)) {
+					while ( $resultadoArticulos->hasNext() &&
+							$row = $resultadoArticulos->getNext()/*mysqli_fetch_array($resultadoArticulos, MYSQLI_ASSOC)*/) {
 						$numDisco++;
 		?>		
 						<li style="list-style:none;" class="fuenteSubtitulo">

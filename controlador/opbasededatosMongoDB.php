@@ -79,6 +79,7 @@ class MongoDBConector {
 			$pedidos = $doc['pedidos'];
 		}
 		
+		$this->cerrar();
 		unset($datos);
 		unset($db);
 		unset($collection);
@@ -86,25 +87,42 @@ class MongoDBConector {
 		return $pedidos;			
 	}
 	
-	public function conseguirNumeroPedidos($correo){
-		$datos = array( '$correo' => $correo );
+	public function conseguirArticulosDePedido($ids_articulos){		
+		$arrays = array();
+		
+		foreach ($ids_articulos as $id){
+			array_push($arrays, array("_id" => new MongoId($id)));
+		}	
+		
+		$datos = array('$or' => $arrays);		
 		$db = $this->conectar();
-        $collection = $db->usuario;
+        $collection = $db->articulo;
         $cursor = $collection->find($datos);
 		$this->cerrar();
-		
-		$count = 0;
-		foreach ($cursor as $doc){
-			$pedidos = $doc['pedidos'];
-			$count = count($pedidos);
-		}
 		
 		unset($datos);
 		unset($db);
 		unset($collection);
 		
-		return $count;	
+		return $cursor;
+	}
+	
+	public function conseguirNumeroPedidos($correo){
+		$datos = array( '$correo' => $correo );
+		$db = $this->conectar();
+        $collection = $db->usuario;
+        $doc = $collection->findOne($datos);
+		$this->cerrar();
 		
+		$pedidos = $doc['pedidos'];
+		$count = count($pedidos);
+		
+		$this->cerrar();
+		unset($datos);
+		unset($db);
+		unset($collection);
+		
+		return $count;			
 	}
 	
 	
@@ -116,6 +134,7 @@ class MongoDBConector {
 		$cursor->sort(array('descuento' => -1));
 		$cursor->limit(3);
 		
+		$this->cerrar();
 		unset($db);
 		unset($collection);
 		
@@ -130,6 +149,7 @@ class MongoDBConector {
 		$cursor->sort(array('descuento' => -1));
 		$cursor->limit(3);
 		
+		$this->cerrar();
 		unset($db);
 		unset($collection);
 		
