@@ -40,7 +40,7 @@ class MongoDBConector {
 	}
 	
 	public function consultaDisco($idDisco){
-		$datos = array( '_id' => $idDisco );
+		$datos = array( '_id' => new MongoId($idDisco) );
 		$db = $this->conectar();
         $collection = $db->articulo;
         $cursor = $collection->find($datos);
@@ -282,7 +282,7 @@ class MongoDBConector {
 			$texto = stripslashes($texto);//quita /
 		}	
 		if (!is_numeric($texto)){
-			return mysql_real_escape_string($texto);
+			return mysqli_real_escape_string($texto);
 		}
 		else	
 			return $texto;
