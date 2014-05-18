@@ -54,6 +54,12 @@ class MongoDBConector {
 	}
 	
 	public function conseguirTopValorados(){
+		$consulta = "select articulo.nombre, articulo.id_articulo, articulo.id_categoria
+					from articulo, valoracion_articulo
+					where articulo.id_articulo = valoracion_articulo.id_articulo
+					order by valoracion_articulo.nota desc
+					limit 0, 3";
+					
 		$db = $this->conectar();
 		$collection = $db->articulo;
 		$cursor = $collection->find();

@@ -22,10 +22,6 @@
 	$mongo->modificarUsuario("test@test.com", "testModificado", "nombreTest", "datosBancariosTest", "apellidoTest", "10", "domicilioTest");
 	
 ///////////ATICULOS///////////
-/*$valoraciones = array(array("correo" => "a@a.com", "nota" => 7,"opinion" => "dfgdfg"), 
-array("correo" => "c@c.com", "nota" => 3, "opinion" =>  "Me gusto mas su primer disco"), 
-array("correo" => "b@b.com", "nota" => 10, "opinion" =>  "Perfecto, rosa vuelve a sus origenes"));
-echo $valoraciones[2]["opinion"];*/
 	$mongo->insertarArticulo("24 Shots", 40, NULL, "Rap", "50Cents", 2003, "50_Cent-24_Shots-Frontal.jpg", 13.00, 0);
 	$mongo->insertarArticulo("ABBA", 50, NULL, "Pop", "ABBA", 1975, "Abba-Abba-Frontal.jpg", 11.00, 0, array(array("correo" => "a@a.com", "nota" => 9, "opinion" => "Es un disco que me emociono mucho")));
 	$mongo->insertarArticulo("Black Ice", 49, NULL, "Rock", "ACDC", 2008, "Ac_Dc-Black_Ice-Frontal.jpg", 19.00, 0, array(array("correo" => "a@a.com", "nota" => 10, "opinion" => "viva El heavy")));
