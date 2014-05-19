@@ -20,7 +20,7 @@ class MongoDBConector {
 	public function eliminarBDD(){
 		$db = $this->conectar();
 		$db->command(array("dropDatabase" => 1));
-		//$db->dropDatabase();
+		$this->cerrar();
 		
 		unset($db);
 	}
@@ -133,6 +133,7 @@ class MongoDBConector {
 		$cursor = $collection->find();
 		$cursor->sort(array('descuento' => -1));
 		$cursor->limit(3);
+		$this->cerrar();
 		
 		$this->cerrar();
 		unset($db);
@@ -148,6 +149,7 @@ class MongoDBConector {
 		$cursor = $collection->find();
 		$cursor->sort(array('descuento' => -1));
 		$cursor->limit(3);
+		$this->cerrar();
 		
 		$this->cerrar();
 		unset($db);
@@ -155,6 +157,66 @@ class MongoDBConector {
 		
 		return $cursor;
 	}
+	
+	/*public function consultaAzarDiscosInicio(){
+		$db = $this->conectar();
+		$collection = $db->articulo;
+		$cursor = $collection->find();
+		$cursor->sort(array('descuento' => -1));
+		$cursor->limit(5);
+		
+		unset($db);
+		unset($collection);
+		
+		return $cursor;
+	}*/
+	
+	private function updateRandom(){
+		return array('$set' => array ("random" => mt_rand(0, 10000000)));
+	}
+	
+	public function consultaAzarDiscosInicio(){
+		$db = $this->conectar();
+		$collection = $db->articulo;
+		//$random = array("random" => mt_rand(0, 10000000));
+		//$update = array('$set' => array ("random" => mt_rand(0, 10000000)));
+		$cursor = $collection->find();
+		//$db->articulo->update(array("nombre", $row["nombre"]), $this->updateRandom() );
+		/*foreach ($cursor as $row) {
+			$db->articulo->update(array(), $this->updateRandom() );
+		}*/
+		$db->articulo->update(array(), $this->updateRandom() , array('multiple' => true));
+		
+		 
+		//$cursor = $collection->update(array(), array("random" => mt_rand(0, 10000000), array('multiple' => true)));
+		unset($cursor);
+		$cursor = $collection->find();
+		$cursor->sort(array('random' => -1));
+		$cursor->limit(5);
+		$this->cerrar();
+		
+		unset($db);
+		unset($collection);
+		
+		return $cursor;
+	}
+	
+	/*public function consultaAzarDiscosInicio(){
+		$db = $this->conectar();
+		$collection = $db->articulo;
+		//$cursor = $collection->find()->limit(5)->skip(RAND());
+		$cursor = $collection->find();
+		$cursor->sort(array('descuento' => -1) * rand(0, 59));
+		$cursor->limit(5);
+		
+		//var c = db.someCollection;
+		//c.find().limit( -1 ).skip( _rand() * c.count() )
+		
+		unset($db);
+		unset($collection);
+		
+		return $cursor;
+	}*/
 	
 	public function __call($method_name, $arguments){
 		//la lista de metodos sobrecargados
@@ -191,7 +253,8 @@ class MongoDBConector {
 						 'anno' => $anno,
 						 'foto' => $foto,
 						 'precio' => $precio,
-						 'descuento' => $descuento);
+						 'descuento' => $descuento,
+						 'random' => NULL);
 						 
 		$db = $this->conectar();
 		$collection = $db->articulo;
@@ -207,7 +270,7 @@ class MongoDBConector {
 	public function insertarArticulo2($nombre, $cantidad, $descripcion, $categoria, $autor, $anno, $foto, $precio, $descuento,
 									 $valoraciones){
 									 	
-		$datos = array ( 'nombre' => $nombre,
+		$datos = array ('nombre' => $nombre,
 						 'cantidad' => $cantidad,
 						 'descripcion' => $descripcion,
 						 'categoria' => $categoria,
@@ -216,8 +279,8 @@ class MongoDBConector {
 						 'foto' => $foto,
 						 'precio' => $precio,
 						 'descuento' => $descuento,
-						 'valoraciones' => $valoraciones
-						 );
+						 'valoraciones' => $valoraciones,
+						 'random' => NULL);
 						 
 		$db = $this->conectar();
 		$collection = $db->articulo;
@@ -378,10 +441,6 @@ class MongoDBConector {
 	}
 	
 	public function conseguirNumeroPedidos($correo){
-		
-	}
-	
-	public function consultaAzarDiscosInicio(){
 		
 	}
 	
