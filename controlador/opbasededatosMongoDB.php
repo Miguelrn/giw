@@ -10,7 +10,7 @@ class MongoDBConector {
  
     public function conectar(){
     	// connect
-        $this->conexion = new MongoClient("mongodb://localhost");
+        $this->conexion = new Mongo("mongodb://localhost");
 		// select a database
 		$db = $this->conexion->GIW_grupo07;
 		
@@ -322,13 +322,13 @@ class MongoDBConector {
 	}
 	
     public function cerrar () {
-      	$conexiones = $this->conexion->getConnections();	
+      	/*$conexiones = $this->conexion->getConnections();	
 		foreach ( $conexiones as $con ){
 		    // Iterar sobre todas las conexiones, y cuando el tipo es "SECONDARY" cerramos la conexión
 		    if ( $con['connection']['connection_type_desc'] == "SECONDARY" ){
 		        $cerrada = $a->close( $con['hash'] );
 		    }
-		}
+		}*/
     }
 	
 	public function limpia_sql($texto){

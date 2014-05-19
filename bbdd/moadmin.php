@@ -294,7 +294,7 @@ class moadminModel {
      */
     protected function _mongo() {
         $connection = (!MONGO_CONNECTION ? 'mongodb://localhost:27017' : MONGO_CONNECTION);
-        return (!REPLICA_SET ? new MongoClient($connection) : new Mongo($connection, array('replicaSet' => true)));
+        return (!REPLICA_SET ? new Mongo($connection) : new Mongo($connection, array('replicaSet' => true)));
     }
 
     /**
