@@ -10,16 +10,16 @@
 	<div id="slider">
 		<!-- Se debe enlazar a contenido usando href. -->
 		<?php 
-		$BDD = new Mysql();
-		$resultado = $BDD->consultaAzarDiscosInicio();
+		$mongo = new MongoDBConector();
+		$cursor = $mongo->consultaAzarDiscosInicio();
 		
-		while ($row = mysqli_fetch_array($resultado, MYSQLI_ASSOC)){
+		foreach ($cursor as $row) {
 		?>
 		<a href="#" onclick="llevarAProducto(<?php echo $row['id_articulo'] . ',' . $row['id_categoria']?>)"> <img src="vista/images/caratulas/<?php echo $row['foto'] ?>" width="360" height="360"
 			alt="<?php echo $row['nombre'] ?>" /> </a>		
 		<?php 
 		}
-		mysqli_free_result($resultado);
+		unset($cursor);	
 		?>		
 	</div>
 </div>
@@ -31,10 +31,10 @@
 	</tr>	
 	<tr>
 		<?php 
-			$BDD = new Mysql();
-			$resultado = $BDD->consultaAzarDiscosInicio();
+			$mongo = new MongoDBConector();
+			$cursor = $mongo->consultaAzarDiscosInicio();
 			
-			while ($row = mysqli_fetch_array($resultado, MYSQLI_ASSOC)){
+			foreach ($cursor as $row) {
 			?>
 			<td>
 				<a href="#" onclick="llevarAProducto(<?php echo $row['id_articulo'] . ',' . $row['id_categoria']?>)">
@@ -44,7 +44,7 @@
 			</td>				
 			<?php 
 			}
-			mysqli_free_result($resultado);
+			unset($cursor);
 		?>	
 	</tr>
 	<tr>
@@ -59,13 +59,13 @@
 			}
 			if(isset($_SESSION['logueado']) && $_SESSION['logueado'] && isset($_SESSION['edad'])){ //es un usuario logueado
 				$edad = $_SESSION['edad'];
-				$BDD = new Mysql();			
-				$resultado = $BDD->consultaDiscosPorEdad($edad);
+				$mongo = new MongoDBConector();			
+				$cursor = $mongo->consultaDiscosPorEdad($edad);
 			} else {				
-				$BDD = new Mysql();
-				$resultado = $BDD->consultaAzarDiscosInicio();
+				$mongo = new MongoDBConector();
+				$cursor = $mongo->consultaAzarDiscosInicio();
 			}
-			while ($row = mysqli_fetch_array($resultado, MYSQLI_ASSOC)){
+			foreach ($cursor as $row) {
 			?>
 			<td>	
 				<a href="#" onclick="llevarAProducto(<?php echo $row['id_articulo'] . ',' . $row['id_categoria']?>)">
@@ -75,7 +75,7 @@
 			</td>				
 			<?php 
 			}
-			mysqli_free_result($resultado);	
+			unset($cursor);	
 		?>	
 	</tr>
 </table>
