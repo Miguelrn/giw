@@ -134,8 +134,6 @@ class MongoDBConector {
 		$cursor->sort(array('descuento' => -1));
 		$cursor->limit(3);
 		$this->cerrar();
-		
-		$this->cerrar();
 		unset($db);
 		unset($collection);
 		
@@ -149,8 +147,6 @@ class MongoDBConector {
 		$cursor = $collection->find();
 		$cursor->sort(array('descuento' => -1));
 		$cursor->limit(3);
-		$this->cerrar();
-		
 		$this->cerrar();
 		unset($db);
 		unset($collection);
@@ -406,6 +402,8 @@ class MongoDBConector {
 		else	
 			return $texto;
 	}
+	
+	
 	
 			
 	/*public function conseguirCategoria($idc){
