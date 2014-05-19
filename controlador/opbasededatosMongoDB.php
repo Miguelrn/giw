@@ -43,14 +43,14 @@ class MongoDBConector {
 		$datos = array( '_id' => new MongoId($idDisco) );
 		$db = $this->conectar();
         $collection = $db->articulo;
-        $cursor = $collection->find($datos);
+        $doc = $collection->findOne($datos);
 		$this->cerrar();
 		
 		unset($datos);
 		unset($consulta);
 		unset($db);
 		
-		return $cursor;		
+		return $doc;		
 	}
 	
 	public function consultaArticulosPorCategoria($categoria){
