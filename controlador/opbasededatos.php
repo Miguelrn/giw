@@ -625,9 +625,9 @@ class Mysql { // estaba puesto en minúsculas todo
 			$texto = stripslashes($texto);//quita /
 		}	
 		if (!is_numeric($texto)){
-			return mysql_real_escape_string($texto);
+			return real_escape_string($texto);
 		}
-		else	
+		else
 			return $texto;
 	}
    

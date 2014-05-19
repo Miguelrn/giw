@@ -229,14 +229,14 @@ class MongoDBConector {
 	    if(count($arguments) == 0) {
 	      $this->$method_name();
  
-	      //metodo con 9 argumentos
-	    } elseif(count($arguments) == 9) {
-	      $this->{$method_name.'1'}($arguments[0], $arguments[1], $arguments[2], $arguments[3], $arguments[4], $arguments[5],
+	      
+	    }elseif(count($arguments) == 9) {
+	      $this->{$method_name.'9'}($arguments[0], $arguments[1], $arguments[2], $arguments[3], $arguments[4], $arguments[5],
 		  $arguments[6], $arguments[7], $arguments[8]);
  
 	      //metodo con 10 argumentos
 	    } elseif(count($arguments) == 10) {
-	      $this->{$method_name.'2'}($arguments[0], $arguments[1], $arguments[2], $arguments[3], $arguments[4], $arguments[5],
+	      $this->{$method_name.'10'}($arguments[0], $arguments[1], $arguments[2], $arguments[3], $arguments[4], $arguments[5],
 		  $arguments[6], $arguments[7], $arguments[8], $arguments[9]);
  
 	    } else {
@@ -244,7 +244,7 @@ class MongoDBConector {
 		}
 	}
 	
-	public function insertarArticulo1($nombre, $cantidad, $descripcion, $categoria, $autor, $anno, $foto, $precio, $descuento){
+	public function insertarArticulo9($nombre, $cantidad, $descripcion, $categoria, $autor, $anno, $foto, $precio, $descuento){
 		$datos = array ( 'nombre' => $nombre,
 						 'cantidad' => $cantidad,
 						 'descripcion' => $descripcion,
@@ -267,7 +267,7 @@ class MongoDBConector {
 		unset($cursor);
 	}
 									 
-	public function insertarArticulo2($nombre, $cantidad, $descripcion, $categoria, $autor, $anno, $foto, $precio, $descuento,
+	public function insertarArticulo10($nombre, $cantidad, $descripcion, $categoria, $autor, $anno, $foto, $precio, $descuento,
 									 $valoraciones){
 									 	
 		$datos = array ('nombre' => $nombre,
@@ -468,9 +468,6 @@ class MongoDBConector {
 		
 	}
 	
-	public function conseguirDatosUsuario($correo, $pass, $salt){
-		
-	}
 	
 	//// ADMIN y REPARTIDOR
 	
