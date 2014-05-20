@@ -6,16 +6,18 @@
     $name = $_GET['name'];
 	$title = $_GET['title'];	
 	
+	// echo "iden:" . $ident . " name:" . $name . " title:" . $title;
+	
 	// FILTRO
 	
 	$filtros = new Filtros();
 	
 	$ident = $filtros->filtraIdentificadorDisco($ident);
-	$title = $filtros->filtraNombreDisco($ident);
-	$name = $filtros->filtraNombreUsuario($ident);
+	$title = $filtros->filtraTitulo($title);
+	$name = $filtros->filtraNombreUsuario($name);
 	
 	if ($ident == false || $title == false || $name == false){
-		echo "Tu petición no ha superado el filtro";
+		echo "No has superado el filtro -> ident:".$ident." title:".$title." name:".$name;
 		return;
 	}
 	
@@ -33,17 +35,22 @@
 	$precio = $doc['precio'];
 	
 ?>
-<title><? echo $title ?></title>
-<h1><? echo "Bienvenido " . $name ?></h1>
-<img src="vista/images/caratulas/<? echo $foto; ?>" width="300px" height="300px"></img>
-<h2><? echo "Nombre del articulo: " . $name ?></h2>
-<h2><? echo "Cantidad en almacén: " . $cantidad ?></h2>
-<h2><? echo "Autor: " . $autor ?></h2>
-<h2><? echo "Año del disco: " . $anno ?></h2>
-<h2><? echo "Precio: " . $precio ?></h2>
+
+<head>
+	<meta charset="UTF-8">
+</head>
+<title><?php echo $title ?></title>
+<h1><?php echo "Bienvenido " . $name ?></h1>
+<img src="vista/images/caratulas/<?php echo $foto; ?>" width="300px" height="300px"></img>
+<h3><?php echo "Nombre del articulo: " . $nombre ?></h3>
+<h3><?php echo "Cantidad: " . $cantidad ?></h3>
+<h3><?php echo "Autor: " . $autor ?></h3>
+<h3><?php echo "Año del disco: " . $anno ?></h3>
+<h3><?php echo "Precio: " . $precio ?></h3>
 
 <!--
 	http://localhost/tienda/mostrar.php?ident=""&name=""&title=""
+	http://localhost/tienda/mostrar.php?ident="5379e9ad52cf7da40f00002a"&name="Enrique"&title="Lalala"
 -->
 
 
