@@ -1,5 +1,6 @@
 <?php
-	require_once '../controlador/opbasededatosMongoDB.php';
+	require_once './controlador/opbasededatosMongoDB.php';
+	require_once './controlador/filtros.php';
 	
     $ident = $_GET['ident'];
     $name = $_GET['name'];
@@ -7,8 +8,16 @@
 	
 	// FILTRO
 	
+	$filtros = new Filtros();
 	
+	$ident = $filtros->filtraIdentificadorDisco($ident);
+	$title = $filtros->filtraNombreDisco($ident);
+	$name = $filtros->filtraNombreUsuario($ident);
 	
+	if ($ident == false || $title == false || $name == false){
+		echo "Tu petición no ha superado el filtro";
+		return;
+	}
 	
 	// CONSULTA
 	
