@@ -25,11 +25,7 @@
 		$resultado = $mongo->consultaDiscoyOpiniones($idDisco);
 	}
 	else {*/
-	$cursor = $mongo->consultaDisco($idDisco);
-	
-	$row = null;
-	foreach ($cursor as $doc)
-		$row = $doc;
+	$row = $mongo->consultaDisco($idDisco);
 	
 	/*$cursor->getNext();
 	$row = iterator_to_array($cursor, false);*/
