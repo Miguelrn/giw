@@ -67,7 +67,7 @@
 			$count = str_word_count($value);
 			if ($count != 1){ return false; }
 			$length = strlen($value);
-			if ($length < 3 || $length > 20){ return false; }
+			if ($length < 3 || $length > 40){ return false; }
 			$types = is_numeric($value);
 			if ($types){ return false; }	
 			$containsNumber = $this->contieneNumero($value);
@@ -145,7 +145,7 @@
 			$value = str_replace(".", "", $value);
 			$value = str_replace("-", "", $value);
 			$value = str_replace("_", "", $value);
-			$value = htmlspecialchars_decode(strip_tags(stripslashes($value)));
+			$value = htmlspecialchars_decode(trim(strip_tags(stripslashes($value))));
 			// echo "Desinfectado: " . $value;
 			return $value;			
 		}
