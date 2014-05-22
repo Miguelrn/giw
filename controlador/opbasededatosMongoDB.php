@@ -303,18 +303,31 @@ class MongoDBConector {
 		else { return true; }		
 	}	
 	
-	public function conseguirUsuario($nombre, $password){
-		$datos = array( 'nombre' => $nombre, 'password' => $password );
+	public function conseguirUsuario($correo, $password){
+		$datos = array( 'correo' => $correo);
 		$db = $this->conectar();
         $collection = $db->usuario;
-        $cursor = $collection->find($datos);
-		$this->cerrar();
+        $doc = $collection->findOne($datos);
 		
+		$salt = $doc['salt'];
+		$pass = hash('sha512', $password.$salt); //Hash de la contraseña con salt única.
 		unset($datos);
-		unset($consulta);
+		unset($doc);
+		$datos = array( 'correo' => $correo, 'contrasena' => $pass );
+		$doc = $collection->findOne($datos);
+		
+		$this->cerrar();
+		unset($datos);
+		unset($collection);
 		unset($db);
 		
-		return $cursor;
+		/*if($doc['pass'] == $pass){
+			return $doc;
+		}else {
+			return NULL;
+		}*/
+		return $doc;
+			
 	}
 	
 	public function insertarUsuario($correo, $contrasena, $nombre,  $apellidos, $edad, $domicilio){
