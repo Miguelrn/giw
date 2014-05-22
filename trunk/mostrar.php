@@ -26,13 +26,18 @@
 	$mongo = new MongoDBConector();		
 	$doc = $mongo->consultaDisco($ident);
 	
-	$nombre = $doc['nombre'];
-	$cantidad = $doc['cantidad'];
-	$categoria = $doc['categoria'];
-	$autor = $doc['autor'];
-	$anno = $doc['anno'];	
-	$foto = $doc['foto'];	
-	$precio = $doc['precio'];
+	if ($doc){
+		$nombre = $doc['nombre'];
+		$cantidad = $doc['cantidad'];
+		$categoria = $doc['categoria'];
+		$autor = $doc['autor'];
+		$anno = $doc['anno'];	
+		$foto = $doc['foto'];	
+		$precio = $doc['precio'];
+	} else {
+		echo "No se ha encontrado ese disco.";
+	}
+	
 	
 ?>
 
