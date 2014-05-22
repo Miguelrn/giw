@@ -8,7 +8,7 @@
         </div>
         </br>
         <div id="registration_element_form">                 
-            <input type="text" maxlength="30" name="apellidos" placeholder="Apellidos" required="">            
+            <input type="text" maxlength="40" name="apellidos" placeholder="Apellidos" required="">            
         </div>
         </br>
         <div id="registration_element_form">                 
@@ -16,19 +16,19 @@
         </div>
         </br>
         <div id="registration_element_form">                 
-            <input type="email" maxlength="40" name="correo" placeholder="Correo" required="">            
+            <input type="email" maxlength="100" name="correo" placeholder="Correo" required="">            
         </div>
         </br>
         <div id="registration_element_form">                 
-            <input type="password" maxlength="12" name="pass" placeholder="Contraseña" required="">
+            <input type="password" maxlength="14" name="pass" placeholder="Contraseña" required="">
         </div>
         </br>
         <div id="registration_element_form">                 
-            <input type="password" maxlength="12" name="reppass" placeholder="Repite la contraseña" required="">
+            <input type="password" maxlength="14" name="reppass" placeholder="Repite la contraseña" required="">
         </div>
         </br>
         <div id="registration_element_form">                 
-            <input type="text" maxlength="100" name="domicilio" placeholder="Domicilio" required="">
+            <input type="text" maxlength="200" name="domicilio" placeholder="Domicilio" required="">
         </div>
         </br>
         <div id="registration_element_form">                 
