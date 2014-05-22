@@ -52,7 +52,7 @@
 			$count = str_word_count($value);
 			if ($count != 1){ return false; }
 			$length = strlen($value);
-			if ($length < 3 || $length > 20){ return false; }
+			if ($length <= 2 || $length >= 20){ return false; }
 			$types = is_numeric($value);
 			if ($types){ return false; }	
 			$containsNumber = $this->contieneNumero($value);
@@ -67,7 +67,7 @@
 			$count = str_word_count($value);
 			if ($count != 1){ return false; }
 			$length = strlen($value);
-			if ($length < 3 || $length > 40){ return false; }
+			if ($length <= 2 || $length >= 40){ return false; }
 			$types = is_numeric($value);
 			if ($types){ return false; }	
 			$containsNumber = $this->contieneNumero($value);
@@ -82,7 +82,7 @@
 			$count = str_word_count($value);
 			if ($count != 0){ return false; }
 			$length = strlen($value);
-			if ($length == 0 || $length > 2){ return false; }
+			if ($length <= 0 || $length > 2){ return false; }
 			$types = is_numeric($value);
 			if (!$types){ return false; }	
 			$containsNumber = $this->contieneNumero($value);
@@ -110,7 +110,8 @@
 			//$value = $this->desinfecta($value);
 			$value = filter_var($value, FILTER_SANITIZE_STRING);			
 			$length = strlen($value);
-			if ($length < 3 || $length > 14){ return false; }			
+			if ($length < 4){ return false; }	
+			if (!ctype_alnum($value)) { return false; }	// caracteres alfanuméricos.
 			return $value;
 		}
 		
@@ -119,11 +120,11 @@
 			$value = filter_var($value, FILTER_SANITIZE_STRING);
 			
 			$length = strlen($value);
-			if ($length < 10 || $length > 200){ return false; }
+			if ($length < 4 || $length > 200){ return false; }
+			if (!ctype_alnum($value)) { return false; }		
 			
 			return $value;
-		}
-		
+		}		
 		
 		// GENERALES
 		
