@@ -416,6 +416,47 @@ class MongoDBConector {
 			return $texto;
 	}
 	
+	public function insertarPedido($correo,$precio, $idArticulo){//busca el usuario y updatea sus pedidos
+				
+		
+		$date = date("Y-m-d");
+																			
+		$datos = array( 'precio' => $precio,
+						'localizacion'=> 'Almacenes Centrales', 
+						'estado' => 'pendiente',
+						'fecha' => $datos, 
+						'edad' => $edad,
+						'idArticulo' => $idArticulo);					
+		$db = $this->conectar();
+        $collection = $db->usuario;
+        $cursor = $collection->update($correo, $datos);//modifica solo uno, puede machacar el resto
+	
+
+		$this->cerrar();
+		
+		unset($datos);
+		unset($date);
+		unset($db);
+		unset($collection);
+		unset($cursor);	
+	}
+
+	public function modificarProducto($idDisco){
+			$db = $this->conectar();
+	        $collection = $db->usuario;
+	        $cursor = $collection->find($idDisco);
+			
+			
+			$cursor = $collection->update($idDisco);
+			$this->cerrar();
+			
+			unset($datos);
+			unset($consulta);
+			unset($db);
+			
+			return $cursor;
+	}
+	
 	
 	
 			

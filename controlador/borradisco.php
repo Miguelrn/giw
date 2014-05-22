@@ -2,7 +2,7 @@
 	session_start();
 	require_once '../controlador/opbasededatosMongoDB.php';
 	if($_SERVER['REQUEST_METHOD'] == 'GET') {
-		$BDD = new Mysql();
+		$BDD = new MongoDBConector();
 		$num = $BDD->limpia_sql(htmlspecialchars(trim(strip_tags($_GET['num']))));
 		
 		$_SESSION['precioDiscos'] = $_SESSION['precioDiscos']  - $_SESSION['discos'][$num][2];
