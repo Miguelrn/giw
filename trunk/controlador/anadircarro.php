@@ -2,7 +2,9 @@
 	session_start();
 	require_once '../controlador/opbasededatosMongoDB.php';
 	if($_SERVER['REQUEST_METHOD'] == 'GET') {
-		$BDD = new Mysql();
+		
+		
+		$BDD = new MongoDBConector();
 		$idDisco = $BDD->limpia_sql(htmlspecialchars(trim(strip_tags($_GET['id']))));
 		$nombreDisco = $BDD->limpia_sql(htmlspecialchars(trim(strip_tags(utf8_decode(urldecode($_GET['nombre']))))));
 		$precioDisco = $BDD->limpia_sql(htmlspecialchars(trim(strip_tags($_GET['precio']))));	
