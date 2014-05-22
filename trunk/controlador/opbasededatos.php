@@ -220,7 +220,7 @@ class Mysql { // estaba puesto en minúsculas todo
 		return mysqli_affected_rows($this->conexion) > 0;
 	}
 	
-	public function conseguirDatosUsuario($correo, $pass, $salt){
+	public function conseguirDatosUsuario($correo, $pass){
 		//$consulta = "select * from usuario where correo = '$correo' AND contrasena = '$pass'";
 		//$pass = hash('sha512', $pass.$salt); //Hash de la contraseña con salt única.
 		$consulta = "select * from usuario where correo = '$correo'";
