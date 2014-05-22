@@ -15,7 +15,7 @@
 		
 		foreach ($cursor as $row) {
 		?>
-		<a href="#" onclick="llevarAProducto(<?php echo $row['id_articulo'] . ',' . $row['id_categoria']?>)"> <img src="vista/images/caratulas/<?php echo $row['foto'] ?>" width="360" height="360"
+		<a href="#" onclick="llevarAProducto(<?php echo "'". $row['_id'] . '\',\'' . $row['categoria']?>')"> <img src="vista/images/caratulas/<?php echo $row['foto'] ?>" width="360" height="360"
 			alt="<?php echo $row['nombre'] ?>" /> </a>		
 		<?php 
 		}
@@ -37,7 +37,7 @@
 			foreach ($cursor as $row) {
 			?>
 			<td>
-				<a href="#" onclick="llevarAProducto(<?php echo $row['id_articulo'] . ',' . $row['id_categoria']?>)">
+				<a href="#" onclick="llevarAProducto(<?php echo "'". $row['_id'] . '\',\'' . $row['categoria']?>')">
 					<img src="vista/images/caratulas/<?php echo $row['foto'] ?>" width="100px" height="100px"></img>
 					<p class="fuenteSubtitulo"><?php echo $row['nombre'] ?></br><?php echo $row['precio'] . '€' ?></p>
 				</a>
@@ -68,7 +68,7 @@
 			foreach ($cursor as $row) {
 			?>
 			<td>	
-				<a href="#" onclick="llevarAProducto(<?php echo $row['id_articulo'] . ',' . $row['id_categoria']?>)">
+				<a href="#" onclick="llevarAProducto(<?php echo "'". $row['_id'] . '\',\'' . $row['categoria']?>')">
 					<img src="vista/images/caratulas/<?php echo $row['foto'] ?>" width="100px" height="100px"></img>
 					<p class="fuenteSubtitulo"><?php echo $row['nombre'] ?></br><?php echo $row['precio'] . '€' ?></p>
 				</a>
