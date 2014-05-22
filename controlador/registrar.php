@@ -10,14 +10,24 @@
 	    $reppass = $BDD->limpia_sql(htmlspecialchars(trim(strip_tags($_POST['reppass']))));
 		$domicilio = $BDD->limpia_sql(htmlspecialchars(trim(strip_tags($_POST['domicilio']))));
 		$datosBancarios = $BDD->limpia_sql(htmlspecialchars(trim(strip_tags($_POST['datosBancarios']))));*/
-		$nombre = $_POST['nombre'];
-	    $apellidos = $_POST['apellidos'];
-		$edad = $_POST['edad'];
-	    $correo = $_POST['correo'];        
-	    $pass = $_POST['pass'];
-	    $reppass = $_POST['reppass'];
-		$domicilio = $_POST['domicilio'];
+		$filtros = new Filtros();
+				
+		$nombre = $filtros->filtraNombrePersona($_POST['nombre']);
+	    $apellidos = $filtros->filtraApellidosPersona($_POST['apellidos']);
+		$edad = $filtros->filtraEdad($_POST['edad']);
+	    $correo = $filtros->filtraCorreo($_POST['correo']);        
+	    $pass = $filtros->filtraPassword($_POST['pass']);
+	    $reppass = $filtros->filtraPassword($_POST['reppass']);
+		$domicilio = $filtros->filtraDomicilio($_POST['domicilio']);
 		
+		if ($nombre == false || $apellidos == false || $edad == false || $correo == false ||
+			$pass == false || $reppass == false || $domicilio == false){
+			
+			$_SESSION['error'] = "No fue posible realizar el registro.";
+			$_SESSION['logueado'] = false;			
+			header('Location: ../index.php');
+			
+		}
 		
 		if (strcmp($pass, $reppass) == 0){
 			//Crea una salt al azar
