@@ -36,17 +36,21 @@
 	
 ?>
 
-<head>
-	<meta charset="UTF-8">
-</head>
-<title><?php echo $title ?></title>
-<h1><?php echo "Bienvenido " . $name ?></h1>
-<img src="vista/images/caratulas/<?php echo $foto; ?>" width="300px" height="300px"></img>
-<h3><?php echo "Nombre del articulo: " . $nombre ?></h3>
-<h3><?php echo "Cantidad: " . $cantidad ?></h3>
-<h3><?php echo "Autor: " . $autor ?></h3>
-<h3><?php echo "Año del disco: " . $anno ?></h3>
-<h3><?php echo "Precio: " . $precio ?></h3>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title><?php echo $title ?></title>		
+	</head>
+	<body>
+		<h1><?php echo "Bienvenido " . $name ?></h1>
+		<img src="vista/images/caratulas/<?php echo $foto; ?>" width="300px" height="300px"></img>
+		<h3><?php echo "Nombre del articulo: " . $nombre ?></h3>
+		<h3><?php echo "Cantidad: " . $cantidad ?></h3>
+		<h3><?php echo "Autor: " . $autor ?></h3>
+		<h3><?php echo "Año del disco: " . $anno ?></h3>
+		<h3><?php echo "Precio: " . $precio ?></h3>
+	</body>
+</html>
 
 <!--
 	http://localhost/tienda/mostrar.php?ident=""&name=""&title=""
