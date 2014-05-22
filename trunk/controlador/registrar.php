@@ -1,6 +1,9 @@
 <?php
-	session_start();
+	@session_start();
     require_once '../controlador/opbasededatosMongoDB.php';
+    require_once '../controlador/filtros.php';
+	
+	
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	    /*$nombre = $BDD->limpia_sql(htmlspecialchars(trim(strip_tags($_POST['nombre']))));
 	    $apellidos = $BDD->limpia_sql(htmlspecialchars(trim(strip_tags($_POST['apellidos']))));
@@ -26,6 +29,7 @@
 			$_SESSION['error'] = "No fue posible realizar el registro.";
 			$_SESSION['logueado'] = false;			
 			header('Location: ../index.php');
+			return;
 			
 		}
 		
