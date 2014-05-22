@@ -330,7 +330,7 @@ class MongoDBConector {
 						'domicilio' => $domicilio, 
 						'pedidos' => array(), 
 						'datosBancarios' => "", 
-						'salt ' => $random_salt );					
+						'salt' => $random_salt );					
 		$db = $this->conectar();
         $collection = $db->usuario;
         $cursor = $collection->insert($datos);
@@ -357,7 +357,7 @@ class MongoDBConector {
 						'edad' => $edad, 
 						'domicilio' => $domicilio, 
 						'datosBancarios' => $datosBancarios, 
-						'salt ' => $random_salt );					
+						'salt' => $random_salt );					
 		$db = $this->conectar();
         $collection = $db->usuario;
         $cursor = $collection->update($usuarioQueSeModificara, $datos);
