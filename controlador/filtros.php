@@ -107,12 +107,10 @@
 		}
 		
 		public function filtraPassword($value){
-			$value = $this->desinfecta($value);
-			$value = filter_var($value, FILTER_SANITIZE_STRING);
-			
+			//$value = $this->desinfecta($value);
+			$value = filter_var($value, FILTER_SANITIZE_STRING);			
 			$length = strlen($value);
-			if ($length < 3 || $length > 14){ return false; }
-			
+			if ($length < 3 || $length > 14){ return false; }			
 			return $value;
 		}
 		
