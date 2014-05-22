@@ -88,6 +88,7 @@
 			$containsNumber = $this->contieneNumero($value);
 			if (!$containsNumber){ return false; }	
 			$value = str_replace("\"","",$value);
+			if ($value <= 3 || $value >= 130){ return false; }
 			return $value;
 		}
 		
