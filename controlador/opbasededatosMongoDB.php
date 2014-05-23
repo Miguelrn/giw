@@ -416,45 +416,41 @@ class MongoDBConector {
 			return $texto;
 	}
 	
-	public function insertarPedido($correo,$precio, $idArticulo){//busca el usuario y updatea sus pedidos
-				
-		
-		$date = date("Y-m-d");
-																			
+	public function insertarPedido($correo, $precio){//busca el usuario y updatea sus pedidos
+	
+		$date = date("Y-m-d");																	
 		$datos = array( 'precio' => $precio,
 						'localizacion'=> 'Almacenes Centrales', 
 						'estado' => 'pendiente',
-						'fecha' => $datos, 
-						'edad' => $edad,
-						'idArticulo' => $idArticulo);					
+						'fecha' => $date);//array con la nueva compra
+		$usuario = array('correo' => $correo);			
 		$db = $this->conectar();
-        $collection = $db->usuario;
-        $cursor = $collection->update($correo, $datos);//modifica solo uno, puede machacar el resto
+		$collection = $db->usuario;
+
 	
 
 		$this->cerrar();
 		
-		unset($datos);
-		unset($date);
-		unset($db);
-		unset($collection);
-		unset($cursor);	
+
+	}
+	
+	public function insertarArticuloPedido($correo,$id_pedido, $precioDisco){
+		
 	}
 
-	public function modificarProducto($idDisco){
-			$db = $this->conectar();
-	        $collection = $db->usuario;
-	        $cursor = $collection->find($idDisco);
-			
-			
-			$cursor = $collection->update($idDisco);
-			$this->cerrar();
-			
-			unset($datos);
-			unset($consulta);
-			unset($db);
-			
-			return $cursor;
+	public function modificarProducto($nombreDisco){
+		$db = $this->conectar();
+        $collection = $db->usuario;
+		$consultaDisco = array ('nombre' => $nombreDisco);//query
+		$update = array('$inc' => array( 'cantidad' => -1 ));//update
+        $cursor = $collection->findAndModify($consultaDisco,$update);//busca el disco por el nobre y lo decrementa en uno
+		$this->cerrar();
+		
+		unset($datos);
+		unset($consulta);
+		unset($db);
+		
+		return $cursor;
 	}
 	
 	
