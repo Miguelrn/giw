@@ -13,10 +13,11 @@
 		$correo = $_SESSION['correo'];
 		$precioDiscos = $_SESSION['precioDiscos'];
 		
+		$id_pedido = $BDD->insertarPedido($correo);//inserta un nuevo pedido en blanco y devuelve un id
 		for ($i=0, $len=count($productos); $i<$len; $i++) {
-			$id_pedido = $BDD->insertarPedido($correo, $precioDisco);
-			$idDisco = $productos[$i][0];
-			$resultado = $BDD->modificarProducto($idDisco);
+			$id_pedido = $BDD->insertarArticuloPedido($correo,$id_pedido, $precioDisco);
+			$nombreDisco = $productos[$i][1];
+			$resultado = $BDD->modificarProducto($nombreDisco);
 		}	
 		$_SESSION['error'] = "Compra realizada correctamente."; 
 		unset($_SESSION['discos']);
