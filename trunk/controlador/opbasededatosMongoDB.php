@@ -416,6 +416,41 @@ class MongoDBConector {
 			return $texto;
 	}
 	
+	public function consultaAzarDiscoCategoria($idCategoria){
+		$db = $this->conectar();
+		$collection = $db->articulo;
+		$cursor = $collection->find();
+		$db->articulo->update(array(), $this->updateRandom() , array('multiple' => true));
+		unset($cursor);
+		$busqueda = array('categoria' => $idCategoria);
+		$cursor = $collection->find($busqueda);
+		$cursor->sort(array('random' => -1));
+		$cursor->limit(5);
+		$this->cerrar();
+		
+		unset($db);
+		unset($collection);
+		
+		return $cursor;
+	}
+	
+	
+	public function buscaOpiniones($idDisco){
+		$db = $this->conectar();
+		$collection = $db->opiniones;//no existe, es de la practica 2 (aqui no se va implementar)
+		$cursor = $collection->find();
+		$db->articulo->update(array(), $this->updateRandom() , array('multiple' => true));
+		unset($cursor);
+		$busqueda = array('_id' => $idDisco);
+		$cursor = $collection->find($busqueda);
+		$this->cerrar();
+		
+		unset($db);
+		unset($collection);
+		
+		return $cursor;
+	}
+	
 	public function insertarPedido($correo, $precio){//busca el usuario y updatea sus pedidos
 	
 		$date = date("Y-m-d");																	
@@ -426,8 +461,6 @@ class MongoDBConector {
 		$usuario = array('correo' => $correo);			
 		$db = $this->conectar();
 		$collection = $db->usuario;
-
-	
 
 		$this->cerrar();
 		

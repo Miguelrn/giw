@@ -60,7 +60,8 @@
 			if(isset($_SESSION['logueado']) && $_SESSION['logueado'] && isset($_SESSION['edad'])){ //es un usuario logueado
 				$edad = $_SESSION['edad'];
 				$mongo = new MongoDBConector();			
-				$cursor = $mongo->consultaDiscosPorEdad($edad);
+				//$cursor = $mongo->consultaDiscosPorEdad($edad);
+				$cursor = $mongo->consultaAzarDiscosInicio();
 			} else {				
 				$mongo = new MongoDBConector();
 				$cursor = $mongo->consultaAzarDiscosInicio();
