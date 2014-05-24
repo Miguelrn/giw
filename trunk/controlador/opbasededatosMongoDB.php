@@ -451,7 +451,7 @@ class MongoDBConector {
 		return $cursor;
 	}
 	
-	public function insertarPedido($correo, $precio){//busca el usuario y updatea sus pedidos
+	public function insertarPedido($correo, $precio, $idsArticulos){//busca el usuario y updatea sus pedidos
 	
 		$date = date("Y-m-d");																	
 		$datos = array( 'precio' => $precio,
@@ -461,15 +461,16 @@ class MongoDBConector {
 		$usuario = array('correo' => $correo);			
 		$db = $this->conectar();
 		$collection = $db->usuario;
+		$consultaUsuario = array ('correo' => $correo);//query
+        $cursor = $collection->find($consultaUsuario);
+		$pedidos = $cursor['pedidos'];
+		$cursor = $pedidos->insert($datos);
 
 		$this->cerrar();
 		
 
 	}
-	
-	public function insertarArticuloPedido($correo,$id_pedido, $precioDisco){
-		
-	}
+
 
 	public function modificarProducto($nombreDisco){
 		$db = $this->conectar();
