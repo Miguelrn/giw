@@ -9,6 +9,8 @@
 		$nombreDisco = $BDD->limpia_sql(htmlspecialchars(trim(strip_tags(utf8_decode(urldecode($_GET['nombre']))))));
 		$precioDisco = $BDD->limpia_sql(htmlspecialchars(trim(strip_tags($_GET['precio']))));	
 		
+		//echo $idDisco;
+		
 		if (!isset($_SESSION['discos'])){
 			$_SESSION['discos'] = array();
 		}
