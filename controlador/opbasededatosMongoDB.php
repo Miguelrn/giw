@@ -304,7 +304,7 @@ class MongoDBConector {
 	}	
 	
 	public function conseguirUsuario($correo, $password){
-		$datos = array( 'correo' => $correo);
+		$datos = array( 'correo' => $correo );
 		$db = $this->conectar();
         $collection = $db->usuario;
         $doc = $collection->findOne($datos);
@@ -410,6 +410,7 @@ class MongoDBConector {
 	}
 	
     public function cerrar () {
+    	$this->conexion->close();
       	/*$conexiones = $this->conexion->getConnections();	
 		foreach ( $conexiones as $con ){
 		    // Iterar sobre todas las conexiones, y cuando el tipo es "SECONDARY" cerramos la conexión
