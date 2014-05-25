@@ -159,8 +159,7 @@
 		public function filtraCorreo($value){
 						
 			// Sólo debe contener tres palabras (pal1@pal2.pal3).
-			$count = str_word_count($value);
-			if ($count != 3){ return false; }
+			if (!preg_match('/(.+)@(.+)[.](.+)/', $value)){ return false; }
 			
 			// Debe contener un arroba y un punto.
 			$cArroba = $this->contieneCaracter($value, '@');
@@ -183,12 +182,14 @@
 		
 		public function filtraPassword($value){
 			
+			$value = $this->desinfectaComillas($value);
+			
 			// Sólo puede contener dígitos y letras.
 			if (!ctype_alnum($value)) { return false; }	// caracteres alfanuméricos.			
 			
 			// La longitud mínima es de 4 caracteres. Longitud máxima 80.
 			$length = strlen($value);
-			if ($length < 5 || $length > 100){ return false; }
+			if ($length < 4 || $length > 80){ return false; }
 			
 			// desinfectado
 			$value = $this->desinfecta($value);

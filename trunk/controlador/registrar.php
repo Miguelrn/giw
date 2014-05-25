@@ -29,11 +29,11 @@
 			$_SESSION['error'] = "No fue posible realizar el registro.";
 			$_SESSION['logueado'] = false;	
 			
-			echo "nombre:".$nombre." apell:".$apellidos.
+			/*echo "nombre:".$nombre." apell:".$apellidos.
 				  " edad:".$edad." correo:".$correo." pass:".$pass.
-				  " reppas:".$reppass."dom:".$domicilio;
+				  " reppas:".$reppass."dom:".$domicilio;*/
 					
-			//header('Location: ../index.php');			
+			header('Location: ../index.php');			
 			return;
 			
 		}

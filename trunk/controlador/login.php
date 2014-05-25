@@ -8,9 +8,13 @@
 		
 		$correo = $_GET['correo'];
 		$pass = $_GET['pass'];
+			
 		$row = $mongo->conseguirUsuario($correo, $pass);
+		
 		if(isset($row)){//es un usuario valido normal
-			if ((!isset($_SESSION['logueado']) || isset($_SESSION['logueado']) && $_SESSION['logueado'] == false) && $row){		
+			if ((!isset($_SESSION['logueado']) || isset($_SESSION['logueado']) && 
+				$_SESSION['logueado'] == false) && $row){
+							
 				$_SESSION['logueado'] = true;	
 				$_SESSION['nombre'] = $row['nombre'];	
 				$_SESSION['apellidos'] = $row['apellidos'];	
