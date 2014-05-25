@@ -332,6 +332,8 @@ class MongoDBConector {
 	
 	public function insertarUsuario($correo, $contrasena, $nombre,  $apellidos, $edad, $domicilio){
 												
+		if ($this->existeUsuario($correo) != null){ return false; }								
+												
 		$random_salt = hash('sha512', uniqid(mt_rand(1, mt_getrandmax()), true));
 		$password = hash('sha512', $contrasena.$random_salt);
 																	
@@ -354,6 +356,7 @@ class MongoDBConector {
 		unset($collection);
 		unset($cursor);	
 		
+		return true;
 	}
 	
 	public function modificarUsuario($correo, $nombre,  $datosBancarios, $apellidos, $edad, $domicilio){												
