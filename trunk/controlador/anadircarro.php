@@ -6,7 +6,7 @@
 		
 		$filtros = new Filtros();
 		$BDD = new MongoDBConector();
-		$idDisco = $filtros->filtraIdentificadorDisco($_GET['_id']); 
+		$idDisco = $filtros->filtraIdentificadorDisco($_GET['id']); 
 		$nombreDisco = utf8_decode(urldecode($_GET['nombre']));
 		$precioDisco = $_GET['precio'];	
 		
