@@ -121,7 +121,7 @@
 			
 			$length = strlen($value);
 			if ($length < 4 || $length > 200){ return false; }
-			if (!ctype_alnum($value)) { return false; }		
+			//if (!ctype_alnum($value)) { return false; }		
 			
 			return $value;
 		}		
