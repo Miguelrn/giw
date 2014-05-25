@@ -14,7 +14,7 @@
 		$nombre = $_POST['nombre'];
 	    $apellidos = $_POST['apellidos'];
 		$edad = $_POST['edad'];
-	    $correo = $_POST['correo'];
+	    $correo = $_SESSION['correo'];
 		$domicilio = $_POST['domicilio'];
 		$datosBancarios = $_POST['datosBancarios'];
 		

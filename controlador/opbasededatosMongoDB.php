@@ -365,7 +365,7 @@ class MongoDBConector {
 						'datosBancarios' => $datosBancarios);					
 		$db = $this->conectar();
         $collection = $db->usuario;
-        $cursor = $collection->update($usuarioQueSeModificara, $datos);
+        $cursor = $collection->update($usuarioQueSeModificara, array('$set' => $datos));
 		$this->cerrar();
 		
 		unset($datos);
