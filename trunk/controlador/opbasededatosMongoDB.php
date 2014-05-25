@@ -356,19 +356,34 @@ class MongoDBConector {
 		
 	}
 	
-	public function modificarUsuario($correo, $contrasena, $nombre, 
-									 $datosBancarios, $apellidos, $edad, $domicilio){
+	public function modificarUsuario($correo, $nombre,  $datosBancarios, $apellidos, $edad, $domicilio){												
+		$usuarioQueSeModificara = array ( 'correo' => $correo );																			
+		$datos = array( 'nombre' => $nombre,
+						'apellidos' => $apellidos, 
+						'edad' => $edad, 
+						'domicilio' => $domicilio, 
+						'datosBancarios' => $datosBancarios);					
+		$db = $this->conectar();
+        $collection = $db->usuario;
+        $cursor = $collection->update($usuarioQueSeModificara, $datos);
+		$this->cerrar();
+		
+		unset($datos);
+		unset($consulta);
+		unset($db);	
+		
+		return true;
+	}
+									 
+	public function modificarContrasenaUsuario($correo, $antiguacontrasena, $contrasena){
+		
+		if ($this->conseguirUsuario($correo, $antiguacontrasena) == null){ return false; }	
 												
 		$random_salt = hash('sha512', uniqid(mt_rand(1, mt_getrandmax()), true));
 		$password = hash('sha512', $contrasena.$random_salt);
 					
 		$usuarioQueSeModificara = array ( 'correo' => $correo );																			
-		$datos = array( 'contrasena' => $password, 
-						'nombre' => $nombre,
-						'apellidos' => $apellidos, 
-						'edad' => $edad, 
-						'domicilio' => $domicilio, 
-						'datosBancarios' => $datosBancarios, 
+		$datos = array( 'contrasena' => $password,
 						'salt' => $random_salt );					
 		$db = $this->conectar();
         $collection = $db->usuario;
@@ -378,6 +393,8 @@ class MongoDBConector {
 		unset($datos);
 		unset($consulta);
 		unset($db);	
+		
+		return true;
 	}
 	
 	public function eliminarUsuario($correo){

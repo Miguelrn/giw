@@ -3,13 +3,18 @@
 	session_start();
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	    $correo = $_SESSION['correo'];
-		$BDD = new Mysql();
+		/*$BDD = new Mysql();
 	    $antiguopass = $BDD->limpia_sql(htmlspecialchars(trim(strip_tags($_POST['antiguopass']))));
 	    $nuevopass = $BDD->limpia_sql(htmlspecialchars(trim(strip_tags($_POST['nuevopass']))));
-		$repitenuevopass = $BDD->limpia_sql(htmlspecialchars(trim(strip_tags($_POST['repitenuevopass']))));
+		$repitenuevopass = $BDD->limpia_sql(htmlspecialchars(trim(strip_tags($_POST['repitenuevopass']))));*/
+		
+		$antiguopass = $_POST['antiguopass'];
+	    $nuevopass = $_POST['nuevopass'];
+		$repitenuevopass = $_POST['repitenuevopass'];		
 		
 		if (strcmp($nuevopass, $repitenuevopass) == 0){		
-			$row = $BDD->cambiarPasswordUsuario($correo, $antiguopass, $nuevopass);			
+			$mongo = new MongoDBConector();
+			$row = $mongo->modificarContrasenaUsuario($correo, $antiguopass, $nuevopass);
 			if ($row){
 				$_SESSION['error'] = "Contraseña modificada con éxito.";			
 			} else {
