@@ -24,6 +24,9 @@
 				$_SESSION['logueado'] = false;		
 				$_SESSION['error'] = "Usuario o contraseña incorrecto.";
 			}
+		} else {
+			$_SESSION['logueado'] = false;		
+			$_SESSION['error'] = "Usuario o contraseña incorrecto.";
 		}
 	}	
 	header('Location: ../index.php');

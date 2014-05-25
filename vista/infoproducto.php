@@ -145,7 +145,7 @@
 
 	<!-- Comentarios de todos usuarios, no se muestran los comentarios del usuario actual -->	
 	<?php 
-		$cursor = $mongo->buscaOpiniones($idDisco);//devuelve todas las opiniones del disco idDisco
+		/*$cursor = $mongo->buscaOpiniones($idDisco);//devuelve todas las opiniones del disco idDisco
 		
 		echo "<p class=\"fuenteSubtitulo\">Otros usuarios opinaron:</p>";
 
@@ -155,7 +155,7 @@
 				<textarea rows="4" cols="70" readonly><?php echo $row['opinion']; ?></textarea>
 			</fieldset>					
 		<?php }
-		unset($cursor);
+		unset($cursor);*/
 	?>
 	
 </div>

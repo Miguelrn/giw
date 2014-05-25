@@ -27,8 +27,17 @@
 			$pass == false || $reppass == false || $domicilio == false){
 			
 			$_SESSION['error'] = "No fue posible realizar el registro.";
-			$_SESSION['logueado'] = false;			
-			header('Location: ../index.php');
+			$_SESSION['logueado'] = false;	
+			
+			echo "nombre:".$nombre." apell:".$apellidos.
+				  " edad:".$edad." correo:".$correo." pass:".$pass.
+				  " reppas:".$reppass."dom:".$domicilio;
+					
+			//header('Location: ../index.php');
+			
+			
+			
+			
 			return;
 			
 		}
@@ -44,7 +53,7 @@
 				$_SESSION['correo'] = $correo;	
 				$_SESSION['apellidos'] = $apellidos;	
 				$_SESSION['domicilio'] = $domicilio;	
-				$_SESSION['datosBancarios'] = $datosBancarios;	
+				//$_SESSION['datosBancarios'] = $datosBancarios;	
 				$_SESSION['logueado'] = true;	
 			
 				if (isset($_SESSION['error'])){
