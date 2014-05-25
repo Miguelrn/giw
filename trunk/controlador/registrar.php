@@ -42,9 +42,9 @@
 			//Crea una salt al azar
 			//Crea una contraseña en salt
 			$mongo = new MongoDBConector();		
-			$mongo->insertarUsuario($correo, $pass, $nombre, $apellidos, $edad, $domicilio);
+			$registrado = $mongo->insertarUsuario($correo, $pass, $nombre, $apellidos, $edad, $domicilio);
 				
-			/*if ($row){	*/				
+			if ($registrado){				
 				$_SESSION['nombre'] = $nombre;	
 				$_SESSION['correo'] = $correo;	
 				$_SESSION['edad'] = $edad;	
@@ -58,12 +58,12 @@
 				}
 				header('Location: ../index.php');
 				
-			/*} else {			
+			} else {			
 				$_SESSION['error'] = "Hubo un problema al registrar. Intente nuevamente más tarde.";
 				$_SESSION['logueado'] = false;	
 				header('Location: ../index.php');
 				
-			}*/
+			}
 		} else {		
 			$_SESSION['error'] = "No fue posible realizar el registro.";
 			$_SESSION['logueado'] = false;			
