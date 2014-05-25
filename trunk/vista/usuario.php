@@ -55,10 +55,10 @@ if ($usuarioLogueado){
 		<tbody>
 			<tr>
 				<td>
-				<input style="width: 120px;" maxlength="40" type="email" name="correo" placeholder="Correo" required="">
+				<input style="width: 120px;" maxlength="101" type="email" name="correo" placeholder="Correo" required="">
 				</td>
 				<td>
-				<input style="width: 80px;" maxlength="12" type="password" name="pass" placeholder="Contraseña" required="">
+				<input style="width: 80px;" maxlength="80" type="password" name="pass" placeholder="Contraseña" required="">
 				</td>
 				<td>
 				<input name="start_login" class="button button_normal type" type="submit" value="Entrar">
