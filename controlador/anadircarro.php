@@ -1,13 +1,14 @@
 <?php
 	session_start();
 	require_once '../controlador/opbasededatosMongoDB.php';
+	require_once '../controlador/filtros.php';
 	if($_SERVER['REQUEST_METHOD'] == 'GET') {
 		
-		
+		$filtros = new Filtros();
 		$BDD = new MongoDBConector();
-		$idDisco = $BDD->limpia_sql(htmlspecialchars(trim(strip_tags($_GET['id']))));
-		$nombreDisco = $BDD->limpia_sql(htmlspecialchars(trim(strip_tags(utf8_decode(urldecode($_GET['nombre']))))));
-		$precioDisco = $BDD->limpia_sql(htmlspecialchars(trim(strip_tags($_GET['precio']))));	
+		$idDisco = $filtros->filtraIdentificadorDisco($_GET['_id']); 
+		$nombreDisco = utf8_decode(urldecode($_GET['nombre']));
+		$precioDisco = $_GET['precio'];	
 		
 		//echo $idDisco;
 		
