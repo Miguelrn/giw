@@ -5,11 +5,7 @@
     if($_SERVER['REQUEST_METHOD'] == 'GET') {
     	$mongo = new MongoDBConector();
 		$filtros = new Filtros();
-		
-	    //$correo = $mongo->limpia_sql(htmlspecialchars(trim(strip_tags($_GET['correo']))));        
-	    //$pass = $mongo->limpia_sql(htmlspecialchars(trim(strip_tags($_GET['pass']))));
-	    //echo "correo sin filtros: ".$_GET['correo']." | ";
-		//echo "pass sin filtros: ".$_GET['pass']." | ";
+
 		$correo = $filtros->filtraCorreo($_GET['correo']);
 		$pass = $filtros->filtraPassword($_GET['pass']);
 			
