@@ -44,7 +44,7 @@
 
 		// console.log("id:"+id+"nombre:"+encodeURIComponent(nombre)+"precio:"+precio);
 		
-		console.log('./controlador/anadircarro.php?id='+id+'&nombre='+encodeURIComponent(nombre)+'&precio='+precio);
+		// console.log('./controlador/anadircarro.php?id='+id+'&nombre='+encodeURIComponent(nombre)+'&precio='+precio);
 
 		$("#cestaTotal").load('./controlador/anadircarro.php?id='+id+'&nombre='+encodeURIComponent(nombre)+'&precio='+precio);		
 
