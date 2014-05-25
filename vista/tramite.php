@@ -179,30 +179,6 @@ $_SESSION['error'] = "No has iniciado sesión.";
 		</div>
 	</form>
 
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
 </div>
 
 

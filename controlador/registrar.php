@@ -42,7 +42,7 @@
 			//Crea una salt al azar
 			//Crea una contraseña en salt
 			$mongo = new MongoDBConector();		
-			$mongo->insertarUsuario($correo, $password, $nombre,  $apellidos, $edad, $domicilio);
+			$mongo->insertarUsuario($correo, $pass, $nombre, $apellidos, $edad, $domicilio);
 				
 			/*if ($row){	*/				
 				$_SESSION['nombre'] = $nombre;	
