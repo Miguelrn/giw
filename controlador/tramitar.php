@@ -7,11 +7,19 @@
 	
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$BDD = new MongoDBConector();
+		
+		$_SESSION['datosBancarios'] = $_POST['datosbancarios'];
+		
 		$productos = $_SESSION['discos'];//consultar todos los items desde BD? o cookie? desde BD		
 		$correo = $_SESSION['correo'];
 		$precioDiscos = $_SESSION['precioDiscos'];
 		
-		$BDD->insertarPedido($correo, $precioDiscos, $productos);
+		$ids = array();
+		foreach ($productos as $prod) {
+			array_push($ids, $prod[0]);
+		}
+		
+		$BDD->insertarPedido($correo, $precioDiscos, $ids);
 		
 		
 		/*$id_pedido = $BDD->insertarPedido($correo);//inserta un nuevo pedido en blanco y devuelve un id
