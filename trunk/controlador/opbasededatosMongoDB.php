@@ -477,18 +477,30 @@ class MongoDBConector {
 		$datos = array( 'precio' => $precio,
 						'localizacion'=> 'Almacenes Centrales', 
 						'estado' => 'pendiente',
-						'fecha' => $date);//array con la nueva compra
+						'fecha' => $date,
+						'ids_articulo' => $idsArticulos);//array con la nueva compra
 		$usuario = array('correo' => $correo);			
-		$db = $this->conectar();
-		$collection = $db->usuario;
-		$consultaUsuario = array ('correo' => $correo);//query
-        $cursor = $collection->find($consultaUsuario);
-		$pedidos = $cursor['pedidos'];
-		$cursor = $pedidos->insert($datos);
-
-		$this->cerrar();
 		
+		$db = $this->conectar();
+		$collection = $db->usuario;		
+		$consultaUsuario = array('correo' => $correo);//query
+        $usuario = $collection->findOne($consultaUsuario);
 
+		$pedidos = $usuario['pedidos'];	
+		if ($pedidos == null){
+			$pedidos = array();
+		}
+		array_push($pedidos, $datos);
+					
+		$collection->update($consultaUsuario, array( '$set' => array('pedidos' => $pedidos)));
+						
+		$collection = $db->articulo;
+		foreach ($idsArticulos as $idArticulo) {			
+			$collection->update(array( '_id' => $idArticulo), array( 'dec' , array( 'cantidad' => 1 ) ));
+		}	
+			
+			
+		$this->cerrar();
 	}
 
 
