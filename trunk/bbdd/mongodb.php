@@ -16,7 +16,7 @@
 	$mongo->eliminarBDD();
 	
 	///////////ARTICULOS///////////
-	$mongo->insertarUsuario("test@test.com", "test", "nombreTest",  "apellidoTest", "10", "domicilioTest");
+	$mongo->insertarUsuario("test@test.com", "testt", "nombreTest",  "apellidoTest", "10", "domicilioTest");
 	// echo "</br>Existe usuario:" . ($mongo->existeUsuario("test@test.com") ? "Si" : "No");
 	// $mongo->eliminarUsuario("test@test.com");
 	// $mongo->modificarUsuario("test@test.com", "testModificado", "nombreTest", "datosBancariosTest", "apellidoTest", "10", "domicilioTest");
