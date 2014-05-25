@@ -27,6 +27,7 @@
 		}
 		
 		public function filtraNombreUsuario($value){
+			
 			// Sólo una palabra
 			$count = str_word_count($value);
 			if ($count != 1){ return false; }
@@ -48,7 +49,8 @@
 			return $value;
 		}
 		
-		public function filtraTitulo($value){			
+		public function filtraTitulo($value){
+						
 			// Sólo una palabra
 			$count = str_word_count($value);
 			if ($count != 1){ return false; }
@@ -69,8 +71,6 @@
 			
 			return $value;
 		}
-		
-		
 		
 		// REGISTRAR.PHP
 		
@@ -157,7 +157,7 @@
 		// GENERALES
 		
 		public function contieneMayusculas($value){
-			return preg_match('/[A-Z]/', $domain) != 0;
+			return preg_match('/[A-Z]/', $value) != 0;
 		}
 	
 		public function contieneCaracteres($value, $car){
