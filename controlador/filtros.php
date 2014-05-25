@@ -3,46 +3,74 @@
 		
 		// MOSTRAR.PHP
 		
-		public function filtraTitulo($value){
-			// Lalala
-			$value = $this->desinfecta($value);
-			$count = str_word_count($value);
-			if ($count != 1){ return false; }
+		public function filtraIdentificadorDisco($value){			
+			
+			// La longitud de la cadena debe ser 24
 			$length = strlen($value);
-			if ($length < 4 || $length > 20){ return false; }
-			$types = is_numeric($value);
-			if ($types){ return false; }	
-			$containsNumber = $this->contieneNumero($value);
-			if ($containsNumber){ return false; }
-			$value = str_replace("\"","",$value);
-			return $value;
-		}
-		
-		public function filtraIdentificadorDisco($value){
-			// 5379e9ad52cf7da40f00002a
-			$value = $this->desinfecta($value);
-			$length = strlen($value);
-			if ($length != 26){ return false; }
+			if ($length != 24){ return false; }
+			
+			// No pueden aparecer letras en mayúsculas.
+			$contieneMayusculas = $this->contieneMayusculas($value);			
+			if ($contieneMayusculas){ return false; }		
+			
+			// Debe tener números.
 			$containsNumber = $this->contieneNumero($value);
 			if (!$containsNumber){ return false; }
-			$value = str_replace("\"","",$value);
+						
+			// desinfectado
+			$value = $this->desinfecta($value);
+			
+			// desinfectado final
+			$value = $this->desinfectaComillas($value);
+			
 			return $value;
 		}
 		
 		public function filtraNombreUsuario($value){
-			// Enrique
-			$value = $this->desinfecta($value);
+			// Sólo una palabra
 			$count = str_word_count($value);
 			if ($count != 1){ return false; }
+			
+			// La longitud de la palabra debe tener más de 3 caracteres y menos de 20.
 			$length = strlen($value);
-			if ($length < 4 || $length > 20){ return false; }
-			$types = is_numeric($value);
-			if ($types){ return false; }	
+			if ($length <= 3 || $length > 20){ return false; }
+			
+			// No debe tener números.
 			$containsNumber = $this->contieneNumero($value);
 			if ($containsNumber){ return false; }
-			$value = str_replace("\"","",$value);
+			
+			// desinfectado
+			$value = $this->desinfecta($value);
+			
+			// desinfectado final
+			$value = $this->desinfectaComillas($value);
+			
 			return $value;
 		}
+		
+		public function filtraTitulo($value){			
+			// Sólo una palabra
+			$count = str_word_count($value);
+			if ($count != 1){ return false; }
+			
+			// La longitud de la palabra debe tener más de 3 caracteres y menos de 20.
+			$length = strlen($value);
+			if ($length <= 3 || $length > 20){ return false; }
+			
+			// No deben aparecer números.
+			$containsNumber = $this->contieneNumero($value);
+			if ($containsNumber){ return false; }			
+			
+			// desinfectado
+			$value = $this->desinfecta($value);
+			
+			// desinfectado final
+			$value = $this->desinfectaComillas($value);
+			
+			return $value;
+		}
+		
+		
 		
 		// REGISTRAR.PHP
 		
@@ -128,25 +156,35 @@
 		
 		// GENERALES
 		
-		public function contieneArroba($value){
-			return strcspn($value, '@') != strlen($value);
+		public function contieneMayusculas($value){
+			return preg_match('/[A-Z]/', $domain) != 0;
 		}
-		
-		public function contienePunto($value){
-			return strcspn($value, '.') != strlen($value);
+	
+		public function contieneCaracteres($value, $car){
+			return strcspn($value, $car) != strlen($value);
 		}
 		
 		public function contieneNumero($value){
-			return strcspn($value, '0123456789') != strlen($value);
+			// strcspn devuelve la cantidad de caracteres que hubo antes
+			// de encontrarse con el primer caracter del primer string
+			// que aparezca en el segundo string			
+			return is_numeric($value) || (strcspn($value, '0123456789') != strlen($value));
 		}
 		
-		public function desinfecta($value){
+		public function desinfectaComillas($value){
+			return str_replace("\"","",$value);
+		}
+		
+		public function desinfectaSignos($value){			
 			$value = str_replace(";", "", $value);
 			$value = str_replace(".", "", $value);
 			$value = str_replace("-", "", $value);
 			$value = str_replace("_", "", $value);
+			return $value;
+		}
+		
+		public function desinfecta($value){
 			$value = htmlspecialchars_decode(trim(strip_tags(stripslashes($value))));
-			// echo "Desinfectado: " . $value;
 			return $value;			
 		}
 		

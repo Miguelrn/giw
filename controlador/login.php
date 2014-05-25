@@ -10,7 +10,6 @@
 		$pass = $_GET['pass'];
 		$row = $mongo->conseguirUsuario($correo, $pass);
 		if(isset($row)){//es un usuario valido normal
-			$_SESSION['tipoUsuario'] = 0;
 			if ((!isset($_SESSION['logueado']) || isset($_SESSION['logueado']) && $_SESSION['logueado'] == false) && $row){		
 				$_SESSION['logueado'] = true;	
 				$_SESSION['nombre'] = $row['nombre'];	
@@ -19,6 +18,7 @@
 				$_SESSION['correo'] = $row['correo'];
 				$_SESSION['domicilio'] = $row['domicilio'];	
 				$_SESSION['datosBancarios'] = $row['datosBancarios'];	
+				$_SESSION['tipoUsuario'] = 0;
 				
 			} else {
 				$_SESSION['logueado'] = false;		
