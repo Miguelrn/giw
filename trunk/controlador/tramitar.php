@@ -10,7 +10,6 @@
 		$productos = $_SESSION['discos'];//consultar todos los items desde BD? o cookie? desde BD
 		
 		$correo = $_SESSION['correo'];
-		$correo = $_SESSION['correo'];
 		$precioDiscos = $_SESSION['precioDiscos'];
 		
 		$id_pedido = $BDD->insertarPedido($correo);//inserta un nuevo pedido en blanco y devuelve un id
