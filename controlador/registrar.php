@@ -33,11 +33,7 @@
 				  " edad:".$edad." correo:".$correo." pass:".$pass.
 				  " reppas:".$reppass."dom:".$domicilio;
 					
-			//header('Location: ../index.php');
-			
-			
-			
-			
+			//header('Location: ../index.php');			
 			return;
 			
 		}
@@ -51,6 +47,7 @@
 			/*if ($row){	*/				
 				$_SESSION['nombre'] = $nombre;	
 				$_SESSION['correo'] = $correo;	
+				$_SESSION['edad'] = $edad;	
 				$_SESSION['apellidos'] = $apellidos;	
 				$_SESSION['domicilio'] = $domicilio;	
 				//$_SESSION['datosBancarios'] = $datosBancarios;	
@@ -68,7 +65,7 @@
 				
 			}*/
 		} else {		
-			$_SESSION['error'] = "No fue posible realizar el registro. Las contraseñas no coinciden.";
+			$_SESSION['error'] = "No fue posible realizar el registro.";
 			$_SESSION['logueado'] = false;			
 			header('Location: ../index.php');
 			

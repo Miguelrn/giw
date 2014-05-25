@@ -14,9 +14,9 @@
 			if ((!isset($_SESSION['logueado']) || isset($_SESSION['logueado']) && $_SESSION['logueado'] == false) && $row){		
 				$_SESSION['logueado'] = true;	
 				$_SESSION['nombre'] = $row['nombre'];	
-				$_SESSION['correo'] = $row['correo'];
-				$_SESSION['edad'] = $row['edad'];		
 				$_SESSION['apellidos'] = $row['apellidos'];	
+				$_SESSION['edad'] = $row['edad'];		
+				$_SESSION['correo'] = $row['correo'];
 				$_SESSION['domicilio'] = $row['domicilio'];	
 				$_SESSION['datosBancarios'] = $row['datosBancarios'];	
 				
