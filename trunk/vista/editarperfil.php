@@ -17,15 +17,15 @@
         </div>
         </br>
         <div id="registration_element_form">                 
-            <input type="text" maxlength="30" name="edad" 
+            <input type="text" maxlength="4" name="edad" 
             placeholder="Edad" 
             value="<?php echo $_SESSION['edad']; ?>" required="">            
         </div>
         </br>
         <div id="registration_element_form">                 
-            <input type="email" maxlength="40" name="correo" 
+            <input type="email" maxlength="40" name="correo" disabled="true"
             placeholder="Correo"
-            value="<?php echo $_SESSION['correo']; ?>" required="">
+            value="<?php echo $_SESSION['correo']; ?>">
         </div>
         </br>
         <div id="registration_element_form">                 

@@ -363,8 +363,7 @@ class MongoDBConector {
 		$password = hash('sha512', $contrasena.$random_salt);
 					
 		$usuarioQueSeModificara = array ( 'correo' => $correo );																			
-		$datos = array( 'correo' => $correo,
-						'contrasena' => $password, 
+		$datos = array( 'contrasena' => $password, 
 						'nombre' => $nombre,
 						'apellidos' => $apellidos, 
 						'edad' => $edad, 

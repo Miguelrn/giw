@@ -46,7 +46,7 @@
 		
 		console.log('./controlador/anadircarro.php?id='+id+'&nombre='+encodeURIComponent(nombre)+'&precio='+precio);
 
-		//$("#cestaTotal").load('./controlador/anadircarro.php?id='+id+'&nombre='+encodeURIComponent(nombre)+'&precio='+precio);		
+		$("#cestaTotal").load('./controlador/anadircarro.php?id='+id+'&nombre='+encodeURIComponent(nombre)+'&precio='+precio);		
 
 	}
 
@@ -92,7 +92,7 @@
 		if ( (isset($_SESSION['logueado']) && $_SESSION['logueado'] == true && $_SESSION['tipoUsuario'] == 0)){
 			$precio = $row['precio'];	   					
 		?>
-			<button onclick="anadirAlCarro(<?php echo $idDisco . ',\'' . $row['nombre'] . '\',' . $precio ?>)">
+			<button onclick="anadirAlCarro(<?php echo "'" . $idDisco . '\',\'' . $row['nombre'] . '\',' . $precio ?>)">
 				Añadir al carro
 			</button>			
 				
