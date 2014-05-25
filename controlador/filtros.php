@@ -23,6 +23,8 @@
 			// desinfectado final
 			$value = $this->desinfectaComillas($value);
 			
+			$value = filter_var($value, FILTER_SANITIZE_STRING);	
+			
 			return $value;
 		}
 		
@@ -45,6 +47,8 @@
 			
 			// desinfectado final
 			$value = $this->desinfectaComillas($value);
+			
+			$value = filter_var($value, FILTER_SANITIZE_STRING);	
 			
 			return $value;
 		}
@@ -69,87 +73,144 @@
 			// desinfectado final
 			$value = $this->desinfectaComillas($value);
 			
+			$value = filter_var($value, FILTER_SANITIZE_STRING);	
+			
 			return $value;
 		}
 		
+		/**
+		 * Ejemplo: 
+		 * http://localhost/tienda/mostrar.php?ident=537de7d783a7942c08000001&name=lalaa&title=jejejejej
+		 */
+				
 		// REGISTRAR.PHP
 		
-		public function filtraNombrePersona($value){
-			$value = $this->desinfecta($value);
-			$value = filter_var($value, FILTER_SANITIZE_STRING);
+		public function filtraNombrePersona($value){			
+			
+			// Sólo debe contener una palabra.
 			$count = str_word_count($value);
 			if ($count != 1){ return false; }
-			$length = strlen($value);
-			if ($length <= 2 || $length >= 20){ return false; }
-			$types = is_numeric($value);
-			if ($types){ return false; }	
+			
+			// No debe tener números.
 			$containsNumber = $this->contieneNumero($value);
-			if ($containsNumber){ return false; }		
-			$value = str_replace("\"","",$value);
+			if ($containsNumber){ return false; }			
+			
+			// La longitud de la cadena debe ser menor que 20 y mayor que 2.
+			$length = strlen($value);
+			if ($length <= 2 || $length > 20){ return false; }
+			
+			// desinfectado
+			$value = $this->desinfecta($value);
+			
+			// desinfectado final
+			$value = $this->desinfectaComillas($value);			
+			
+			$value = filter_var($value, FILTER_SANITIZE_STRING);	
+			
 			return $value;
 		}
 		
 		public function filtraApellidosPersona($value){
-			$value = $this->desinfecta($value);
-			$value = filter_var($value, FILTER_SANITIZE_STRING);
+			
+			// Sólo debe contener como mucho dos palabras.
 			$count = str_word_count($value);
-			if ($count != 1){ return false; }
-			$length = strlen($value);
-			if ($length <= 2 || $length >= 40){ return false; }
-			$types = is_numeric($value);
-			if ($types){ return false; }	
+			if ($count > 2){ return false; }
+			
+			// No debe tener números.
 			$containsNumber = $this->contieneNumero($value);
-			if ($containsNumber){ return false; }	
-			$value = str_replace("\"","",$value);
+			if ($containsNumber){ return false; }			
+			
+			// La longitud de la cadena debe ser menor que 40 y mayor que 2.
+			$length = strlen($value);
+			if ($length <= 2 || $length > 40){ return false; }
+			
+			// desinfectado
+			$value = $this->desinfecta($value);
+			
+			// desinfectado final
+			$value = $this->desinfectaComillas($value);		
+			
+			$value = filter_var($value, FILTER_SANITIZE_STRING);	
+			
 			return $value;
 		}
 		
 		public function filtraEdad($value){
-			$value = $this->desinfecta($value);
-			$value = filter_var($value, FILTER_SANITIZE_NUMBER_INT);
-			$count = str_word_count($value);
-			if ($count != 0){ return false; }
+						
+			// Sólo debe ser un número.		
+			if (!is_numeric($value)){ return false; }			
+			
+			// La longitud de la cadena debe ser menor que 3 y mayor que 0.
 			$length = strlen($value);
-			if ($length <= 0 || $length > 2){ return false; }
-			$types = is_numeric($value);
-			if (!$types){ return false; }	
-			$containsNumber = $this->contieneNumero($value);
-			if (!$containsNumber){ return false; }	
-			$value = str_replace("\"","",$value);
+			if ($length <= 0 || $length > 3){ return false; }
+			
+			// El valor numérico debe ser mayor que 3 y menor que 130.
 			if ($value <= 3 || $value >= 130){ return false; }
+			
+			// desinfectado
+			$value = $this->desinfecta($value);
+			
+			// desinfectado final
+			$value = filter_var($value, FILTER_SANITIZE_NUMBER_INT);
+			
 			return $value;
 		}
 		
 		public function filtraCorreo($value){
-			$value = htmlspecialchars_decode(strip_tags(stripslashes($value)));
-			$value = filter_var($value, FILTER_SANITIZE_EMAIL);
-			$count = str_word_count($value);			
-			if ($count != 3){ return false; } // a@a.a
-			$containsArroba = $this->contieneArroba($value);
-			if (!$containsArroba){ return false; }	
-			$containsPunto = $this->contienePunto($value);
-			if (!$containsPunto){ return false; }		
+						
+			// Sólo debe contener tres palabras (pal1@pal2.pal3).
+			$count = str_word_count($value);
+			if ($count != 3){ return false; }
+			
+			// Debe contener un arroba y un punto.
+			$cArroba = $this->contieneCaracter($value, '@');
+			$cPunto = $this->contieneCaracter($value, '.');
+			if (!$cArroba || !$cPunto){ return false; }
+			
+			// La longitud de la cadena debe estar entre 5 y 100.
 			$length = strlen($value);
-			if ($length < 5 || $length > 100){ return false; }		
+			if ($length < 5 || $length > 100){ return false; }
+			
+			// desinfectado
+			$value = $this->desinfecta($value);
+			
+			// desinfectado final
+			$value = $this->desinfectaComillas($value);	
+			$value = filter_var($value, FILTER_SANITIZE_EMAIL);
+			
 			return $value;
 		}
 		
 		public function filtraPassword($value){
-			//$value = $this->desinfecta($value);
-			$value = filter_var($value, FILTER_SANITIZE_STRING);			
+			
+			// Sólo puede contener dígitos y letras.
+			if (!ctype_alnum($value)) { return false; }	// caracteres alfanuméricos.			
+			
+			// La longitud mínima es de 4 caracteres. Longitud máxima 80.
 			$length = strlen($value);
-			if ($length < 4){ return false; }	
-			if (!ctype_alnum($value)) { return false; }	// caracteres alfanuméricos.
+			if ($length < 5 || $length > 100){ return false; }
+			
+			// desinfectado
+			$value = $this->desinfecta($value);
+			
+			// desinfectado final	
+			$value = filter_var($value, FILTER_SANITIZE_STRING);	
+			
 			return $value;
 		}
 		
-		public function filtraDomicilio($value){
-			$value = $this->desinfecta($value);
-			$value = filter_var($value, FILTER_SANITIZE_STRING);
+		public function filtraDomicilio($value){					
 			
+			// No debe ser de longitud superior a 200 caracteres. 
+			// Tampoco puede ser inferior a 4 caracteres.
 			$length = strlen($value);
-			if ($length < 4 || $length > 200){ return false; }
-			//if (!ctype_alnum($value)) { return false; }		
+			if ($length < 4 || $length > 200){ return false; }		
+			
+			// desinfectado
+			$value = $this->desinfecta($value);
+			
+			// desinfectado final
+			$value = filter_var($value, FILTER_SANITIZE_STRING);
 			
 			return $value;
 		}		
@@ -160,7 +221,7 @@
 			return preg_match('/[A-Z]/', $value) != 0;
 		}
 	
-		public function contieneCaracteres($value, $car){
+		public function contieneCaracter($value, $car){
 			return strcspn($value, $car) != strlen($value);
 		}
 		
