@@ -68,22 +68,16 @@ class MongoDBConector {
 	}
 	
 	public function conseguirPedidos($correo){
-		$datos = array( '$correo' => $correo );
+		$datos = array( 'correo' => $correo );
 		$db = $this->conectar();
         $collection = $db->usuario;
-        $cursor = $collection->find($datos);
-		$this->cerrar();
-		
-		$pedidos = null;
-		foreach ($cursor as $doc){
-			$pedidos = $doc['pedidos'];
-		}
-		
+        $doc = $collection->findOne($datos);
 		$this->cerrar();
 		unset($datos);
 		unset($db);
 		unset($collection);
 		
+		$pedidos = $doc['pedidos'];		
 		return $pedidos;			
 	}
 	
@@ -108,7 +102,7 @@ class MongoDBConector {
 	}
 	
 	public function conseguirNumeroPedidos($correo){
-		$datos = array( '$correo' => $correo );
+		$datos = array( 'correo' => $correo );
 		$db = $this->conectar();
         $collection = $db->usuario;
         $doc = $collection->findOne($datos);

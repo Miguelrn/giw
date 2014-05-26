@@ -22,6 +22,11 @@
 		$mongo = new MongoDBConector();
 		$resultadoPedidos = $mongo->conseguirPedidos($correo);
 		
+		/*foreach ($resultadoPedidos as $key) {
+			print_r($key);
+		}*/
+		//var_dump($resultadoPedidos);
+		
 	}
 	
 ?>
@@ -33,7 +38,7 @@
 				$numDisco = 0;
 				$i=0;
 				$size = count($resultadoPedidos);
-				while ($i < $size && $pedido = $resultadoPedidos[i]/*mysqli_fetch_array($resultadoPedidos, MYSQLI_ASSOC)*/){
+				while ($i < $size && $pedido = $resultadoPedidos[$i]/*mysqli_fetch_array($resultadoPedidos, MYSQLI_ASSOC)*/){
 					$i++;
 					//$size = count($_SESSION['pedidos']);
 					//$_SESSION['pedidos'][$size] = ;
@@ -41,12 +46,11 @@
 					<p class="fuenteTitulo">Pedido <?php echo $i?></p>
 		<?php
 					$resultadoArticulos = /*$BDD*/$mongo->conseguirArticulosDePedido($pedido['ids_articulo']);
-					while ( $resultadoArticulos->hasNext() &&
-							$row = $resultadoArticulos->getNext()/*mysqli_fetch_array($resultadoArticulos, MYSQLI_ASSOC)*/) {
+					foreach ($resultadoArticulos as $articulo) {						
 						$numDisco++;
 		?>		
 						<li style="list-style:none;" class="fuenteSubtitulo">
-							<?php echo "Disco: " . $row['nombre'] ?>
+							<?php echo "Disco: " . $articulo['nombre'] ?>
 						</li>						
 		<?php
 					}
