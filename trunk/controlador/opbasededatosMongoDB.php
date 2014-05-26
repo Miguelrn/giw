@@ -94,6 +94,9 @@ class MongoDBConector {
         $cursor = $collection->find($datos);
 		$this->cerrar();
 		
+		
+		
+		
 		unset($datos);
 		unset($db);
 		unset($collection);
