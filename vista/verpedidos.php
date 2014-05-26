@@ -50,7 +50,7 @@
 						$numDisco++;
 		?>		
 						<li style="list-style:none;" class="fuenteSubtitulo">
-							<?php echo "Disco: " . $articulo['nombre'] ?>
+							<?php echo "Disco: " . $articulo['nombre'] . " - " . $articulo['autor']?>
 						</li>						
 		<?php
 					}

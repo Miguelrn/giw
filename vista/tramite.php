@@ -120,7 +120,7 @@ $_SESSION['error'] = "No has iniciado sesión.";
 						echo "</br>";
 
 						$subTotal = $subTotal + $productos[$i][2];
-						$total = $subTotal + $subTotal * 0.21;
+						$total = $subTotal; // + $subTotal * 0.21;
 
 					}
 					?>	
@@ -149,12 +149,12 @@ $_SESSION['error'] = "No has iniciado sesión.";
 
 			<p class="fuenteTitulo">Datos de facturación</p>
 
-			     <p class="fuenteSubtitulo">
+			   <!--  <p class="fuenteSubtitulo">
 			     	
 				Subtotal: <?php echo "$subTotal"; ?>€ <br />
-				 </p>
+				 </p> -->
 				 <p class="fuenteTitulo">
-				Total (21% de IVA incluído): <?php echo $total ?>€ </br>
+				Total: <?php echo $total ?>€ </br>
 				 </p>		
 
 				<?php
